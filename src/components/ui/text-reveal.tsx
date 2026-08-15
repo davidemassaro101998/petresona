@@ -11,7 +11,7 @@ interface TextRevealByWordProps {
 }
 
 const TextRevealByWord: FC<TextRevealByWordProps> = ({
-  text,
+  text = "",
   className,
 }) => {
   const targetRef = useRef<HTMLDivElement | null>(null);
@@ -20,7 +20,7 @@ const TextRevealByWord: FC<TextRevealByWordProps> = ({
   const { scrollYProgress } = useScroll({
     target: targetRef,
   });
-  const words = text.split(" ");
+  const words = text.split(" ").filter(Boolean);
 
   if (shouldReduceMotion) {
     return (

@@ -4,6 +4,18 @@
 
 @custom-variant dark (&:is(.dark *));
 
+/* Fallback values for the font tokens — next/font normally defines these via a
+   CSS-module class on <html> (see layout.tsx), which isn't present when a
+   component renders outside this app's own layout (e.g. Claude Design
+   composing a page from the synced design system). Real font files still
+   need to be available (shipped as @font-face); this just keeps the token
+   itself always resolving to the right family name. */
+:root {
+  --font-newsreader: "Newsreader", ui-serif, serif;
+  --font-manrope: "Manrope", ui-sans-serif, sans-serif;
+  --font-geist-mono: ui-monospace, "SFMono-Regular", monospace;
+}
+
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
