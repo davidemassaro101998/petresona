@@ -1,4 +1,4 @@
-import HowItWorks from "@/components/ui/how-it-works";
+import { HowItWorks } from "@/components/ui/how-it-works";
 
 const STEPS = [
   {

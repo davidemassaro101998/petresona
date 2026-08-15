@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { useReducedMotion } from "framer-motion";
 import Image from "next/image";
-import ScrollExpandMedia from "@/components/blocks/scroll-expansion-hero";
+import { ScrollExpandMedia } from "@/components/blocks/scroll-expansion-hero";
 
 function useIsDesktop() {
   const [isDesktop, setIsDesktop] = useState(false);

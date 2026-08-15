@@ -8,7 +8,6 @@ import {
   TouchEvent,
   WheelEvent,
 } from 'react';
-import Image from 'next/image';
 import { motion } from 'framer-motion';
 
 interface ScrollExpandMediaProps {
@@ -23,7 +22,7 @@ interface ScrollExpandMediaProps {
   children?: ReactNode;
 }
 
-const ScrollExpandMedia = ({
+export const ScrollExpandMedia = ({
   mediaType = 'video',
   mediaSrc,
   posterSrc,
@@ -188,17 +187,13 @@ const ScrollExpandMedia = ({
             animate={{ opacity: 1 - scrollProgress }}
             transition={{ duration: 0.1 }}
           >
-            <Image
+            {/* eslint-disable-next-line @next/next/no-img-element -- framework-agnostic so this component works outside Next.js too */}
+            <img
               src={bgImageSrc}
               alt='Background'
-              width={1920}
-              height={1080}
-              className='w-screen h-screen'
-              style={{
-                objectFit: 'cover',
-                objectPosition: 'center',
-              }}
-              priority
+              className='w-screen h-screen object-cover object-center'
+              loading='eager'
+              decoding='async'
             />
             <div className='absolute inset-0 bg-black/10' />
           </motion.div>
@@ -277,12 +272,13 @@ const ScrollExpandMedia = ({
                   )
                 ) : (
                   <div className='relative w-full h-full'>
-                    <Image
+                    {/* eslint-disable-next-line @next/next/no-img-element -- framework-agnostic so this component works outside Next.js too */}
+                    <img
                       src={mediaSrc}
                       alt={title || 'Media content'}
-                      width={1280}
-                      height={720}
                       className='w-full h-full object-cover rounded-xl'
+                      loading='eager'
+                      decoding='async'
                     />
 
                     <motion.div
@@ -348,5 +344,3 @@ const ScrollExpandMedia = ({
     </div>
   );
 };
-
-export default ScrollExpandMedia;

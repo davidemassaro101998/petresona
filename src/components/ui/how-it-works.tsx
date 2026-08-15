@@ -105,7 +105,7 @@ const DEFAULT_CARD_POSITIONS: StepPosition[] = [
   { className: "md:absolute md:top-[850px] md:left-[15%]", rotate: "rotate-8" },
 ];
 
-export default function HowItWorks({
+export function HowItWorks({
   features,
   className,
   stepPositions,
