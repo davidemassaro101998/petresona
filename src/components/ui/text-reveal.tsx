@@ -6,12 +6,14 @@ import { motion, MotionValue, useReducedMotion, useScroll, useTransform } from "
 import { cn } from "@/lib/utils";
 
 interface TextRevealByWordProps {
-  text: string;
+  text?: string;
+  children?: ReactNode;
   className?: string;
 }
 
 const TextRevealByWord: FC<TextRevealByWordProps> = ({
-  text = "",
+  text,
+  children,
   className,
 }) => {
   const targetRef = useRef<HTMLDivElement | null>(null);
@@ -20,12 +22,13 @@ const TextRevealByWord: FC<TextRevealByWordProps> = ({
   const { scrollYProgress } = useScroll({
     target: targetRef,
   });
-  const words = text.split(" ").filter(Boolean);
+  const resolvedText = text ?? (typeof children === "string" ? children : "");
+  const words = resolvedText.split(" ").filter(Boolean);
 
   if (shouldReduceMotion) {
     return (
       <div className={cn("mx-auto max-w-4xl px-[1rem] py-[3rem] text-center", className)}>
-        <p className="text-2xl font-bold md:text-3xl lg:text-4xl xl:text-5xl">{text}</p>
+        <p className="text-2xl font-bold md:text-3xl lg:text-4xl xl:text-5xl">{resolvedText}</p>
       </div>
     );
   }

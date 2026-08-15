@@ -10,11 +10,16 @@ import {
 } from 'react';
 import { motion } from 'framer-motion';
 
+const DEFAULT_MEDIA_SRC =
+  'https://images.unsplash.com/photo-1601758228041-f3b2795255f1?q=80&w=1600&auto=format&fit=crop';
+const DEFAULT_BG_IMAGE_SRC =
+  'https://images.unsplash.com/photo-1601758124510-52d02ddb7cbd?q=80&w=1600&auto=format&fit=crop';
+
 interface ScrollExpandMediaProps {
   mediaType?: 'video' | 'image';
-  mediaSrc: string;
+  mediaSrc?: string;
   posterSrc?: string;
-  bgImageSrc: string;
+  bgImageSrc?: string;
   title?: string;
   date?: string;
   scrollToExpand?: string;
@@ -23,10 +28,10 @@ interface ScrollExpandMediaProps {
 }
 
 export const ScrollExpandMedia = ({
-  mediaType = 'video',
-  mediaSrc,
+  mediaType = 'image',
+  mediaSrc = DEFAULT_MEDIA_SRC,
   posterSrc,
-  bgImageSrc,
+  bgImageSrc = DEFAULT_BG_IMAGE_SRC,
   title,
   date,
   scrollToExpand,
