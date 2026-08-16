@@ -1,30 +1,32 @@
-# PetResona — landing page
+# React + TypeScript + Vite
 
-Next.js (App Router) + TypeScript + Tailwind CSS v4 + shadcn/ui + Framer Motion.
-Componenti interattivi presi dal codice reale di [21st.dev](https://21st.dev) (installati via `shadcn add`), adattati all'identità PetResona — vedi commenti nei singoli file per cosa è stato modificato rispetto all'originale e perché.
+This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
 
-## Sviluppo
+Currently, two official plugins are available:
 
-```bash
-npm install
-npm run dev
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+
+## React Compiler
+
+The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+
+## Expanding the Oxlint configuration
+
+If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
+
+```json
+{
+  "$schema": "./node_modules/oxlint/configuration_schema.json",
+  "plugins": ["react", "typescript", "oxc"],
+  "options": {
+    "typeAware": true
+  },
+  "rules": {
+    "react/rules-of-hooks": "error",
+    "react/only-export-components": ["warn", { "allowConstantExport": true }]
+  }
+}
 ```
 
-Apri [http://localhost:3000](http://localhost:3000).
-
-## Struttura
-
-- `src/app/` — layout, metadata SEO/OG, font (Newsreader + Manrope via `next/font`, self-hosted).
-- `src/components/site/` — le sezioni della pagina (hero, modello, come funziona, offerta, calendario, FAQ, ecc.).
-- `src/components/ui/` — primitive shadcn + componenti 21st.dev adattati.
-- `src/components/blocks/scroll-expansion-hero.tsx` — hero cinematografica (21st.dev, adattata: colori, font, e un fix al listener di scroll che altrimenti rompeva i link ad ancora come `#calendario`).
-- `public/images/` — WebP di produzione.
-- `design/masters/` — PNG originali ad alta risoluzione (non serviti dal sito, solo archivio).
-
-## Cosa manca prima della pubblicazione (segnato `da confermare` nel codice/UI)
-
-- Collegamento a un provider di prenotazione reale (Calendly/Cal.com o altro) — l'`AppointmentPicker` attuale è funzionale ma con slot statici.
-- Dati societari, contatti, P.IVA nel footer.
-- Privacy Policy / Cookie Policy / Termini (pagine non ancora create).
-- Verifica di Giorgia sulla somiglianza del ritratto (asset generato da riferimenti avatar, vedi brief).
-- Esperienze/testimonianze reali (sezione intenzionalmente rimossa finché non ci sono liberatorie).
+See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.

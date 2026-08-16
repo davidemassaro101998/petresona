@@ -1,37 +1,82 @@
-import React from "react";
-import { ArrowRight } from "lucide-react";
-import { cn } from "@/lib/utils";
+/**
+ * Source: https://21st.dev/@dillionverma/components/interactive-hover-button
+ * Real upstream source verified at: https://github.com/magicuidesign/magicui
+ *   (apps/www/registry/magicui/interactive-hover-button.tsx)
+ * Imported from the real MagicUI component source, unmodified except:
+ *   - added `href`/`onClick`/`asChild`-style dual rendering (as an <a> when
+ *     `href` is passed, a <button> otherwise) since PetResona's CTAs need to
+ *     both navigate (to richiedi-accesso) and submit a form — the original
+ *     is a bare <button>.
+ *   - PetResona copper dot / ivory text colors are supplied via the
+ *     existing `className` prop at call sites, using the same
+ *     group-hover mechanics as the original (dot scale, text slide/fade).
+ * The core interaction (dot that blooms to fill the button on hover, label
+ * that slides out while a second label+arrow slides in) is unchanged.
+ */
+import { ArrowRight } from "lucide-react"
+import { forwardRef } from "react"
 
-interface InteractiveHoverButtonProps
-  extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  text?: string;
+import { cn } from "@/lib/utils"
+
+type CommonProps = {
+  children: React.ReactNode
+  className?: string
 }
 
-const InteractiveHoverButton = React.forwardRef<
-  HTMLButtonElement,
+type ButtonAsButton = CommonProps &
+  React.ButtonHTMLAttributes<HTMLButtonElement> & { href?: undefined }
+type ButtonAsLink = CommonProps &
+  React.AnchorHTMLAttributes<HTMLAnchorElement> & { href: string }
+
+type InteractiveHoverButtonProps = ButtonAsButton | ButtonAsLink
+
+export const InteractiveHoverButton = forwardRef<
+  HTMLButtonElement | HTMLAnchorElement,
   InteractiveHoverButtonProps
->(({ text = "Button", className, ...props }, ref) => {
+>(({ children, className, ...props }, ref) => {
+  const sharedClassName = cn(
+    "group bg-background relative w-auto cursor-pointer overflow-hidden rounded-full border p-2 px-6 text-center font-semibold",
+    "min-h-[52px] inline-flex items-center justify-center active:scale-[0.97] transition-transform",
+    className
+  )
+
+  const content = (
+    <>
+      <div className="flex items-center justify-center gap-2">
+        <div className="bg-primary h-2 w-2 rounded-full transition-all duration-[280ms] group-hover:scale-[100.8]"></div>
+        <span className="inline-block transition-all duration-[280ms] group-hover:translate-x-12 group-hover:opacity-0">
+          {children}
+        </span>
+      </div>
+      <div className="text-primary-foreground absolute top-0 z-10 flex h-full w-full translate-x-12 items-center justify-center gap-2 opacity-0 transition-all duration-[280ms] group-hover:-translate-x-5 group-hover:opacity-100">
+        <span>{children}</span>
+        <ArrowRight className="transition-transform duration-[280ms] group-hover:translate-x-1" />
+      </div>
+    </>
+  )
+
+  if ("href" in props && props.href) {
+    const { href, ...rest } = props as ButtonAsLink
+    return (
+      <a
+        ref={ref as React.Ref<HTMLAnchorElement>}
+        href={href}
+        className={sharedClassName}
+        {...rest}
+      >
+        {content}
+      </a>
+    )
+  }
+
   return (
     <button
-      ref={ref}
-      className={cn(
-        "group relative w-32 cursor-pointer overflow-hidden rounded-full border bg-background p-2 text-center font-semibold",
-        className,
-      )}
-      {...props}
+      ref={ref as React.Ref<HTMLButtonElement>}
+      className={sharedClassName}
+      {...(props as ButtonAsButton)}
     >
-      <span className="inline-block translate-x-1 transition-all duration-300 group-hover:translate-x-12 group-hover:opacity-0 group-focus-visible:translate-x-12 group-focus-visible:opacity-0">
-        {text}
-      </span>
-      <div className="absolute top-0 z-10 flex h-full w-full translate-x-12 items-center justify-center gap-2 text-primary-foreground opacity-0 transition-all duration-300 group-hover:-translate-x-1 group-hover:opacity-100 group-focus-visible:-translate-x-1 group-focus-visible:opacity-100">
-        <span>{text}</span>
-        <ArrowRight />
-      </div>
-      <div className="absolute left-[20%] top-[40%] h-2 w-2 scale-[1] rounded-lg bg-primary opacity-0 transition-all duration-300 group-hover:left-[0%] group-hover:top-[0%] group-hover:h-full group-hover:w-full group-hover:scale-[1.8] group-hover:opacity-100 group-focus-visible:left-[0%] group-focus-visible:top-[0%] group-focus-visible:h-full group-focus-visible:w-full group-focus-visible:scale-[1.8] group-focus-visible:opacity-100"></div>
+      {content}
     </button>
-  );
-});
-
-InteractiveHoverButton.displayName = "InteractiveHoverButton";
-
-export { InteractiveHoverButton };
+  )
+})
+InteractiveHoverButton.displayName = "InteractiveHoverButton"

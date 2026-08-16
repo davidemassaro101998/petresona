@@ -1,0 +1,77 @@
+// Motion architecture adapted for PetResona after review of:
+// https://21st.dev/@componentry/components/scroll-choreography
+// Original implementation: PetResona hero-to-Impronta transition.
+import { motion, useScroll, useSpring, useTransform } from "framer-motion"
+import { useRef } from "react"
+import { HeroSection } from "@/components/sections/HeroSection"
+import { ImprontaSection } from "@/components/sections/ImprontaSection"
+import { useReducedMotion } from "@/lib/use-reduced-motion"
+
+export function HeroImprintTransition() {
+  const prefersReducedMotion = useReducedMotion()
+  const stageRef = useRef<HTMLDivElement>(null)
+
+  const { scrollYProgress } = useScroll({
+    target: stageRef,
+    offset: ["start start", "end end"],
+  })
+
+  const progress = useSpring(scrollYProgress, {
+    stiffness: 180,
+    damping: 34,
+    mass: 0.55,
+    restDelta: 0.001,
+  })
+
+  const exitImageScale = useTransform(progress, [0, 0.28, 0.72, 1], [1, 1, 1.075, 1.1])
+  const heroY = useTransform(progress, [0, 0.34, 1], [0, 0, -72])
+  const exitPanelOpacity = useTransform(progress, [0, 0.32, 0.72, 0.9], [1, 1, 0.42, 0])
+  const exitPanelY = useTransform(progress, [0, 0.34, 0.82], [0, 0, -28])
+  const exitOverlayOpacity = useTransform(progress, [0, 0.3, 0.82], [0, 0.04, 0.38])
+  const indicatorOpacity = useTransform(progress, [0, 0.2, 0.38], [1, 1, 0])
+
+  const surfaceY = useTransform(progress, [0, 0.25, 0.68], [80, 80, 0])
+  const surfaceClip = useTransform(
+    progress,
+    [0.22, 0.55, 0.82],
+    [
+      "inset(10% 3% 0% 3% round 64px 64px 0px 0px)",
+      "inset(2% 1% 0% 1% round 46px 46px 0px 0px)",
+      "inset(0% 0% 0% 0% round 32px 32px 0px 0px)",
+    ],
+  )
+
+  if (prefersReducedMotion) {
+    return (
+      <>
+        <HeroSection />
+        <ImprontaSection />
+      </>
+    )
+  }
+
+  return (
+    <div className="relative">
+      <div ref={stageRef} className="relative h-[150svh] md:h-[160svh]">
+        <div className="sticky top-0 h-[100svh] overflow-hidden">
+          <motion.div className="relative h-full" style={{ y: heroY }}>
+            <HeroSection
+              exitImageScale={exitImageScale}
+              exitPanelOpacity={exitPanelOpacity}
+              exitPanelY={exitPanelY}
+              exitOverlayOpacity={exitOverlayOpacity}
+              indicatorOpacity={indicatorOpacity}
+            />
+          </motion.div>
+        </div>
+      </div>
+
+      <motion.div
+        className="relative z-20 -mt-[50svh] rounded-t-[32px] bg-paper md:-mt-[60svh]"
+        style={{ y: surfaceY, clipPath: surfaceClip }}
+      >
+        <ImprontaSection />
+      </motion.div>
+    </div>
+  )
+}
