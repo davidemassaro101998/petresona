@@ -9,6 +9,16 @@
       content="PetResona Impronta è un percorso personale di 14 giorni per cani e gatti: tre incontri privati, biorisonanza con CIEM System e tre elementi personali consegnati da Giorgia Bisognin. Servizio non veterinario, €990 pagamento unico."
     />
     <meta name="robots" content="index,follow" />
+    <meta name="theme-color" content="#f4efe6" />
+    <!-- Matches --color-paper so there is no white flash before the
+         stylesheet loads, and on the split-second navigation to the
+         second static page. -->
+    <style>
+      html,
+      body {
+        background: #f4efe6;
+      }
+    </style>
     <!-- TODO prima della pubblicazione: canonical, favicon, Open Graph reali -->
     <!-- <link rel="canonical" href="https://www.dominio-reale.it/"> -->
     <!-- <link rel="icon" href="/favicon.ico"> -->
@@ -17,6 +27,16 @@
     <!-- <meta property="og:image" content="https://www.dominio-reale.it/og-image.jpg"> -->
     <link rel="preload" href="/assets/fonts/newsreader.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="preload" href="/assets/fonts/manrope.woff2" as="font" type="font/woff2" crossorigin />
+    <script>
+      // Added at runtime (not as a static <link>) so Vite's build doesn't
+      // rewrite it into a duplicated/hashed copy of the other page.
+      (function () {
+        var l = document.createElement("link");
+        l.rel = "prefetch";
+        l.href = "/richiedi-accesso.html";
+        document.head.appendChild(l);
+      })();
+    </script>
     <link
       rel="preload"
       as="image"

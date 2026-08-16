@@ -60,6 +60,9 @@
 
 html {
   scroll-behavior: smooth;
+  /* Keeps any scroll-into-view target (anchor links, keyboard focus, etc.)
+     clear of the fixed header, not just elements that carry an id. */
+  scroll-padding-top: 96px;
 }
 @media (prefers-reduced-motion: reduce) {
   html {

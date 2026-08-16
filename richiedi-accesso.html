@@ -11,8 +11,23 @@
     <!-- noindex: pagina di anteprima, form non ancora collegato a un backend reale.
          Rimuovere questo meta solo quando la pubblicazione viene richiesta e il flusso è completo. -->
     <meta name="robots" content="noindex,nofollow" />
+    <meta name="theme-color" content="#f4efe6" />
+    <style>
+      html,
+      body {
+        background: #f4efe6;
+      }
+    </style>
     <link rel="preload" href="/assets/fonts/newsreader.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="preload" href="/assets/fonts/manrope.woff2" as="font" type="font/woff2" crossorigin />
+    <script>
+      (function () {
+        var l = document.createElement("link");
+        l.rel = "prefetch";
+        l.href = "/index.html";
+        document.head.appendChild(l);
+      })();
+    </script>
   </head>
   <body>
     <div id="root"></div>

@@ -20,11 +20,21 @@ export function SiteFooter() {
           Pet<b className="text-copper">Resona</b>
         </p>
         <nav aria-label="Link footer" className="flex flex-wrap gap-5">
-          <a href="#come-si-svolge">Come funziona</a>
-          <a href="#cosa-ricevi">Cosa ricevi</a>
-          <a href="#giorgia">Giorgia</a>
-          <a href="#faq">FAQ</a>
-          <a href="/richiedi-accesso.html">Richiedi accesso</a>
+          <a href="#come-si-svolge" className="transition-colors hover:text-copper">
+            Come funziona
+          </a>
+          <a href="#cosa-ricevi" className="transition-colors hover:text-copper">
+            Cosa ricevi
+          </a>
+          <a href="#giorgia" className="transition-colors hover:text-copper">
+            Giorgia
+          </a>
+          <a href="#faq" className="transition-colors hover:text-copper">
+            FAQ
+          </a>
+          <a href="/richiedi-accesso.html" className="transition-colors hover:text-copper">
+            Richiedi accesso
+          </a>
         </nav>
       </div>
       <p className="mx-auto mt-6 max-w-6xl text-[0.78rem] leading-relaxed text-brown/55">

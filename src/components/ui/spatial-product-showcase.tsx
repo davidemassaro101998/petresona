@@ -136,7 +136,9 @@ export function SpatialProductShowcase({ items }: { items: ShowcaseItem[] }) {
               onClick={() => select(i)}
               whileTap={{ scale: 0.96 }}
               aria-current={i === active}
-              className="relative rounded-full px-5 py-2.5 text-sm font-medium focus:outline-none focus-visible:ring-2 focus-visible:ring-copper"
+              className={`group relative rounded-full px-5 py-2.5 text-sm font-medium transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-copper ${
+                i === active ? "" : "hover:bg-copper/10"
+              }`}
             >
               {i === active && (
                 <motion.span
@@ -145,7 +147,7 @@ export function SpatialProductShowcase({ items }: { items: ShowcaseItem[] }) {
                   transition={{ type: "spring", stiffness: 220, damping: 22 }}
                 />
               )}
-              <span className={`relative z-10 transition-colors ${i === active ? "text-ivory" : "text-brown/70"}`}>
+              <span className={`relative z-10 transition-colors ${i === active ? "text-ivory" : "text-brown/70 group-hover:text-copper"}`}>
                 {item.index} — {item.label}
               </span>
             </motion.button>
