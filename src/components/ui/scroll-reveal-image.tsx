@@ -4,14 +4,14 @@
  * (the earlier `curl` 403 was the unauthenticated HTTP route — see
  * 21ST_SOURCES.md for the full history of this component).
  *
- * Adaptations for PetResona (Vite, not Next.js):
+ * Adaptations for ResonaPet (Vite, not Next.js):
  * - `next/image` replaced with a plain `<img>`. The original used the
  *   `fill` prop (absolute, inset-0, 100%/100%, object-cover) — replicated
  *   here with inline styles since there is no Vite equivalent. `priority`
  *   maps to `fetchPriority="high"` + `loading="eager"` (closest native
  *   equivalents); `quality` has no native counterpart and is dropped.
  * - Added a named export alongside the original's default export so the
- *   rest of the PetResona codebase (which imports `{ ScrollRevealImage }`)
+ *   rest of the ResonaPet codebase (which imports `{ ScrollRevealImage }`)
  *   didn't need to change its import style. No behavior was touched.
  * - Everything else — useScroll/useTransform/useSpring, the two nested
  *   motion.div containers, the width/scale/radius transforms — is
@@ -20,7 +20,7 @@
  *   `(max-width: 767px)` <source> for the art-directed mobile crop. Motion
  *   logic untouched.
  *
- * PetResona config passed at the call site (HeroSection): fromWidth="68%"
+ * ResonaPet config passed at the call site (HeroSection): fromWidth="68%"
  * toWidth="100%" fromScale={1.12} toScale={1} fromRadius="48px"
  * toRadius="12px" stiffness={115} damping={38} height="100%" — no demo
  * `50vh` spacers are used anywhere, so this adds no page height and the

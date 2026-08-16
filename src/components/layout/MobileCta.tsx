@@ -6,7 +6,7 @@ export function MobileCta() {
   const [show, setShow] = useState(false)
 
   useEffect(() => {
-    const receive = document.getElementById("cosa-ricevi")
+    const receive = document.getElementById("come-si-svolge")
     const finalCta = document.getElementById("faq-closing-cta")
     if (!receive) return
 
@@ -63,7 +63,7 @@ export function MobileCta() {
         onClick={() => track("access_cta_click")}
         className="flex w-full"
       >
-        Richiedi accesso
+        Richiedi una prima valutazione
       </InteractiveHoverButton>
     </div>
   )

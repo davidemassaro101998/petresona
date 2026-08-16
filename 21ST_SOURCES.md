@@ -29,7 +29,7 @@ when a source could not be reached.
     a `motion/react`-only export).
   - Added a named export `VerticalCutReveal` alongside the original default
     export, since the brief's own usage example imports it by name.
-- **Used at**: hero title, `#impronta` title, `€990` in the offer band,
+- **Used at**: hero title, `#sistema` title, `€990` in the offer band,
   `richiedi-accesso.html` title.
 
 ### 2. SVG Follow Scroll (Skiper 19)
@@ -45,7 +45,7 @@ when a source could not be reached.
   TypeScript build since it's demo-only and not imported by the app).
 - **Dependencies**: `framer-motion`
 - **Kept from the original in the adapted variant**
-  (`src/components/ui/petresona-imprint-path.tsx`): `useScroll`,
+  (`src/components/ui/resonapet-transition-path.tsx, removed in V6 along with the hero copper trace`): `useScroll`,
   `useTransform`, the `pathLength` animation mapped through
   `strokeDashoffset`, `motion.path`, scroll-synced tracing.
 - **Removed per the brief (section 4.D)**: `h-[350vh]`, the
@@ -53,9 +53,9 @@ when a source could not be reached.
   unrelated demo SVG path.
 - **New**: an original organic trace path (not the demo SVG, not a cartoon
   paw), copper-colored, confined to a 70-90px strip at the right edge of
-  `#impronta` (see "Design decisions" below for why it doesn't span all
+  `#sistema` (see "Design decisions" below for why it doesn't span all
   three sections the brief lists).
-- **Used at**: `#impronta` (right-edge decorative trace).
+- **Used at**: `#sistema` (right-edge decorative trace).
 
 ### 3. Interactive Hover Button
 - **Brief URL**: https://21st.dev/@dillionverma/components/interactive-hover-button
@@ -68,7 +68,7 @@ when a source could not be reached.
 - **Kept unmodified**: the dot-bloom + label-slide interaction, its
   `group-hover` mechanics, its class structure.
 - **Adaptations**: added dual rendering as `<a href>` or `<button>` (the
-  original is a bare `<button>`; PetResona's CTAs need to both navigate to
+  original is a bare `<button>`; ResonaPet's CTAs need to both navigate to
   `richiedi-accesso.html` and submit a form), plus `min-h-[52px]` and
   `active:scale-[0.97]` utility classes per the brief's exact spec — the
   original only sets a plain height via `p-2`.
@@ -85,7 +85,7 @@ when a source could not be reached.
 - **File imported to**: `src/components/ui/accordion.tsx`, byte-identical
   to upstream.
 - **Dependencies**: `radix-ui`, `lucide-react`
-- **Adaptations**: none to the primitive itself. PetResona styling (copper
+- **Adaptations**: none to the primitive itself. ResonaPet styling (copper
   active border, chevron rotation, spacing) is applied entirely via
   `className` props at the call site in `src/components/sections/FaqSection.tsx`.
 - **Used at**: `#faq`.
@@ -196,8 +196,8 @@ shipped in the build.
   the image variant's ±30° initial rotation, `scale:1.5` and 15px blur
   entrance; the `fixed bottom-12` switcher and `fixed inset-0` background;
   `min-h-screen` on the root.
-- **Adapted**: two earbuds → three PetResona items (`traccia` → Traccia
-  d'Ambiente, `codice` → Codice Impronta, `guida` → Guida Impronta), reusing
+- **Adapted**: two earbuds → three ResonaPet items (`traccia` → Traccia
+  d'Ambiente, `codice` → Sistema Code (rimosso), `guida` → Sistema Guide (rimosso)), reusing
   the V3 copy and CSS/SVG mockups as each item's `visual`. The trigger dock
   moved from a fixed floating pill to inline placement under the stage,
   restyled in the ivory/copper/brown palette. A compact single-open mobile
@@ -222,7 +222,7 @@ shipped in the build.
   constant; the width/height/borderRadius morph animation on the
   container; the "a color layer expands from within to reveal the open
   state" mechanism (the original's dark circle growing from the bottom —
-  reused as a clip-path circle expanding from the trigger for PetResona's
+  reused as a clip-path circle expanding from the trigger for ResonaPet's
   mobile panel); `MenuButton`'s per-character split-flap "roll" (two
   stacked copies of each character, `translateY(-50%)` on hover, staggered
   `30ms * index`) — reused near-verbatim as `<LetterRoll>`; the item
@@ -233,7 +233,7 @@ shipped in the build.
   Contact" placeholder items; the `#FFE862` yellow / `#242424` dark demo
   palette.
 - **Adapted**: the original is a single floating button that expands into a
-  vertical menu — PetResona's header instead needs *always-visible* desktop
+  vertical menu — ResonaPet's header instead needs *always-visible* desktop
   links plus a *separate* mobile toggle, so the morph mechanism was split in
   two: (a) the header capsule itself (transparent bar → ivory pill after
   40px scroll, using the same `layout`+`ease` morph) and (b) the mobile
@@ -257,8 +257,8 @@ shipped in the build.
 ## C. Design decisions worth flagging explicitly
 
 - **Imprint trace scope**: the brief asks the trace to cross "the tail end
-  of the hero, `#impronta`, and the entry of `#cosa-ricevi`." It was scoped
-  to `#impronta` only, confined to a 70-90px strip at the right edge of the
+  of the hero, `#sistema`, and the entry of `#cosa-ricevi`." It was scoped
+  to `#sistema` only, confined to a 70-90px strip at the right edge of the
   section (not full-width), specifically to satisfy the brief's stronger,
   non-negotiable constraint — "non deve attraversare testi, CTA o volti" —
   by construction, rather than by careful pixel-matching against a hero
@@ -270,4 +270,4 @@ shipped in the build.
   light "paper" surface, the header is forced into its dark-on-light
   variant whenever the panel is open — even before 40px of scroll — to
   avoid an invisible-hamburger repeat of a real bug found in an earlier
-  PetResona iteration (light-on-light contrast over an ivory panel).
+  ResonaPet iteration (light-on-light contrast over an ivory panel).

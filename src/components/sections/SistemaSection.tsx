@@ -48,7 +48,7 @@ function TriadNodes() {
               onClick={() => {
                 const next = open ? null : item.key
                 setOpenKey(next)
-                if (next) track("imprint_node_open", { node: item.key })
+                if (next) track("system_node_open", { node: item.key })
               }}
             >
               <span className="font-serif text-lg text-ink transition-colors md:text-2xl md:group-hover:text-copper">{item.label}</span>
@@ -72,20 +72,20 @@ function TriadNodes() {
   )
 }
 
-export function ImprontaSection() {
+export function SistemaSection() {
   const ref = useRef<HTMLDivElement>(null)
   const inView = useInView(ref, { once: true, amount: 0.25 })
   const prefersReducedMotion = useReducedMotion()
 
   return (
-    <section id="impronta" className="relative py-16 md:py-20">
+    <section id="sistema" className="relative py-16 md:py-20">
       <div ref={ref} className="mx-auto max-w-6xl px-5 md:px-10">
         <div className="grid gap-8 md:grid-cols-[1.1fr_0.9fr] md:items-center md:gap-12">
           <div>
             <p className="text-xs font-semibold uppercase tracking-[0.24em] text-copper">
-              Perché nasce Impronta
+              Una lettura più ampia
             </p>
-            <h2 className="mt-3 max-w-xl font-serif text-[1.9rem] leading-[1.15] text-ink md:text-4xl">
+            <h2 className="mt-3 max-w-xl font-serif text-[length:var(--text-section)] leading-[1.15] text-ink">
               {prefersReducedMotion || !inView ? (
                 prefersReducedMotion && "Quando osservare soltanto il pet non basta."
               ) : (
@@ -107,11 +107,11 @@ export function ImprontaSection() {
               transition={{ delay: prefersReducedMotion ? 0 : 0.5, duration: motionTokens.text }}
               className="mt-5 max-w-xl text-[0.98rem] leading-relaxed text-brown/75"
             >
-              Alcune abitudini e dinamiche non appartengono soltanto all'animale. Prendono forma
-              nei ritmi della casa, negli spazi e nella relazione quotidiana.
+              Abitudini, reazioni e cambiamenti prendono forma anche nella relazione e
+              nell'ambiente quotidiano.
               <span className="mt-3 block">
-                PetResona riunisce questi elementi in una sola lettura: Animale, Persona e
-                Ambiente.
+                ResonaPet considera insieme tre elementi inseparabili: animale, persona e
+                ambiente.
               </span>
             </motion.p>
 
@@ -123,9 +123,9 @@ export function ImprontaSection() {
               style={{ maxHeight: 420, aspectRatio: "4 / 5" }}
             >
               <picture className="block h-full w-full">
-                <source media="(max-width: 767px)" srcSet="/assets/images/impronta-cat-mobile-v2.webp" />
+                <source media="(max-width: 767px)" srcSet="/assets/images/resonapet-cat-mobile-v2.webp" />
                 <img
-                  src="/assets/images/impronta-cat-desktop-v2.webp"
+                  src="/assets/images/resonapet-cat-desktop-v2.webp"
                   alt="Gatto seduto su un divano, osservando lo spazio domestico intorno a sé."
                   className="h-full w-full object-cover"
                   loading="lazy"
@@ -142,9 +142,9 @@ export function ImprontaSection() {
             style={{ aspectRatio: "4 / 3" }}
           >
             <picture className="block h-full w-full">
-              <source media="(max-width: 767px)" srcSet="/assets/images/impronta-cat-mobile-v2.webp" />
+              <source media="(max-width: 767px)" srcSet="/assets/images/resonapet-cat-mobile-v2.webp" />
               <img
-                src="/assets/images/impronta-cat-desktop-v2.webp"
+                src="/assets/images/resonapet-cat-desktop-v2.webp"
                 alt="Gatto seduto su un divano, osservando lo spazio domestico intorno a sé."
                 className="h-full w-full object-cover"
                 loading="lazy"

@@ -4,10 +4,10 @@
  *   (apps/www/registry/magicui/interactive-hover-button.tsx)
  * Imported from the real MagicUI component source, unmodified except:
  *   - added `href`/`onClick`/`asChild`-style dual rendering (as an <a> when
- *     `href` is passed, a <button> otherwise) since PetResona's CTAs need to
+ *     `href` is passed, a <button> otherwise) since ResonaPet's CTAs need to
  *     both navigate (to richiedi-accesso) and submit a form — the original
  *     is a bare <button>.
- *   - PetResona copper dot / ivory text colors are supplied via the
+ *   - ResonaPet copper dot / ivory text colors are supplied via the
  *     existing `className` prop at call sites, using the same
  *     group-hover mechanics as the original (dot scale, text slide/fade).
  * The core interaction (dot that blooms to fill the button on hover, label

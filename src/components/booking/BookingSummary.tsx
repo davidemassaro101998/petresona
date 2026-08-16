@@ -17,24 +17,24 @@ export function BookingSummary({
       <p className="text-xs font-semibold uppercase tracking-[0.2em] text-copper">
         Riepilogo · Preview beta
       </p>
-      <h3 className="mt-2 font-serif text-2xl text-ink">PetResona Impronta</h3>
+      <h3 className="mt-2 font-serif text-2xl text-ink">ResonaPet</h3>
       <p className="mt-1 text-sm text-brown/70">Primo incontro online</p>
 
       <dl className="mt-6 grid gap-3 text-sm">
         <div className="flex items-center justify-between border-t border-line pt-3">
-          <dt className="text-brown/60">Data selezionata</dt>
+          <dt className="text-brown/75">Data selezionata</dt>
           <dd className="font-semibold text-ink">{formatDateLongIt(date)}</dd>
         </div>
         <div className="flex items-center justify-between border-t border-line pt-3">
-          <dt className="text-brown/60">Orario selezionato</dt>
+          <dt className="text-brown/75">Orario selezionato</dt>
           <dd className="font-semibold text-ink">{time}</dd>
         </div>
         <div className="flex items-center justify-between border-t border-line pt-3">
-          <dt className="text-brown/60">Durata indicativa</dt>
+          <dt className="text-brown/75">Durata indicativa</dt>
           <dd className="font-semibold text-ink">45 minuti</dd>
         </div>
         <div className="flex items-center justify-between border-t border-line pb-1 pt-3">
-          <dt className="text-brown/60">Fuso orario</dt>
+          <dt className="text-brown/75">Fuso orario</dt>
           <dd className="font-semibold text-ink">Europe/Rome</dd>
         </div>
       </dl>

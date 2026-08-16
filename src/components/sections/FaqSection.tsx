@@ -1,35 +1,48 @@
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
 import { InteractiveHoverButton } from "@/components/ui/interactive-hover-button"
 import { track } from "@/lib/analytics"
+import { SHOW_PRICE, PRICE_EUR } from "@/config/offer"
 
 const FAQS = [
   {
-    q: "Che ruolo ha la biorisonanza in PetResona Impronta?",
-    a: "Giorgia utilizza il CIEM System durante la fase di preparazione per svolgere il lavoro di biorisonanza dedicato alla triade e preparare i tre elementi personali. Questo lavoro non ha finalità diagnostiche o veterinarie.",
+    q: "Come si svolge il percorso a distanza?",
+    a: "Il percorso utilizza un questionario, le fotografie del pet, tre incontri online e il lavoro svolto personalmente da Giorgia tra un incontro e l'altro.",
   },
   {
-    q: "Come può svolgersi a distanza?",
-    a: "Il percorso utilizza il questionario, le fotografie del pet, tre incontri online e la fase di preparazione svolta personalmente da Giorgia. Il pet non deve partecipare alle videochiamate.",
+    q: "Il mio animale deve essere presente durante gli incontri?",
+    a: "No. Il pet non deve partecipare alle videochiamate. Le informazioni e le fotografie richieste vengono raccolte prima del percorso.",
   },
   {
-    q: "Che cosa mi viene richiesto nei 14 giorni?",
-    a: "Non sono richiesti diario, aggiornamenti giornalieri o programmi complessi. Le eventuali osservazioni vengono raccontate verbalmente nell'incontro conclusivo. Tra gli incontri il canale di assistenza è dedicato ad appuntamenti e problemi tecnici.",
+    q: "Che cosa dovrò inviare?",
+    a: "Verranno richiesti il questionario compilato e alcune fotografie del pet. Non sono richieste fotografie o video del proprietario.",
   },
   {
-    q: "Che cosa comprende il prezzo di €990?",
-    a: "Il prezzo comprende la raccolta iniziale, tre incontri privati, l'esame dei materiali, il lavoro di biorisonanza con CIEM System, la preparazione di Traccia d'Ambiente, Codice Impronta e Guida Impronta, la consegna guidata e la sintesi finale.",
+    q: "Quanto tempo richiede al proprietario?",
+    a: "Non sono richiesti un diario o aggiornamenti quotidiani. Le osservazioni vengono condivise verbalmente durante l'incontro conclusivo.",
   },
   {
-    q: "PetResona è un servizio veterinario?",
-    a: "No. PetResona non effettua diagnosi, prescrizioni o trattamenti medico-veterinari e non sostituisce il medico veterinario.",
+    q: "Qual è il ruolo della biorisonanza?",
+    a: "Giorgia utilizza il CIEM System nella fase di elaborazione personale. Il lavoro non ha finalità diagnostiche o medico-veterinarie.",
   },
+  {
+    q: "ResonaPet sostituisce il veterinario?",
+    a: "No. ResonaPet non effettua diagnosi, prescrizioni o trattamenti medico-veterinari e non sostituisce il medico veterinario.",
+  },
+  ...(SHOW_PRICE
+    ? [
+        {
+          q: `Che cosa comprende il prezzo di €${PRICE_EUR}?`,
+          a: "Il prezzo comprende il questionario iniziale, tre incontri online con Giorgia, la lettura integrata di animale, persona e ambiente, l'elaborazione con CIEM System, la restituzione personale e la verifica finale.",
+        },
+      ]
+    : []),
 ]
 
 export function FaqSection() {
   return (
     <section id="faq" className="py-16 md:py-20">
       <div className="mx-auto max-w-3xl px-5 md:px-10">
-        <h2 className="font-serif text-[1.7rem] text-ink md:text-3xl">Prima di richiedere l'accesso.</h2>
+        <h2 className="font-serif text-[length:var(--text-section)] text-ink">Le domande più importanti.</h2>
 
         <Accordion
           type="single"
@@ -59,7 +72,7 @@ export function FaqSection() {
             Iniziamo da ciò che vivi ogni giorno con il tuo pet.
           </h2>
           <p className="mx-auto mt-3 max-w-md text-[0.95rem] text-brown/70">
-            Raccontaci chi è e verifichiamo se PetResona Impronta è adatto alla vostra situazione.
+            Raccontaci la situazione e verifichiamo se ResonaPet è adatto al vostro contesto.
           </p>
           <div className="mt-7 flex justify-center">
             <InteractiveHoverButton
@@ -67,11 +80,11 @@ export function FaqSection() {
               id="faq-closing-cta"
               onClick={() => track("access_cta_click")}
             >
-              Richiedi accesso
+              Richiedi una prima valutazione
             </InteractiveHoverButton>
           </div>
-          <p className="mx-auto mt-5 max-w-md text-[0.78rem] leading-relaxed text-brown/70">
-            La richiesta viene esaminata. Se PetResona Impronta è adatto alla situazione, riceverai
+          <p className="mx-auto mt-5 max-w-md text-[length:var(--text-micro)] leading-relaxed text-brown/70">
+            La richiesta viene esaminata. Se ResonaPet è adatto alla situazione, riceverai
             contratto, informativa, indicazioni di pagamento e accesso agli appuntamenti.
           </p>
         </div>

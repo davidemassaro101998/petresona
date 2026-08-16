@@ -6,7 +6,7 @@
  * copied — only the real accordion primitive and its accessible behavior
  * (single/multiple open, aria-expanded, keyboard support, animated
  * height via Radix + CSS) is used as the base for #faq. No adaptations
- * were made to this file itself; PetResona styling (copper active border,
+ * were made to this file itself; ResonaPet styling (copper active border,
  * "+" -> "x") is applied via className props at the call site in
  * `faq-section.tsx`, not in this primitive.
  */

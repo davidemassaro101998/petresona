@@ -17,14 +17,11 @@ export function SiteFooter() {
     >
       <div className="mx-auto flex max-w-6xl flex-wrap items-start justify-between gap-5 text-sm text-brown/65">
         <p className="font-serif text-lg text-ink">
-          Pet<b className="text-copper">Resona</b>
+          Resona<b className="text-copper">Pet</b>
         </p>
         <nav aria-label="Link footer" className="flex flex-wrap gap-5">
           <a href="#come-si-svolge" className="transition-colors hover:text-copper">
             Come funziona
-          </a>
-          <a href="#cosa-ricevi" className="transition-colors hover:text-copper">
-            Cosa ricevi
           </a>
           <a href="#giorgia" className="transition-colors hover:text-copper">
             Giorgia
@@ -33,23 +30,23 @@ export function SiteFooter() {
             FAQ
           </a>
           <a href="/richiedi-accesso.html" className="transition-colors hover:text-copper">
-            Richiedi accesso
+            Richiedi una prima valutazione
           </a>
         </nav>
       </div>
-      <p className="mx-auto mt-6 max-w-6xl text-[0.78rem] leading-relaxed text-brown/55">
-        PetResona Impronta è un servizio personale, non veterinario. Non effettua diagnosi,
-        prescrizioni o trattamenti medico-veterinari e non sostituisce il medico veterinario. In
-        presenza di un'urgenza o di un problema di salute, rivolgiti sempre al tuo medico
-        veterinario di fiducia.
+      <p className="mx-auto mt-6 max-w-6xl text-[length:var(--text-micro)] leading-relaxed text-brown/75">
+        ResonaPet è un servizio personale, non veterinario. Non effettua diagnosi, prescrizioni o
+        trattamenti medico-veterinari e non sostituisce il medico veterinario. In presenza di
+        un'urgenza o di un problema di salute, rivolgiti sempre al tuo medico veterinario di
+        fiducia.
         <br />
         {/* TODO prima della pubblicazione: link reale a privacy policy, cookie policy, termini e condizioni */}
         Informativa privacy · Cookie policy · Termini e condizioni (link da collegare)
       </p>
-      <p className="mx-auto mt-3 max-w-6xl text-[0.68rem] text-brown/40">
+      <p className="mx-auto mt-3 max-w-6xl text-[length:var(--text-micro)] text-brown/70">
         {/* TODO prima della pubblicazione: ragione sociale, indirizzo, P.IVA, email ufficiale reali */}
-        © PetResona Impronta. Dati aziendali (ragione sociale, indirizzo, P.IVA, email) da inserire
-        prima della pubblicazione.
+        © ResonaPet. Dati aziendali (ragione sociale, indirizzo, P.IVA, email) da inserire prima
+        della pubblicazione.
       </p>
     </motion.footer>
   )

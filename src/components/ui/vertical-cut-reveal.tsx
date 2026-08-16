@@ -3,7 +3,7 @@
  * Real upstream source verified at: https://github.com/danielpetho/fancy
  *   (src/fancy/components/text/vertical-cut-reveal.tsx)
  * Imported from the real fancy/21st.dev component source.
- * Adaptations: PetResona palette/typography (applied via className props at
+ * Adaptations: ResonaPet palette/typography (applied via className props at
  * call sites, not in this file), and two mechanical changes required by the
  * brief's stack (Framer Motion, not the "motion" package):
  *   - import from "framer-motion" instead of "motion/react"

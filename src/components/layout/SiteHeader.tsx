@@ -2,7 +2,6 @@ import { LiquidMorphFloatingMenu } from "@/components/ui/liquid-morph-floating-m
 
 const LINKS = [
   { label: "Come funziona", href: "#come-si-svolge" },
-  { label: "Cosa ricevi", href: "#cosa-ricevi" },
   { label: "Giorgia", href: "#giorgia" },
   { label: "FAQ", href: "#faq" },
 ]
@@ -11,11 +10,11 @@ export function SiteHeader() {
   return (
     <LiquidMorphFloatingMenu
       links={LINKS}
-      ctaLabel="Richiedi accesso"
+      ctaLabel="Richiedi una prima valutazione"
       ctaHref="/richiedi-accesso.html"
       logo={
         <>
-          Pet<b className="text-copper">Resona</b>
+          Resona<b className="text-copper">Pet</b>
         </>
       }
     />

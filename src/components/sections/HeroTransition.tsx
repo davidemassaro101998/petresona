@@ -1,13 +1,13 @@
-// Motion architecture adapted for PetResona after review of:
+// Motion architecture adapted for ResonaPet after review of:
 // https://21st.dev/@componentry/components/scroll-choreography
-// Original implementation: PetResona hero-to-Impronta transition.
+// Original implementation: ResonaPet hero-to-system transition.
 import { motion, useScroll, useSpring, useTransform } from "framer-motion"
 import { useRef } from "react"
 import { HeroSection } from "@/components/sections/HeroSection"
-import { ImprontaSection } from "@/components/sections/ImprontaSection"
+import { SistemaSection } from "@/components/sections/SistemaSection"
 import { useReducedMotion } from "@/lib/use-reduced-motion"
 
-export function HeroImprintTransition() {
+export function HeroTransition() {
   const prefersReducedMotion = useReducedMotion()
   const stageRef = useRef<HTMLDivElement>(null)
 
@@ -45,7 +45,7 @@ export function HeroImprintTransition() {
     return (
       <>
         <HeroSection />
-        <ImprontaSection />
+        <SistemaSection />
       </>
     )
   }
@@ -70,7 +70,7 @@ export function HeroImprintTransition() {
         className="relative z-20 -mt-[50svh] rounded-t-[32px] bg-paper md:-mt-[60svh]"
         style={{ y: surfaceY, clipPath: surfaceClip }}
       >
-        <ImprontaSection />
+        <SistemaSection />
       </motion.div>
     </div>
   )

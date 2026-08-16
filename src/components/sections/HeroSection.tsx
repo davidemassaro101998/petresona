@@ -7,7 +7,7 @@ import { useReducedMotion } from "@/lib/use-reduced-motion"
 import { track } from "@/lib/analytics"
 
 export interface HeroSectionProps {
-  /** Cinematic zoom owned entirely by HeroImprintTransition. */
+  /** Cinematic zoom owned entirely by HeroTransition. */
   exitImageScale?: MotionValue<number>
   /** Text/panel opacity during the hero's exit (not the photo). */
   exitPanelOpacity?: MotionValue<number>
@@ -66,10 +66,10 @@ export const HeroSection = forwardRef<HTMLElement, HeroSectionProps>(function He
             transition={{ duration: 0.25 }}
             className="text-xs font-semibold uppercase tracking-[0.26em] text-copper-light"
           >
-            PetResona Impronta · Cani e gatti
+            ResonaPet · Cani e gatti
           </motion.p>
 
-          <h1 className="mt-4 font-serif text-[2.1rem] leading-[1.1] text-ivory sm:text-5xl md:text-[3.2rem]">
+          <h1 className="mt-4 font-serif text-[length:var(--text-hero)] leading-[1.05] text-ivory">
             {prefersReducedMotion ? (
               <>
                 Il tuo animale non vive isolato.
@@ -96,8 +96,8 @@ export const HeroSection = forwardRef<HTMLElement, HeroSectionProps>(function He
             transition={{ delay: prefersReducedMotion ? 0 : 0.95, duration: motionTokens.text }}
             className="mt-6 max-w-md text-[0.98rem] leading-relaxed text-ivory/85"
           >
-            Un percorso personale di 14 giorni in cui informazioni, fotografie e quotidianità
-            diventano la base per preparare un'Impronta dedicata al tuo pet e al suo ambiente.
+            Un percorso personale che considera insieme l'animale, la relazione con la sua persona
+            e l'ambiente quotidiano, attraverso tre incontri online e un'elaborazione dedicata.
           </motion.p>
 
           <motion.div
@@ -107,37 +107,38 @@ export const HeroSection = forwardRef<HTMLElement, HeroSectionProps>(function He
             className="mt-8 flex flex-wrap items-center gap-6"
           >
             <InteractiveHoverButton
-              href="#cosa-ricevi"
+              href="#come-si-svolge"
               onClick={() => track("hero_cta_click")}
               className="border-copper-light/40 bg-transparent text-ivory"
             >
-              Scopri l'Impronta
+              Scopri come funziona
             </InteractiveHoverButton>
             <a
               href="/richiedi-accesso.html"
               onClick={() => track("hero_cta_click")}
               className="text-sm font-semibold text-ivory underline decoration-copper-light/60 underline-offset-4 hover:decoration-ivory"
             >
-              Richiedi accesso →
+              Richiedi una prima valutazione →
             </a>
           </motion.div>
 
           <p className="mt-6 text-xs text-ivory/60">
-            Tre incontri online · Nessun diario · Il pet non deve essere in video
+            Tre incontri online · Nessun compito quotidiano · Il pet non deve essere presente in
+            video
           </p>
         </div>
       </motion.div>
 
       <motion.a
-        href="#impronta"
-        aria-label="Continua verso la sezione Impronta"
+        href="#sistema"
+        aria-label="Scopri il sistema Animale-Persona-Ambiente"
         initial={prefersReducedMotion ? false : { opacity: 0, y: -6 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: prefersReducedMotion ? 0 : 1.4, duration: motionTokens.text }}
         style={prefersReducedMotion || !indicatorOpacity ? undefined : { opacity: indicatorOpacity }}
         className="absolute inset-x-0 bottom-6 z-10 mx-auto flex w-fit items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-ivory/70 transition-colors hover:text-ivory"
       >
-        Continua
+        Scopri il sistema
         <svg width="10" height="14" viewBox="0 0 10 14" fill="none" aria-hidden="true">
           <path d="M5 0v12M1 8l4 4 4-4" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
         </svg>

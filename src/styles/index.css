@@ -19,15 +19,17 @@
   --color-paper: #f4efe6;
   --color-ivory: #fbf8f2;
   --color-ink: #211c18;
-  --color-brown: #3b2a22;
-  --color-copper: #9a5435;
-  --color-copper-light: #d5a184;
+  --color-brown: #5c5049;
+  --color-brown-deep: #3b2a22;
+  --color-copper: #a65f3d;
+  --color-copper-light: #d8a285;
   --color-forest: #30453b;
-  --color-line: rgba(59, 42, 34, 0.18);
+  --color-forest-deep: #23352d;
+  --color-line: rgba(59, 42, 34, 0.16);
 
   /* shadcn-style tokens the imported real components (Interactive Hover
      Button, Accordion) reference via bg-primary/bg-background/etc. Mapped
-     onto the PetResona palette above so those components work unmodified. */
+     onto the ResonaPet palette above so those components work unmodified. */
   --color-background: var(--color-ivory);
   --color-primary: var(--color-copper);
   --color-primary-foreground: var(--color-ivory);
@@ -56,6 +58,15 @@
       height: 0;
     }
   }
+}
+
+:root {
+  --text-hero: clamp(2.375rem, 4.4vw, 4rem);
+  --text-section: clamp(2rem, 3.2vw, 3rem);
+  --text-subtitle: clamp(1.25rem, 1.8vw, 1.625rem);
+  --text-body: clamp(1rem, 0.3vw + 0.94rem, 1.125rem);
+  --text-small: 0.9375rem;
+  --text-micro: 0.8125rem;
 }
 
 html {

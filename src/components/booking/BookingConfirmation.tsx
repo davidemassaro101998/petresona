@@ -23,11 +23,11 @@ export function BookingConfirmation({
 
       <dl className="mx-auto mt-6 grid max-w-xs gap-2 text-sm">
         <div className="flex items-center justify-between border-t border-line pt-3">
-          <dt className="text-brown/60">Data</dt>
+          <dt className="text-brown/75">Data</dt>
           <dd className="font-semibold text-ink">{formatDateLongIt(date)}</dd>
         </div>
         <div className="flex items-center justify-between border-t border-line pb-1 pt-3">
-          <dt className="text-brown/60">Orario</dt>
+          <dt className="text-brown/75">Orario</dt>
           <dd className="font-semibold text-ink">{time}</dd>
         </div>
       </dl>
@@ -49,7 +49,7 @@ export function BookingConfirmation({
           onClick={onBackHome}
           className="flex min-h-[48px] flex-1 items-center justify-center rounded-full bg-copper text-sm font-semibold text-ivory transition-colors hover:bg-brown sm:max-w-[220px]"
         >
-          Torna a PetResona
+          Torna a ResonaPet
         </a>
       </div>
     </div>

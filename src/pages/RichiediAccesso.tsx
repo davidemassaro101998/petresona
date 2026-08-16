@@ -232,9 +232,9 @@ function FormArea({ onValidSubmit }: { onValidSubmit?: () => void }) {
 
               <FormGroup delay={0.14}>
                 <label htmlFor="reason" className="text-sm font-semibold text-ink">
-                  Che cosa ti ha portato a richiedere PetResona Impronta?
+                  Che cosa ti ha portato a richiedere ResonaPet?
                 </label>
-                <p className="mt-1 text-xs text-brown/60">
+                <p className="mt-1 text-xs text-brown/75">
                   Descrivi brevemente ciò che osservi nella quotidianità e che cosa desideri
                   comprendere meglio. Non inserire diagnosi, referti o informazioni sanitarie.
                 </p>
@@ -289,8 +289,8 @@ function FormArea({ onValidSubmit }: { onValidSubmit?: () => void }) {
                     className="mt-0.5 h-[18px] w-[18px] shrink-0 accent-[var(--color-copper)]"
                   />
                   <label htmlFor="disclaimerCheck" className="text-[0.85rem] leading-relaxed text-brown/75">
-                    Comprendo che PetResona Impronta è un servizio personale non veterinario, che
-                    non effettua diagnosi, prescrizioni o trattamenti medico-veterinari e non
+                    Comprendo che ResonaPet è un servizio personale non veterinario, che non
+                    effettua diagnosi, prescrizioni o trattamenti medico-veterinari e non
                     sostituisce il medico veterinario.
                   </label>
                 </div>
@@ -311,7 +311,7 @@ function FormArea({ onValidSubmit }: { onValidSubmit?: () => void }) {
               {statusMessage}
             </p>
 
-            <p className="mt-4 border-t border-dashed border-line pt-3.5 text-xs leading-relaxed text-brown/55">
+            <p className="mt-4 border-t border-dashed border-line pt-3.5 text-xs leading-relaxed text-brown/70">
               {/* TODO: collegare un endpoint reale via richiesta POST quando disponibile.
                    Fino ad allora il modulo valida i campi ma non invia né simula un invio riuscito. */}
               Punto di integrazione: nessun backend reale è collegato in questa build. Quando sarà
@@ -333,10 +333,10 @@ export default function RichiediAccesso() {
       <header className="border-b border-line">
         <div className="mx-auto flex max-w-6xl items-center justify-between px-5 py-4 md:px-10">
           <a href="/index.html" className="font-serif text-lg text-ink">
-            Pet<b className="text-copper">Resona</b>
+            Resona<b className="text-copper">Pet</b>
           </a>
           <a href="/index.html" className="text-sm font-semibold text-ink">
-            ← Torna a PetResona
+            ← Torna a ResonaPet
           </a>
         </div>
       </header>
@@ -348,9 +348,9 @@ export default function RichiediAccesso() {
             {BOOKING_PREVIEW_ENABLED && " La scelta di data e orario che segue è una demo beta: nessun dato viene inviato o salvato."}
           </p>
 
-          <h1 className="mt-8 font-serif text-[1.9rem] leading-[1.15] text-ink md:text-4xl">
+          <h1 className="mt-8 font-serif text-[length:var(--text-section)] leading-[1.15] text-ink">
             {prefersReducedMotion ? (
-              "Richiedi accesso a PetResona Impronta"
+              "Richiedi una prima valutazione a ResonaPet"
             ) : (
               <VerticalCutReveal
                 splitBy="words"
@@ -359,14 +359,14 @@ export default function RichiediAccesso() {
                 transition={{ type: "spring", stiffness: 160, damping: 24 }}
                 autoStart
               >
-                Richiedi accesso a PetResona Impronta
+                Richiedi una prima valutazione a ResonaPet
               </VerticalCutReveal>
             )}
           </h1>
           <p className="mt-4 max-w-2xl text-[0.98rem] leading-relaxed text-brown/75">
             Raccontaci chi è il tuo pet, che cosa osservi nella quotidianità e che cosa ti ha
-            portato a richiedere PetResona Impronta. La richiesta verrà esaminata prima di
-            procedere con contratto, pagamento e appuntamenti.
+            portato a richiedere ResonaPet. La richiesta verrà esaminata prima di procedere con
+            contratto, pagamento e appuntamenti.
           </p>
 
           {BOOKING_PREVIEW_ENABLED ? (
@@ -377,8 +377,8 @@ export default function RichiediAccesso() {
             <FormArea />
           )}
 
-          <p className="mt-5 text-xs leading-relaxed text-brown/55">
-            PetResona non effettua diagnosi, prescrizioni o trattamenti medico-veterinari e non
+          <p className="mt-5 text-xs leading-relaxed text-brown/70">
+            ResonaPet non effettua diagnosi, prescrizioni o trattamenti medico-veterinari e non
             sostituisce il medico veterinario.
           </p>
         </div>
@@ -387,19 +387,19 @@ export default function RichiediAccesso() {
       <footer className="border-t border-line px-5 py-10 md:px-10">
         <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-4 text-sm text-brown/65">
           <p className="font-serif text-lg text-ink">
-            Pet<b className="text-copper">Resona</b>
+            Resona<b className="text-copper">Pet</b>
           </p>
-          <a href="/index.html">← Torna a PetResona</a>
+          <a href="/index.html">← Torna a ResonaPet</a>
         </div>
-        <p className="mx-auto mt-5 max-w-6xl text-[0.78rem] leading-relaxed text-brown/55">
-          PetResona Impronta è un servizio personale, non veterinario. Non effettua diagnosi,
-          prescrizioni o trattamenti medico-veterinari e non sostituisce il medico veterinario.
+        <p className="mx-auto mt-5 max-w-6xl text-[length:var(--text-micro)] leading-relaxed text-brown/75">
+          ResonaPet è un servizio personale, non veterinario. Non effettua diagnosi, prescrizioni
+          o trattamenti medico-veterinari e non sostituisce il medico veterinario.
           <br />
           Informativa privacy · Cookie policy · Termini e condizioni (link da collegare)
         </p>
-        <p className="mx-auto mt-3 max-w-6xl text-[0.68rem] text-brown/40">
-          © PetResona Impronta. Dati aziendali (ragione sociale, indirizzo, P.IVA, email) da
-          inserire prima della pubblicazione.
+        <p className="mx-auto mt-3 max-w-6xl text-[length:var(--text-micro)] text-brown/70">
+          © ResonaPet. Dati aziendali (ragione sociale, indirizzo, P.IVA, email) da inserire
+          prima della pubblicazione.
         </p>
       </footer>
     </>

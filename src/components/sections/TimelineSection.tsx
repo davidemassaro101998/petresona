@@ -4,20 +4,20 @@ import { useReducedMotion } from "@/lib/use-reduced-motion"
 
 const STEPS = [
   {
-    title: "Ritratto iniziale",
-    body: "Compili il questionario, invii le fotografie richieste e incontri Giorgia online per raccontare il tuo pet e il suo contesto.",
+    title: "Raccolta iniziale",
+    body: "Compili il questionario, invii le fotografie richieste e incontri Giorgia online per raccontare il tuo pet e il suo contesto quotidiano.",
   },
   {
-    title: "Preparazione Impronta",
-    body: "Giorgia esamina i materiali e svolge con CIEM System il lavoro di biorisonanza dedicato alla triade. Da questa fase prepara Traccia d'Ambiente, Codice Impronta e Guida Impronta.",
+    title: "Lettura integrata",
+    body: "Giorgia esamina le informazioni raccolte considerando insieme animale, persona e ambiente, e svolge l'elaborazione prevista con il CIEM System.",
   },
   {
-    title: "Consegna guidata",
-    body: "Nel secondo incontro ricevi Traccia d'Ambiente, Codice Impronta e Guida Impronta, con indicazioni semplici per utilizzarli.",
+    title: "Restituzione personale",
+    body: "Nel secondo incontro Giorgia condivide ciò che è emerso e fornisce indicazioni chiare, costruite sul caso specifico.",
   },
   {
-    title: "Incontro di sintesi",
-    body: "Il terzo incontro raccoglie verbalmente le tue osservazioni e conclude l'esperienza con le indicazioni finali.",
+    title: "Verifica finale",
+    body: "Dopo il periodo di osservazione, il terzo incontro raccoglie ciò che hai notato e conclude il percorso con le indicazioni finali.",
   },
 ]
 
@@ -64,7 +64,7 @@ export function TimelineSection() {
   return (
     <section id="come-si-svolge" className="py-14 md:py-16">
       <div className="mx-auto max-w-4xl px-5 md:px-10 md:max-w-5xl">
-        <h2 className="font-serif text-[1.7rem] text-ink md:text-3xl">Quattordici giorni. Quattro passaggi.</h2>
+        <h2 className="font-serif text-[length:var(--text-section)] text-ink">Tre incontri. Quattro fasi.</h2>
 
         <div ref={trackRef} className="relative mt-8 max-w-2xl md:mt-10 md:max-w-3xl">
           <div className="absolute left-5 top-1.5 bottom-1.5 z-0 w-[2px] bg-line" aria-hidden="true" />
@@ -81,18 +81,9 @@ export function TimelineSection() {
         </div>
 
         <div className="mt-10 max-w-2xl border-t border-line pt-7">
-          <ul className="flex flex-wrap gap-x-2.5 gap-y-1.5 text-[0.88rem] text-brown/70">
-            {["Nessun diario", "Nessun aggiornamento quotidiano", "Nessun pet davanti alla videocamera", "Nessun programma complesso"].map(
-              (item, i, arr) => (
-                <li key={item}>
-                  {item}
-                  {i < arr.length - 1 && <span className="ml-2.5 text-copper">·</span>}
-                </li>
-              )
-            )}
-          </ul>
-          <p className="mt-3.5 text-[0.82rem] text-brown/70">
-            Tra gli incontri il canale di assistenza è dedicato ad appuntamenti e problemi tecnici.
+          <p className="text-[0.88rem] leading-relaxed text-brown/75">
+            Nessun diario quotidiano e nessuna reperibilità continua: il lavoro richiesto al
+            proprietario rimane semplice e sostenibile.
           </p>
         </div>
       </div>

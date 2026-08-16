@@ -11,8 +11,9 @@ export function GiorgiaSection() {
   return (
     <section id="giorgia" className="bg-forest py-16 md:py-20">
       <div className="mx-auto grid max-w-6xl gap-10 px-5 md:grid-cols-[0.85fr_1.15fr] md:items-center md:gap-14 md:px-10">
+        {/* TODO: sostituire con fotografia ufficiale approvata prima del go-live. */}
         <RevealImageMask
-          src="/assets/images/giorgia-petresona-portrait-v2.webp"
+          src="/assets/images/giorgia-resonapet-portrait-v2.webp"
           alt="Ritratto di Giorgia Bisognin."
           className="aspect-[4/5] overflow-hidden rounded-[24px] shadow-[0_24px_50px_-20px_rgba(59,42,34,0.28)]"
           imgClassName="h-full w-full object-cover object-center"
@@ -21,8 +22,8 @@ export function GiorgiaSection() {
           <p className="text-xs font-semibold uppercase tracking-[0.24em] text-copper-light">
             Ideatrice e referente personale
           </p>
-          <h2 className="mt-3 font-serif text-[1.8rem] text-ivory md:text-4xl">
-            Giorgia segue personalmente ogni Impronta.
+          <h2 className="mt-3 font-serif text-[length:var(--text-section)] text-ivory">
+            Ogni percorso è seguito personalmente da Giorgia.
           </h2>
           <p className="mt-2 text-sm font-semibold uppercase tracking-[0.16em] text-copper-light">
             Giorgia Bisognin
@@ -31,12 +32,12 @@ export function GiorgiaSection() {
             Giorgia Bisognin riunisce 35 anni di esperienza infermieristica, il lavoro in
             kinesiologia e posturologia e oltre trent'anni nella conduzione di un centro olistico.
             <span className="mt-3 block">
-              PetResona nasce da questa esperienza: osservare l'animale senza separarlo dalla
+              ResonaPet nasce da questa esperienza: osservare l'animale senza separarlo dalla
               persona e dall'ambiente in cui vive.
             </span>
           </p>
           <p className="mt-3 text-sm text-ivory/70">
-            PetResona è un servizio autonomo e non veterinario. Il percorso viene seguito
+            ResonaPet è un servizio autonomo e non veterinario. Il percorso viene seguito
             personalmente da Giorgia.
           </p>
           <div className="mt-6 grid grid-cols-1 gap-x-6 sm:grid-cols-2">

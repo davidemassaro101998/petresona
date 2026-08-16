@@ -12,7 +12,7 @@
  *   pill, and the mobile panel morphs between the closed hamburger button
  *   and the open panel).
  * - The "color layer expands from within" idea: the original grows a dark
- *   circle from the bottom to reveal the open state; PetResona's mobile
+ *   circle from the bottom to reveal the open state; ResonaPet's mobile
  *   panel expands a copper circle from the trigger instead.
  * - `MenuButton`'s per-character split-flap "roll" (two stacked copies of
  *   each character, `translateY(-50%)` on hover, staggered `30ms * index`)
@@ -29,7 +29,7 @@
  *   container is used for two things instead: (a) the header capsule
  *   itself (transparent -> ivory after 40px scroll) and (b) the mobile
  *   panel (closed hamburger -> open sheet).
- * - Yellow `#FFE862` / dark `#242424` demo colors -> PetResona ivory /
+ * - Yellow `#FFE862` / dark `#242424` demo colors -> ResonaPet ivory /
  *   copper / ink palette.
  * - "Home / Works / Contact" placeholder items -> real section anchors.
  * - Added: `aria-expanded`, `aria-controls`, `aria-label`, Escape-to-close

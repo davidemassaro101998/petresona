@@ -5,9 +5,9 @@
  * 403 was the unauthenticated HTTP route, not proof the component didn't
  * exist — see 21ST_SOURCES.md for the full history).
  *
- * Adaptations for PetResona:
+ * Adaptations for ResonaPet:
  * - Removed the demo eyebrow/title/caption block and the outer padded
- *   "card" wrapper — PetResona supplies its own heading/bio next to the
+ *   "card" wrapper — ResonaPet supplies its own heading/bio next to the
  *   photo, so the component now renders only the masked image.
  * - Removed the `shape: "circle" | "rounded"` switch and the Unsplash
  *   default `src`. The brief calls for one organic (non-circular) mask,
