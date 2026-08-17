@@ -209,7 +209,7 @@ export function LiquidMorphFloatingMenu({
           transition={{ duration: 0.5, ease }}
           className={`flex w-full items-center justify-between gap-6 px-5 py-3 transition-colors ${
             scrolled
-              ? "max-w-3xl rounded-full border border-copper/25 bg-ivory/95 shadow-[0_10px_30px_-15px_rgba(59,42,34,0.35)] md:bg-ivory/90 md:backdrop-blur-md"
+              ? "max-w-3xl rounded-full border border-copper/25 bg-ivory shadow-[0_10px_30px_-15px_rgba(59,42,34,0.35)] md:bg-ivory/90 md:backdrop-blur-md"
               : "max-w-6xl rounded-full border border-transparent bg-transparent"
           }`}
         >
