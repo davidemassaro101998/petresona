@@ -20,7 +20,7 @@ const INCLUDES = [
   "Durata complessiva di 14 giorni",
 ]
 
-const CONTINUITY_SIGNALS = ["Sonno", "Appetito", "Reattività", "Recupero"]
+const CONTINUITY_SIGNALS = ["Coerenza", "Sintonia", "Stabilità emotiva", "Radicamento"]
 
 export function OffertaSection() {
   const ref = useRef<HTMLDivElement>(null)
