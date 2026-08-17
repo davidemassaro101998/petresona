@@ -20,11 +20,34 @@
       }
     </style>
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-    <!-- TODO prima della pubblicazione: canonical e Open Graph con dominio reale -->
-    <!-- <link rel="canonical" href="https://www.dominio-reale.it/"> -->
-    <!-- <meta property="og:title" content="ResonaPet"> -->
-    <!-- <meta property="og:description" content="..."> -->
-    <!-- <meta property="og:image" content="https://www.dominio-reale.it/og-image.jpg"> -->
+    <link rel="canonical" href="https://www.resonapet.com/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://www.resonapet.com/" />
+    <meta property="og:locale" content="it_IT" />
+    <meta property="og:site_name" content="ResonaPet" />
+    <meta property="og:title" content="ResonaPet | Biorisonanza relazionale per cani e gatti" />
+    <meta
+      property="og:description"
+      content="ResonaPet considera insieme animale, persona e ambiente e integra la biorisonanza nella fase di elaborazione personale seguita da Giorgia Bisognin."
+    />
+    <meta property="og:image" content="https://www.resonapet.com/assets/images/hero-dog-desktop-v2.webp" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="ResonaPet | Biorisonanza relazionale per cani e gatti" />
+    <meta
+      name="twitter:description"
+      content="ResonaPet considera insieme animale, persona e ambiente e integra la biorisonanza nella fase di elaborazione personale seguita da Giorgia Bisognin."
+    />
+    <meta name="twitter:image" content="https://www.resonapet.com/assets/images/hero-dog-desktop-v2.webp" />
+    <!-- TODO: sostituire con un'immagine OG dedicata (1200x630) quando disponibile;
+         al momento riusa la foto hero. -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "ResonaPet",
+        "url": "https://www.resonapet.com/"
+      }
+    </script>
     <link rel="preload" href="/assets/fonts/newsreader.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="preload" href="/assets/fonts/manrope.woff2" as="font" type="font/woff2" crossorigin />
     <script>
@@ -59,7 +82,8 @@
         ]
       }
     </script>
-    <!-- TODO prima della pubblicazione: Service JSON-LD con dati aziendali reali -->
+    <!-- TODO prima della pubblicazione: aggiungere ragione sociale, indirizzo e P.IVA
+         allo schema Organization sopra, quando VITE_COMPANY_DETAILS è impostato. -->
   </head>
   <body>
     <div id="root"></div>
