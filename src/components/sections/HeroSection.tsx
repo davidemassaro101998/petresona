@@ -35,7 +35,7 @@ export const HeroSection = forwardRef<HTMLElement, HeroSectionProps>(function He
     <section
       ref={ref}
       id="hero"
-      className="relative flex h-[100svh] min-h-0 max-h-none items-center overflow-hidden bg-brown"
+      className="relative flex h-[100svh] min-h-0 max-h-none items-end overflow-hidden bg-brown pb-10 pt-20 md:items-center md:pb-0 md:pt-0"
     >
       <motion.div
         className="absolute inset-0 z-0 overflow-hidden"
@@ -64,12 +64,12 @@ export const HeroSection = forwardRef<HTMLElement, HeroSectionProps>(function He
             initial={prefersReducedMotion ? false : { opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.25 }}
-            className="text-xs font-semibold uppercase tracking-[0.26em] text-copper-light"
+            className="hidden text-xs font-semibold uppercase tracking-[0.26em] text-copper-light md:block"
           >
             ResonaPet · Biorisonanza relazionale · Cani e gatti
           </motion.p>
 
-          <h1 className="mt-4 font-serif text-[length:var(--text-hero)] leading-[1.05] text-ivory">
+          <h1 className="font-serif text-[length:var(--text-hero)] leading-[1.05] text-ivory md:mt-4">
             {prefersReducedMotion ? (
               <>
                 Il tuo animale non vive isolato.
@@ -94,7 +94,7 @@ export const HeroSection = forwardRef<HTMLElement, HeroSectionProps>(function He
             initial={prefersReducedMotion ? false : { opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: prefersReducedMotion ? 0 : 0.85, duration: motionTokens.text }}
-            className="mt-5 font-serif text-xl italic text-copper-light md:text-2xl"
+            className="hidden font-serif text-xl italic text-copper-light md:mt-5 md:block md:text-2xl"
           >
             La relazione ha una frequenza.
           </motion.p>
@@ -103,18 +103,23 @@ export const HeroSection = forwardRef<HTMLElement, HeroSectionProps>(function He
             initial={prefersReducedMotion ? false : { opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: prefersReducedMotion ? 0 : 1, duration: motionTokens.text }}
-            className="mt-5 max-w-lg text-[length:var(--text-body)] leading-relaxed text-ivory/90"
+            className="mt-3 max-w-lg text-[length:var(--text-body)] leading-relaxed text-ivory/90 md:mt-5"
           >
-            Un percorso personale che considera insieme l'animale, la relazione con la sua persona
-            e l'ambiente quotidiano. La biorisonanza entra nella fase di elaborazione dedicata,
-            svolta tra i tre incontri online.
+            <span className="md:hidden">
+              Un percorso personale che considera insieme animale, persona e ambiente.
+            </span>
+            <span className="hidden md:inline">
+              Un percorso personale che considera insieme l'animale, la relazione con la sua persona
+              e l'ambiente quotidiano. La biorisonanza entra nella fase di elaborazione dedicata,
+              svolta tra i tre incontri online.
+            </span>
           </motion.p>
 
           <motion.div
             initial={prefersReducedMotion ? false : { opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: prefersReducedMotion ? 0 : 1.15, duration: motionTokens.text }}
-            className="mt-8 flex flex-wrap items-center gap-6"
+            className="mt-6 flex flex-wrap items-center gap-6 md:mt-8"
           >
             <InteractiveHoverButton
               href="#come-si-svolge"
@@ -132,7 +137,7 @@ export const HeroSection = forwardRef<HTMLElement, HeroSectionProps>(function He
             </a>
           </motion.div>
 
-          <p className="mt-6 text-[length:var(--text-micro)] text-ivory/80">
+          <p className="mt-6 hidden text-[length:var(--text-micro)] text-ivory/80 md:block">
             Tre incontri online · Nessun compito quotidiano · Il pet non deve essere presente in
             video
           </p>
@@ -146,7 +151,7 @@ export const HeroSection = forwardRef<HTMLElement, HeroSectionProps>(function He
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: prefersReducedMotion ? 0 : 1.4, duration: motionTokens.text }}
         style={prefersReducedMotion || !indicatorOpacity ? undefined : { opacity: indicatorOpacity }}
-        className="absolute inset-x-0 bottom-6 z-10 mx-auto flex w-fit items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-ivory/85 transition-colors hover:text-ivory"
+        className="absolute inset-x-0 bottom-6 z-10 mx-auto hidden w-fit items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-ivory/85 transition-colors hover:text-ivory md:flex"
       >
         Scopri il sistema
         <svg width="10" height="14" viewBox="0 0 10 14" fill="none" aria-hidden="true">
