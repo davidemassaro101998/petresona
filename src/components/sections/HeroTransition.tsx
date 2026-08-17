@@ -31,15 +31,17 @@ export function HeroTransition() {
   const indicatorOpacity = useTransform(progress, [0, 0.2, 0.38], [1, 1, 0])
 
   const surfaceY = useTransform(progress, [0, 0.25, 0.68], [80, 80, 0])
+  // Split what used to be a single `clip-path: inset(... round ...)` into two
+  // cheaper properties animated separately: a plain rectangular inset (no
+  // embedded corner arcs, much less to rasterize per scroll frame) plus a
+  // real `border-radius`, which browsers composite far more efficiently than
+  // a clip-path corner curve. Same visual result, far less scroll jank.
   const surfaceClip = useTransform(
     progress,
     [0.22, 0.55, 0.82],
-    [
-      "inset(10% 3% 0% 3% round 64px 64px 0px 0px)",
-      "inset(2% 1% 0% 1% round 46px 46px 0px 0px)",
-      "inset(0% 0% 0% 0% round 32px 32px 0px 0px)",
-    ],
+    ["inset(10% 3% 0% 3%)", "inset(2% 1% 0% 1%)", "inset(0% 0% 0% 0%)"],
   )
+  const surfaceRadius = useTransform(progress, [0.22, 0.55, 0.82], [64, 46, 32])
 
   if (prefersReducedMotion) {
     return (
@@ -67,8 +69,14 @@ export function HeroTransition() {
       </div>
 
       <motion.div
-        className="relative z-20 -mt-[30svh] rounded-t-[32px] bg-paper md:-mt-[40svh]"
-        style={{ y: surfaceY, clipPath: surfaceClip }}
+        className="relative z-20 -mt-[30svh] bg-paper md:-mt-[40svh]"
+        style={{
+          y: surfaceY,
+          clipPath: surfaceClip,
+          borderTopLeftRadius: surfaceRadius,
+          borderTopRightRadius: surfaceRadius,
+          willChange: "clip-path, transform",
+        }}
       >
         <SistemaSection />
       </motion.div>

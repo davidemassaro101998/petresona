@@ -209,7 +209,7 @@ export function LiquidMorphFloatingMenu({
           transition={{ duration: 0.5, ease }}
           className={`flex w-full items-center justify-between gap-6 px-5 py-3 transition-colors ${
             scrolled
-              ? "max-w-3xl rounded-full border border-copper/25 bg-ivory/90 shadow-[0_10px_30px_-15px_rgba(59,42,34,0.35)] backdrop-blur-md"
+              ? "max-w-3xl rounded-full border border-copper/25 bg-ivory/95 shadow-[0_10px_30px_-15px_rgba(59,42,34,0.35)] md:bg-ivory/90 md:backdrop-blur-md"
               : "max-w-6xl rounded-full border border-transparent bg-transparent"
           }`}
         >
@@ -249,10 +249,11 @@ export function LiquidMorphFloatingMenu({
             ref={panelRef}
             id="mobile-menu-panel"
             aria-label="Navigazione mobile"
-            initial={{ opacity: 0, clipPath: "circle(4% at calc(100% - 40px) 40px)" }}
-            animate={{ opacity: 1, clipPath: "circle(150% at calc(100% - 40px) 40px)" }}
-            exit={{ opacity: 0, clipPath: "circle(4% at calc(100% - 40px) 40px)" }}
-            transition={prefersReducedMotion ? { duration: 0 } : { duration: 0.55, ease }}
+            initial={{ opacity: 0, scale: 0.35 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.35 }}
+            transition={prefersReducedMotion ? { duration: 0 } : { duration: 0.4, ease }}
+            style={{ transformOrigin: "calc(100% - 40px) 40px" }}
             className="fixed inset-0 z-40 flex flex-col justify-center bg-paper px-8 py-24 md:hidden"
           >
             <ul className="grid gap-6 font-serif text-2xl text-ink">
