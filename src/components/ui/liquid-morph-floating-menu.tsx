@@ -88,7 +88,7 @@ function LetterRoll({ label, active }: { label: string; active: boolean }) {
   )
 }
 
-function DesktopLink({ link, dark }: { link: NavLink; dark: boolean }) {
+function DesktopLink({ link, dark, isActive }: { link: NavLink; dark: boolean; isActive: boolean }) {
   const [hovered, setHovered] = useState(false)
   const isTouch = useIsTouch()
   const prefersReducedMotion = useReducedMotion()
@@ -99,9 +99,25 @@ function DesktopLink({ link, dark }: { link: NavLink; dark: boolean }) {
       href={link.href}
       onMouseEnter={() => rollEnabled && setHovered(true)}
       onMouseLeave={() => rollEnabled && setHovered(false)}
-      className={`py-1 text-sm transition-colors ${dark ? "text-ink/85 hover:text-copper" : "text-ivory/90 hover:text-copper-light"}`}
+      aria-current={isActive ? "true" : undefined}
+      className={`relative py-1 text-sm transition-colors ${
+        isActive
+          ? dark
+            ? "text-copper"
+            : "text-copper-light"
+          : dark
+            ? "text-ink/85 hover:text-copper"
+            : "text-ivory/90 hover:text-copper-light"
+      }`}
     >
       {rollEnabled ? <LetterRoll label={link.label} active={hovered} /> : link.label}
+      {isActive && (
+        <motion.span
+          layoutId="nav-active-underline"
+          className={`absolute -bottom-1 left-0 right-0 h-[1.5px] ${dark ? "bg-copper" : "bg-copper-light"}`}
+          transition={prefersReducedMotion ? { duration: 0 } : { type: "spring", stiffness: 380, damping: 32 }}
+        />
+      )}
     </a>
   )
 }
@@ -119,6 +135,7 @@ export function LiquidMorphFloatingMenu({
 }) {
   const [scrolled, setScrolled] = useState(false)
   const [open, setOpen] = useState(false)
+  const [activeHref, setActiveHref] = useState<string | null>(null)
   const buttonRef = useRef<HTMLButtonElement>(null)
   const panelRef = useRef<HTMLDivElement>(null)
   const prefersReducedMotion = useReducedMotion()
@@ -129,6 +146,32 @@ export function LiquidMorphFloatingMenu({
     window.addEventListener("scroll", onScroll, { passive: true })
     return () => window.removeEventListener("scroll", onScroll)
   }, [])
+
+  // Scrollspy: highlights the nav link for the section currently under the
+  // header, tracked independently per link so order in `links` decides the
+  // tie-break when more than one section is technically in range.
+  useEffect(() => {
+    const anchorHrefs = links.filter((l) => l.href.startsWith("#")).map((l) => l.href)
+    const targets = anchorHrefs
+      .map((href) => ({ href, el: document.querySelector(href) }))
+      .filter((t): t is { href: string; el: Element } => Boolean(t.el))
+    if (!targets.length) return
+
+    const intersecting = new Map<string, boolean>()
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          const href = targets.find((t) => t.el === entry.target)?.href
+          if (href) intersecting.set(href, entry.isIntersecting)
+        }
+        const current = anchorHrefs.filter((href) => intersecting.get(href))
+        if (current.length) setActiveHref(current[current.length - 1])
+      },
+      { rootMargin: "-100px 0px -55% 0px", threshold: 0 }
+    )
+    targets.forEach((t) => observer.observe(t.el))
+    return () => observer.disconnect()
+  }, [links])
 
   useEffect(() => {
     if (!open) return
@@ -175,7 +218,7 @@ export function LiquidMorphFloatingMenu({
           </a>
           <nav aria-label="Navigazione principale" className="hidden items-center gap-7 md:flex">
             {links.map((link) => (
-              <DesktopLink key={link.href} link={link} dark={dark} />
+              <DesktopLink key={link.href} link={link} dark={dark} isActive={link.href === activeHref} />
             ))}
           </nav>
           <a
@@ -220,7 +263,12 @@ export function LiquidMorphFloatingMenu({
                   animate={{ opacity: 1 }}
                   transition={{ duration: 0.4, delay: prefersReducedMotion ? 0 : 0.4 + 0.08 * i, ease }}
                 >
-                  <a href={link.href} onClick={() => setOpen(false)}>
+                  <a
+                    href={link.href}
+                    onClick={() => setOpen(false)}
+                    aria-current={link.href === activeHref ? "true" : undefined}
+                    className={link.href === activeHref ? "text-copper" : undefined}
+                  >
                     {link.label}
                   </a>
                 </motion.li>
