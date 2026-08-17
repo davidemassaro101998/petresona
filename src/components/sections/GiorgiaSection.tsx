@@ -3,7 +3,7 @@ import { RevealImageMask } from "@/components/ui/reveal-image-mask"
 const FACTS = [
   "35 anni di esperienza infermieristica",
   "Oltre 25 anni come kinesiologa e personal trainer",
-  "Formazione nell'utilizzo del CIEM System",
+  "Formazione in tecnologie di biorisonanza avanzata",
   "Oltre 30 anni nella conduzione di un centro olistico",
 ]
 

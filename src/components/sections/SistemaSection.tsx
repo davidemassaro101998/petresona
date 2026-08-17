@@ -166,7 +166,7 @@ export function SistemaSection() {
           </div>
           <div className="max-w-2xl text-[length:var(--text-body)] leading-relaxed text-brown/90">
             <p>
-              Giorgia utilizza il CIEM System nella fase di elaborazione personale, integrando le
+              Giorgia utilizza la tecnologia di biorisonanza integrata ResonaPet nella fase di elaborazione personale, integrando le
               informazioni raccolte attraverso il questionario, le fotografie e gli incontri.
             </p>
             <p className="mt-4 text-[length:var(--text-small)]">

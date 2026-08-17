@@ -22,7 +22,7 @@ const FAQS = [
   },
   {
     q: "Qual è il ruolo della biorisonanza?",
-    a: "Giorgia utilizza il CIEM System nella fase di elaborazione personale. Il lavoro non ha finalità diagnostiche o medico-veterinarie.",
+    a: "Giorgia utilizza la tecnologia di biorisonanza integrata ResonaPet nella fase di elaborazione personale. Il lavoro non ha finalità diagnostiche o medico-veterinarie.",
   },
   {
     q: "ResonaPet sostituisce il veterinario?",
@@ -32,7 +32,7 @@ const FAQS = [
     ? [
         {
           q: `Che cosa comprende il prezzo di €${PRICE_EUR}?`,
-          a: "Il prezzo comprende il questionario iniziale, tre incontri online con Giorgia, la lettura integrata di animale, persona e ambiente, l'elaborazione con CIEM System, l'audio frequenziale personalizzato e il Codice di Coerenza, fino alla restituzione personale e alla verifica finale.",
+          a: "Il prezzo comprende il questionario iniziale, tre incontri online con Giorgia, la lettura integrata di animale, persona e ambiente, l'elaborazione con la tecnologia di biorisonanza integrata ResonaPet, l'audio frequenziale personalizzato e il Codice di Coerenza, fino alla restituzione personale e alla verifica finale.",
         },
       ]
     : []),

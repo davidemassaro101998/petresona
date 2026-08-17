@@ -5,15 +5,15 @@ import { useReducedMotion } from "@/lib/use-reduced-motion"
 const STEPS = [
   {
     title: "Stabilità",
-    body: "Lavoriamo su di te e sul contesto in cui vive il tuo pet, per creare calma in casa e una routine prevedibile. Ricevi un audio ambientale personalizzato e il Codice di Coerenza, da posizionare in cuccia, ciotole o trasportino.",
+    body: "Lavoriamo su di te e sul campo energetico in cui vive il tuo pet, per creare calma in casa e una routine che lui possa riconoscere. Ricevi un audio ambientale personalizzato e il Codice di Coerenza, da posizionare in cuccia, ciotole o trasportino.",
   },
   {
     title: "Emozione",
-    body: "Ci occupiamo dei trigger e dell'ambiente quotidiano per ridurne il carico e aumentare la prevedibilità, con un ribilanciamento dell'audio frequenziale costruito sul caso specifico.",
+    body: "Ci occupiamo dei punti di tensione e dell'ambiente quotidiano per alleggerirne il peso energetico e aumentare l'armonia, con un ribilanciamento dell'audio frequenziale costruito sul caso specifico.",
   },
   {
     title: "Vitalità",
-    body: "Consolidiamo le abitudini e la qualità della relazione, con attenzione al movimento e alla routine, fino alla restituzione finale e alle indicazioni di mantenimento.",
+    body: "Consolidiamo le abitudini e la qualità della relazione, con attenzione all'energia vitale e alla routine, fino al bilancio conclusivo del percorso e alle indicazioni di mantenimento.",
   },
 ]
 

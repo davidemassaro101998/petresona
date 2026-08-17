@@ -13,7 +13,7 @@ const INCLUDES = [
   "Fotografie e informazioni richieste",
   "Tre incontri online con Giorgia",
   "Lettura integrata di animale, persona e ambiente",
-  "Elaborazione con CIEM System",
+  "Elaborazione con la tecnologia di biorisonanza integrata ResonaPet",
   "Audio frequenziale personalizzato",
   "Codice di Coerenza da posizionare in casa",
   "Restituzione personale e verifica finale",
@@ -69,7 +69,8 @@ export function OffertaSection() {
           <div className="mx-auto max-w-4xl text-center">
             <p className="text-[length:var(--text-small)] leading-relaxed text-ivory/85">
               Il lavoro principale avviene tra gli incontri: Giorgia esamina le informazioni
-              raccolte e svolge l'elaborazione prevista con il CIEM System.
+              raccolte e svolge l'elaborazione prevista con la tecnologia di biorisonanza
+              integrata ResonaPet.
             </p>
 
             <p className="mt-6 text-xs font-semibold uppercase tracking-[0.24em] text-copper-light">
