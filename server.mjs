@@ -5,6 +5,12 @@ import { extname, join, normalize } from "node:path"
 const root = join(process.cwd(), "dist")
 const port = Number(process.env.PORT || 3000)
 
+// Every other domain pointed at this service redirects to the canonical one,
+// preserving path and query. Railway's own *.up.railway.app domain is left
+// alone (useful for debugging a deploy independently of DNS).
+const CANONICAL_HOST = "www.resonapet.com"
+const REDIRECT_HOSTS = new Set(["resonapet.com", "resonapet.it", "www.resonapet.it"])
+
 const mime = {
   ".css": "text/css; charset=utf-8",
   ".html": "text/html; charset=utf-8",
@@ -16,6 +22,13 @@ const mime = {
 }
 
 createServer((request, response) => {
+  const host = (request.headers.host || "").split(":")[0].toLowerCase()
+  if (REDIRECT_HOSTS.has(host)) {
+    response.writeHead(301, { Location: `https://${CANONICAL_HOST}${request.url || "/"}` })
+    response.end()
+    return
+  }
+
   const pathname = new URL(request.url || "/", "http://localhost").pathname
   const requested = pathname === "/" ? "/index.html" : pathname
   const safePath = normalize(requested).replace(/^(\.\.(\/|\\|$))+/, "")
