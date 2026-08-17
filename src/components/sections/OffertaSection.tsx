@@ -113,10 +113,6 @@ export function OffertaSection() {
               La richiesta non comporta un acquisto automatico. Dopo la verifica riceverai
               contratto, informativa, indicazioni di pagamento e accesso agli appuntamenti.
             </p>
-            <p className="mx-auto mt-3 max-w-md text-[length:var(--text-micro)] leading-relaxed text-ivory/80">
-              ResonaPet non effettua diagnosi, prescrizioni o trattamenti medico-veterinari e non
-              sostituisce il medico veterinario.
-            </p>
           </div>
         </motion.div>
       </div>

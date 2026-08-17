@@ -396,11 +396,6 @@ export default function RichiediAccesso() {
           </p>
 
           <FormArea />
-
-          <p className="mt-5 text-[length:var(--text-micro)] leading-relaxed text-brown/90">
-            ResonaPet non effettua diagnosi, prescrizioni o trattamenti medico-veterinari e non
-            sostituisce il medico veterinario.
-          </p>
         </div>
       </main>
 
