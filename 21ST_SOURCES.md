@@ -98,7 +98,7 @@ The unauthenticated `curl` 403s recorded below (kept for the audit trail)
 were exactly that — an unauthenticated-route limitation, not proof the
 components didn't exist. The client retrieved all four real `Component.tsx`
 files from the authenticated 21st.dev `Source > Component.tsx` tab and
-supplied them directly (`PETRESONA_21ST_REAL_SOURCES_FOR_CLAUDE.zip`). The
+supplied them directly (`RESONAPET_21ST_REAL_SOURCES_FOR_CLAUDE.zip`). The
 four originally-flagged implementations below have been **replaced**,
 starting from those real files, per the correction instructions
 (`ISTRUZIONI_CLAUDE_SOSTITUZIONE_4_COMPONENTI_21ST.md`). Each file's header

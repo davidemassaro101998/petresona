@@ -66,7 +66,7 @@ export const HeroSection = forwardRef<HTMLElement, HeroSectionProps>(function He
             transition={{ duration: 0.25 }}
             className="text-xs font-semibold uppercase tracking-[0.26em] text-copper-light"
           >
-            ResonaPet · Cani e gatti
+            ResonaPet · Biorisonanza relazionale · Cani e gatti
           </motion.p>
 
           <h1 className="mt-4 font-serif text-[length:var(--text-hero)] leading-[1.05] text-ivory">
@@ -91,13 +91,23 @@ export const HeroSection = forwardRef<HTMLElement, HeroSectionProps>(function He
           </h1>
 
           <motion.p
+            initial={prefersReducedMotion ? false : { opacity: 0, y: 8 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: prefersReducedMotion ? 0 : 0.85, duration: motionTokens.text }}
+            className="mt-5 font-serif text-xl italic text-copper-light md:text-2xl"
+          >
+            La relazione ha una frequenza.
+          </motion.p>
+
+          <motion.p
             initial={prefersReducedMotion ? false : { opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: prefersReducedMotion ? 0 : 0.95, duration: motionTokens.text }}
-            className="mt-6 max-w-md text-[0.98rem] leading-relaxed text-ivory/85"
+            transition={{ delay: prefersReducedMotion ? 0 : 1, duration: motionTokens.text }}
+            className="mt-5 max-w-lg text-[length:var(--text-body)] leading-relaxed text-ivory/90"
           >
             Un percorso personale che considera insieme l'animale, la relazione con la sua persona
-            e l'ambiente quotidiano, attraverso tre incontri online e un'elaborazione dedicata.
+            e l'ambiente quotidiano. La biorisonanza entra nella fase di elaborazione dedicata,
+            svolta tra i tre incontri online.
           </motion.p>
 
           <motion.div
@@ -118,11 +128,11 @@ export const HeroSection = forwardRef<HTMLElement, HeroSectionProps>(function He
               onClick={() => track("hero_cta_click")}
               className="text-sm font-semibold text-ivory underline decoration-copper-light/60 underline-offset-4 hover:decoration-ivory"
             >
-              Richiedi una prima valutazione →
+              Richiedi l'accesso →
             </a>
           </motion.div>
 
-          <p className="mt-6 text-xs text-ivory/60">
+          <p className="mt-6 text-[length:var(--text-micro)] text-ivory/80">
             Tre incontri online · Nessun compito quotidiano · Il pet non deve essere presente in
             video
           </p>
@@ -136,7 +146,7 @@ export const HeroSection = forwardRef<HTMLElement, HeroSectionProps>(function He
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: prefersReducedMotion ? 0 : 1.4, duration: motionTokens.text }}
         style={prefersReducedMotion || !indicatorOpacity ? undefined : { opacity: indicatorOpacity }}
-        className="absolute inset-x-0 bottom-6 z-10 mx-auto flex w-fit items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-ivory/70 transition-colors hover:text-ivory"
+        className="absolute inset-x-0 bottom-6 z-10 mx-auto flex w-fit items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-ivory/85 transition-colors hover:text-ivory"
       >
         Scopri il sistema
         <svg width="10" height="14" viewBox="0 0 10 14" fill="none" aria-hidden="true">

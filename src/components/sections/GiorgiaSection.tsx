@@ -36,13 +36,13 @@ export function GiorgiaSection() {
               persona e dall'ambiente in cui vive.
             </span>
           </p>
-          <p className="mt-3 text-sm text-ivory/70">
+          <p className="mt-3 text-sm text-ivory/85">
             ResonaPet è un servizio autonomo e non veterinario. Il percorso viene seguito
             personalmente da Giorgia.
           </p>
           <div className="mt-6 grid grid-cols-1 gap-x-6 sm:grid-cols-2">
             {FACTS.map((fact) => (
-              <span key={fact} className="border-t border-ivory/20 py-2.5 text-[0.85rem] text-ivory/75">
+              <span key={fact} className="border-t border-ivory/20 py-2.5 text-[length:var(--text-micro)] text-ivory/85">
                 {fact}
               </span>
             ))}

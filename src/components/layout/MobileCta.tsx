@@ -63,7 +63,7 @@ export function MobileCta() {
         onClick={() => track("access_cta_click")}
         className="flex w-full"
       >
-        Richiedi una prima valutazione
+        Richiedi l'accesso
       </InteractiveHoverButton>
     </div>
   )

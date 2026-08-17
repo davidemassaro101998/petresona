@@ -1,10 +1,11 @@
 /// <reference types="vite/client" />
 
 interface ImportMetaEnv {
-  /** "true" enables the front-end-only beta booking flow on
-   *  /richiedi-accesso.html. No network calls, no persistence — see
-   *  src/lib/booking-preview.ts and README.md. Defaults to disabled. */
-  readonly VITE_BOOKING_PREVIEW?: string
+  readonly VITE_APPLICATION_ENDPOINT?: string
+  readonly VITE_PRIVACY_POLICY_URL?: string
+  readonly VITE_COOKIE_POLICY_URL?: string
+  readonly VITE_TERMS_URL?: string
+  readonly VITE_COMPANY_DETAILS?: string
 }
 
 interface ImportMeta {

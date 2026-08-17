@@ -43,7 +43,7 @@ export function VeterinariaSection() {
           <p className="mt-4 max-w-2xl text-[0.98rem] leading-relaxed text-brown/80">
             {VET.collaborationText}
           </p>
-          <ul className="mt-6 grid gap-2.5 text-[0.9rem] leading-relaxed text-brown/75">
+          <ul className="mt-6 grid gap-2.5 text-[length:var(--text-small)] leading-relaxed text-brown/90">
             <li>— {VET.directExperience}</li>
             <li>— Collaborazione professionale reale.</li>
             <li>— Invio reciproco nel rispetto dei diversi ambiti.</li>

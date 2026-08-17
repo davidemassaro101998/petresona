@@ -32,7 +32,7 @@ export function OffertaSection() {
         <div className="mt-8 grid gap-9 md:grid-cols-2 md:gap-10">
           <div className="border-t border-copper pt-4">
             <h3 className="font-serif text-base font-semibold text-ink">Può essere adatto se</h3>
-            <ul className="mt-3.5 grid gap-2.5 text-[0.9rem] leading-relaxed text-brown/75">
+            <ul className="mt-3.5 grid gap-2.5 text-[length:var(--text-small)] leading-relaxed text-brown/90">
               <li>— Desideri un lavoro personale dedicato al tuo cane o gatto.</li>
               <li>— Vuoi considerare insieme animale, relazione e ambiente quotidiano.</li>
               <li>— Puoi fornire informazioni e fotografie del tuo pet.</li>
@@ -41,7 +41,7 @@ export function OffertaSection() {
           </div>
           <div className="border-t border-line pt-4">
             <h3 className="font-serif text-base font-semibold text-ink">Non è indicato se</h3>
-            <ul className="mt-3.5 grid gap-2.5 text-[0.9rem] leading-relaxed text-brown/75">
+            <ul className="mt-3.5 grid gap-2.5 text-[length:var(--text-small)] leading-relaxed text-brown/90">
               <li>— Cerchi una diagnosi o una terapia veterinaria.</li>
               <li>— Ti trovi davanti a un'urgenza.</li>
               <li>— Vuoi sostituire o modificare le indicazioni del veterinario.</li>
@@ -49,7 +49,7 @@ export function OffertaSection() {
             </ul>
           </div>
         </div>
-        <p className="mt-6 max-w-[70ch] text-[0.82rem] leading-relaxed text-brown/70">
+        <p className="mt-6 max-w-[70ch] text-[length:var(--text-micro)] leading-relaxed text-brown/90">
           Ogni richiesta viene valutata per verificare che la situazione e il perimetro del
           percorso siano coerenti.
         </p>
@@ -63,7 +63,7 @@ export function OffertaSection() {
           className="bg-ink px-5 py-16 text-ivory md:px-10 md:py-24"
         >
           <div className="mx-auto max-w-4xl text-center">
-            <p className="text-[0.95rem] leading-relaxed text-ivory/70">
+            <p className="text-[length:var(--text-small)] leading-relaxed text-ivory/85">
               Il lavoro principale avviene tra gli incontri: Giorgia esamina le informazioni
               raccolte e svolge l'elaborazione prevista con il CIEM System.
             </p>
@@ -85,7 +85,7 @@ export function OffertaSection() {
                     </VerticalCutReveal>
                   )}
                 </h3>
-                <p className="mt-2 text-sm text-ivory/60">
+                <p className="mt-2 text-sm text-ivory/80">
                   ResonaPet · Esperienza personale di 14 giorni · Pagamento unico
                 </p>
               </>
@@ -106,14 +106,14 @@ export function OffertaSection() {
                 onClick={() => track("access_cta_click")}
                 className="border-copper-light/40 bg-transparent text-ivory"
               >
-                Richiedi una prima valutazione
+                  Richiedi l'accesso
               </InteractiveHoverButton>
             </div>
-            <p className="mx-auto mt-5 max-w-md text-[length:var(--text-micro)] leading-relaxed text-ivory/70">
+            <p className="mx-auto mt-5 max-w-md text-[length:var(--text-micro)] leading-relaxed text-ivory/80">
               La richiesta non comporta un acquisto automatico. Dopo la verifica riceverai
               contratto, informativa, indicazioni di pagamento e accesso agli appuntamenti.
             </p>
-            <p className="mx-auto mt-3 max-w-md text-[length:var(--text-micro)] leading-relaxed text-ivory/65">
+            <p className="mx-auto mt-3 max-w-md text-[length:var(--text-micro)] leading-relaxed text-ivory/80">
               ResonaPet non effettua diagnosi, prescrizioni o trattamenti medico-veterinari e non
               sostituisce il medico veterinario.
             </p>

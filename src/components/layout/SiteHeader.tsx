@@ -10,7 +10,7 @@ export function SiteHeader() {
   return (
     <LiquidMorphFloatingMenu
       links={LINKS}
-      ctaLabel="Richiedi una prima valutazione"
+      ctaLabel="Richiedi l'accesso"
       ctaHref="/richiedi-accesso.html"
       logo={
         <>

@@ -60,7 +60,7 @@ export function FaqSection() {
               <AccordionTrigger className="font-serif text-[1.02rem] text-ink hover:no-underline">
                 {item.q}
               </AccordionTrigger>
-              <AccordionContent className="max-w-[62ch] text-[0.9rem] leading-relaxed text-brown/70">
+              <AccordionContent className="max-w-[62ch] text-[length:var(--text-small)] leading-relaxed text-brown/90">
                 {item.a}
               </AccordionContent>
             </AccordionItem>
@@ -71,7 +71,7 @@ export function FaqSection() {
           <h2 className="mx-auto max-w-lg font-serif text-2xl text-ink md:text-3xl">
             Iniziamo da ciò che vivi ogni giorno con il tuo pet.
           </h2>
-          <p className="mx-auto mt-3 max-w-md text-[0.95rem] text-brown/70">
+          <p className="mx-auto mt-3 max-w-md text-[length:var(--text-small)] leading-relaxed text-brown/90">
             Raccontaci la situazione e verifichiamo se ResonaPet è adatto al vostro contesto.
           </p>
           <div className="mt-7 flex justify-center">
@@ -80,10 +80,10 @@ export function FaqSection() {
               id="faq-closing-cta"
               onClick={() => track("access_cta_click")}
             >
-              Richiedi una prima valutazione
+              Richiedi l'accesso
             </InteractiveHoverButton>
           </div>
-          <p className="mx-auto mt-5 max-w-md text-[length:var(--text-micro)] leading-relaxed text-brown/70">
+          <p className="mx-auto mt-5 max-w-md text-[length:var(--text-micro)] leading-relaxed text-brown/90">
             La richiesta viene esaminata. Se ResonaPet è adatto alla situazione, riceverai
             contratto, informativa, indicazioni di pagamento e accesso agli appuntamenti.
           </p>

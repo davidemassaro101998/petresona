@@ -1,32 +1,31 @@
-# React + TypeScript + Vite
+# ResonaPet
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+Sito Vite + React + TypeScript predisposto per Railway.
 
-Currently, two official plugins are available:
+## Avvio locale
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
-
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the Oxlint configuration
-
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
-
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
+```bash
+npm ci
+npm run dev
 ```
 
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+## Verifica produzione
+
+```bash
+npm run build
+npm run lint
+```
+
+## Configurazione prima del go-live
+
+Copia `.env.example` in `.env` o configura le stesse variabili su Railway:
+
+- `VITE_APPLICATION_ENDPOINT`: endpoint Odoo o middleware per le richieste;
+- `VITE_PRIVACY_POLICY_URL`: informativa privacy;
+- `VITE_COOKIE_POLICY_URL`: cookie policy;
+- `VITE_TERMS_URL`: termini e condizioni;
+- `VITE_COMPANY_DETAILS`: dati aziendali sintetici da mostrare nel footer.
+
+La pagina di richiesta resta `noindex` finché endpoint, informative e flusso Odoo non sono attivi.
+La collaborazione veterinaria è predisposta in `VeterinariaSection.tsx` e rimane nascosta finché
+`VET_COLLAB_ENABLED` resta impostato su `false`.

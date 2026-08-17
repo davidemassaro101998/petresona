@@ -63,7 +63,7 @@ function TriadNodes() {
               transition={{ duration: motionTokens.accordion, ease: motionTokens.easeOut as unknown as [number, number, number, number] }}
               className="overflow-hidden md:!h-auto md:!opacity-100"
             >
-              <p className="pt-3 text-sm leading-relaxed text-brown/70 md:pt-4">{item.desc}</p>
+              <p className="pt-3 text-[length:var(--text-small)] leading-relaxed text-brown/90 md:pt-4">{item.desc}</p>
             </motion.div>
           </div>
         )
@@ -82,7 +82,7 @@ export function SistemaSection() {
       <div ref={ref} className="mx-auto max-w-6xl px-5 md:px-10">
         <div className="grid gap-8 md:grid-cols-[1.1fr_0.9fr] md:items-center md:gap-12">
           <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.24em] text-copper">
+            <p className="text-xs font-semibold uppercase tracking-[0.24em] text-copper-text">
               Una lettura più ampia
             </p>
             <h2 className="mt-3 max-w-xl font-serif text-[length:var(--text-section)] leading-[1.15] text-ink">
@@ -105,7 +105,7 @@ export function SistemaSection() {
               initial={prefersReducedMotion ? false : { opacity: 0, y: 10 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ delay: prefersReducedMotion ? 0 : 0.5, duration: motionTokens.text }}
-              className="mt-5 max-w-xl text-[0.98rem] leading-relaxed text-brown/75"
+              className="mt-5 max-w-xl text-[length:var(--text-body)] leading-relaxed text-brown/90"
             >
               Abitudini, reazioni e cambiamenti prendono forma anche nella relazione e
               nell'ambiente quotidiano.
@@ -154,6 +154,27 @@ export function SistemaSection() {
         </div>
 
         <TriadNodes />
+
+        <div className="mt-12 grid gap-4 border-t border-copper/35 pt-8 md:mt-16 md:grid-cols-[0.75fr_1.25fr] md:gap-12 md:pt-10">
+          <div>
+            <p className="text-xs font-semibold uppercase tracking-[0.24em] text-copper-text">
+              Il ruolo della biorisonanza
+            </p>
+            <h3 className="mt-3 font-serif text-2xl leading-tight text-ink md:text-3xl">
+              Un'elaborazione riservata, costruita sul caso specifico.
+            </h3>
+          </div>
+          <div className="max-w-2xl text-[length:var(--text-body)] leading-relaxed text-brown/90">
+            <p>
+              Giorgia utilizza il CIEM System nella fase di elaborazione personale, integrando le
+              informazioni raccolte attraverso il questionario, le fotografie e gli incontri.
+            </p>
+            <p className="mt-4 text-[length:var(--text-small)]">
+              Il lavoro di biorisonanza non produce diagnosi, referti o prescrizioni
+              medico-veterinarie e non sostituisce il medico veterinario.
+            </p>
+          </div>
+        </div>
       </div>
     </section>
   )

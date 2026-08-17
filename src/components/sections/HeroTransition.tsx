@@ -52,7 +52,7 @@ export function HeroTransition() {
 
   return (
     <div className="relative">
-      <div ref={stageRef} className="relative h-[150svh] md:h-[160svh]">
+      <div ref={stageRef} className="relative h-[130svh] md:h-[140svh]">
         <div className="sticky top-0 h-[100svh] overflow-hidden">
           <motion.div className="relative h-full" style={{ y: heroY }}>
             <HeroSection
@@ -67,7 +67,7 @@ export function HeroTransition() {
       </div>
 
       <motion.div
-        className="relative z-20 -mt-[50svh] rounded-t-[32px] bg-paper md:-mt-[60svh]"
+        className="relative z-20 -mt-[30svh] rounded-t-[32px] bg-paper md:-mt-[40svh]"
         style={{ y: surfaceY, clipPath: surfaceClip }}
       >
         <SistemaSection />

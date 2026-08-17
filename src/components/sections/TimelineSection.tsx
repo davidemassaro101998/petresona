@@ -49,7 +49,7 @@ function Step({ index, title, body }: { index: number; title: string; body: stri
         className="pt-1.5"
       >
         <h3 className="font-serif text-lg text-ink md:text-2xl">{title}</h3>
-        <p className="mt-2 max-w-xl text-[0.92rem] leading-relaxed text-brown/70">{body}</p>
+        <p className="mt-2 max-w-xl text-[length:var(--text-small)] leading-relaxed text-brown/90">{body}</p>
       </motion.div>
     </li>
   )
@@ -81,7 +81,7 @@ export function TimelineSection() {
         </div>
 
         <div className="mt-10 max-w-2xl border-t border-line pt-7">
-          <p className="text-[0.88rem] leading-relaxed text-brown/75">
+          <p className="text-[length:var(--text-small)] leading-relaxed text-brown/90">
             Nessun diario quotidiano e nessuna reperibilità continua: il lavoro richiesto al
             proprietario rimane semplice e sostenibile.
           </p>
