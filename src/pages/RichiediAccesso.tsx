@@ -173,13 +173,16 @@ function FormArea() {
       return
     }
 
-    const petTypeLabel = data.get("petType") === "cane" ? "Cane" : data.get("petType") === "gatto" ? "Gatto" : String(data.get("petType") ?? "")
+    const petType = data.get("petType")
+    const petTypeLabel = petType === "cane" ? "Cane" : petType === "gatto" ? "Gatto" : String(petType ?? "")
+    const petEmoji = petType === "cane" ? "🐶" : petType === "gatto" ? "🐱" : "🐾"
     const message = [
-      "Ciao Giorgia, vorrei richiedere informazioni su ResonaPet.",
-      `Nome e cognome: ${data.get("fullName")}`,
-      `Cellulare: ${data.get("phone")}`,
-      `Animale: ${petTypeLabel} - ${data.get("petName")}`,
-      `Cosa vorrei risolvere: ${data.get("reason")}`,
+      "🐾 Ciao Giorgia, vorrei richiedere informazioni su ResonaPet.",
+      "",
+      `👤 Nome e cognome: ${data.get("fullName")}`,
+      `📱 Cellulare: ${data.get("phone")}`,
+      `${petEmoji} Animale: ${petTypeLabel} - ${data.get("petName")}`,
+      `💬 Cosa vorrei risolvere: ${data.get("reason")}`,
     ].join("\n")
 
     window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`, "_blank", "noopener")
