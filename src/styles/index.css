@@ -79,6 +79,19 @@ html {
      the gap for anchor links specifically, so it is intentionally not used. */
   scroll-padding-top: 96px;
 }
+
+/* Hero's decorative eyebrow line and bottom scroll indicator: hidden on
+   viewports short enough (independent of width, so this also covers small
+   desktop browser windows, not just phones) that keeping them on screen
+   would push the hero heading into the fixed header or the indicator
+   itself. Padding alone in HeroSection can't guarantee this at every
+   possible height, so the least essential lines drop out first. */
+@media (max-height: 700px) {
+  .hero-eyebrow,
+  .hero-scroll-indicator {
+    display: none;
+  }
+}
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;

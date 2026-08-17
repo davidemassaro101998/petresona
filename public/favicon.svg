@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="ResonaPet">
-  <rect width="64" height="64" rx="18" fill="#23352d"/>
-  <path d="M17 32c6-10 13-15 21-15 7 0 11 4 11 10 0 5-3 9-9 11l9 10h-9l-8-9h-7v9h-8V32Zm8 0h12c3 0 5-2 5-5 0-2-2-4-5-4-4 0-8 3-12 9Z" fill="#fbf8f2"/>
+  <rect width="64" height="64" rx="18" fill="#ffffff"/>
+  <path d="M17 32c6-10 13-15 21-15 7 0 11 4 11 10 0 5-3 9-9 11l9 10h-9l-8-9h-7v9h-8V32Zm8 0h12c3 0 5-2 5-5 0-2-2-4-5-4-4 0-8 3-12 9Z" fill="#a65f3d"/>
   <circle cx="50" cy="17" r="4" fill="#d8a285"/>
 </svg>

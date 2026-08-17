@@ -35,7 +35,7 @@ export const HeroSection = forwardRef<HTMLElement, HeroSectionProps>(function He
     <section
       ref={ref}
       id="hero"
-      className="relative flex h-[100svh] min-h-0 max-h-none items-end overflow-hidden bg-brown pb-10 pt-20 md:items-center md:pb-0 md:pt-0"
+      className="relative flex h-[100svh] min-h-0 max-h-none items-end overflow-hidden bg-brown pb-16 pt-28 md:items-center"
     >
       <motion.div
         className="absolute inset-0 z-0 overflow-hidden"
@@ -64,7 +64,7 @@ export const HeroSection = forwardRef<HTMLElement, HeroSectionProps>(function He
             initial={prefersReducedMotion ? false : { opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.25 }}
-            className="hidden text-xs font-semibold uppercase tracking-[0.26em] text-copper-light md:block"
+            className="hero-eyebrow hidden text-xs font-semibold uppercase tracking-[0.26em] text-copper-light md:block"
           >
             ResonaPet · Biorisonanza relazionale · Cani e gatti
           </motion.p>
@@ -151,7 +151,7 @@ export const HeroSection = forwardRef<HTMLElement, HeroSectionProps>(function He
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: prefersReducedMotion ? 0 : 1.4, duration: motionTokens.text }}
         style={prefersReducedMotion || !indicatorOpacity ? undefined : { opacity: indicatorOpacity }}
-        className="absolute inset-x-0 bottom-6 z-10 mx-auto hidden w-fit items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-ivory/85 transition-colors hover:text-ivory md:flex"
+        className="hero-scroll-indicator absolute inset-x-0 bottom-6 z-10 mx-auto hidden w-fit items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-ivory/85 transition-colors hover:text-ivory md:flex"
       >
         Scopri il sistema
         <svg width="10" height="14" viewBox="0 0 10 14" fill="none" aria-hidden="true">
