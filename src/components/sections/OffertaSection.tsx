@@ -5,7 +5,8 @@ import { InteractiveHoverButton } from "@/components/ui/interactive-hover-button
 import { motionTokens } from "@/styles/motion"
 import { useReducedMotion } from "@/lib/use-reduced-motion"
 import { track } from "@/lib/analytics"
-import { PRICE_EUR, SHOW_PRICE } from "@/config/offer"
+import { PRICE_EUR, CONTINUITY_PRICE_EUR, SHOW_PRICE } from "@/config/offer"
+import { WHATSAPP_NUMBER, SHOW_WHATSAPP_CTA } from "@/config/contact"
 
 const INCLUDES = [
   "Questionario iniziale",
@@ -13,10 +14,13 @@ const INCLUDES = [
   "Tre incontri online con Giorgia",
   "Lettura integrata di animale, persona e ambiente",
   "Elaborazione con CIEM System",
-  "Restituzione personale",
-  "Verifica e indicazioni finali",
+  "Audio frequenziale personalizzato",
+  "Codice di Coerenza da posizionare in casa",
+  "Restituzione personale e verifica finale",
   "Durata complessiva di 14 giorni",
 ]
+
+const CONTINUITY_SIGNALS = ["Sonno", "Appetito", "Reattività", "Recupero"]
 
 export function OffertaSection() {
   const ref = useRef<HTMLDivElement>(null)
@@ -68,9 +72,12 @@ export function OffertaSection() {
               raccolte e svolge l'elaborazione prevista con il CIEM System.
             </p>
 
+            <p className="mt-6 text-xs font-semibold uppercase tracking-[0.24em] text-copper-light">
+              ResonaPet CORE
+            </p>
             {SHOW_PRICE && (
               <>
-                <h3 className="mt-10 font-serif text-3xl md:text-5xl">
+                <h3 className="mt-3 font-serif text-3xl md:text-5xl">
                   {prefersReducedMotion || !inView ? (
                     prefersReducedMotion && `€${PRICE_EUR}`
                   ) : (
@@ -86,7 +93,7 @@ export function OffertaSection() {
                   )}
                 </h3>
                 <p className="mt-2 text-sm text-ivory/80">
-                  ResonaPet · Esperienza personale di 14 giorni · Pagamento unico
+                  3 sedute in 14 giorni · Stabilità, Emozione, Vitalità · Pagamento unico
                 </p>
               </>
             )}
@@ -100,7 +107,7 @@ export function OffertaSection() {
               ))}
             </ul>
 
-            <div className="mt-9 flex justify-center">
+            <div className="mt-9 flex flex-col items-center gap-3">
               <InteractiveHoverButton
                 href="/richiedi-accesso.html"
                 onClick={() => track("access_cta_click")}
@@ -108,11 +115,47 @@ export function OffertaSection() {
               >
                   Richiedi l'accesso
               </InteractiveHoverButton>
+              {SHOW_WHATSAPP_CTA && (
+                <a
+                  href={`https://wa.me/${WHATSAPP_NUMBER}`}
+                  target="_blank"
+                  rel="noreferrer"
+                  onClick={() => track("whatsapp_cta_click")}
+                  className="text-sm font-semibold text-copper-light underline-offset-4 hover:underline"
+                >
+                  Scrivi su WhatsApp per una call gratuita di 10 minuti
+                </a>
+              )}
             </div>
             <p className="mx-auto mt-5 max-w-md text-[length:var(--text-micro)] leading-relaxed text-ivory/80">
               La richiesta non comporta un acquisto automatico. Dopo la verifica riceverai
               contratto, informativa, indicazioni di pagamento e accesso agli appuntamenti.
             </p>
+
+            <div className="mx-auto mt-14 max-w-md border-t border-ivory/15 pt-10">
+              <p className="text-xs font-semibold uppercase tracking-[0.24em] text-copper-light">
+                Mantenimento
+              </p>
+              <h3 className="mt-3 font-serif text-2xl md:text-3xl">
+                ResonaPet Continuity
+                {SHOW_PRICE && <span className="ml-2 text-copper-light">€{CONTINUITY_PRICE_EUR}/mese</span>}
+              </h3>
+              <p className="mt-3 text-[0.9rem] leading-relaxed text-ivory/80">
+                Un check mensile per mantenere stabile la routine costruita durante il percorso:
+                rivediamo i segnali, aggiorniamo l'audio su misura e le micro-abitudini legate
+                all'ambiente.
+              </p>
+              <ul className="mt-4 flex flex-wrap justify-center gap-2 text-[0.78rem] text-ivory/70">
+                {CONTINUITY_SIGNALS.map((signal) => (
+                  <li key={signal} className="rounded-full border border-ivory/20 px-3 py-1">
+                    {signal}
+                  </li>
+                ))}
+              </ul>
+              <p className="mt-4 text-[length:var(--text-micro)] leading-relaxed text-ivory/70">
+                Attivabile al termine del percorso ResonaPet CORE.
+              </p>
+            </div>
           </div>
         </motion.div>
       </div>

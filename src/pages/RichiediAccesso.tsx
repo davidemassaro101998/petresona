@@ -5,6 +5,7 @@ import { InteractiveHoverButton } from "@/components/ui/interactive-hover-button
 import { motionTokens } from "@/styles/motion"
 import { useReducedMotion } from "@/lib/use-reduced-motion"
 import { track } from "@/lib/analytics"
+import { WHATSAPP_NUMBER } from "@/config/contact"
 
 const APPLICATION_ENDPOINT = import.meta.env.VITE_APPLICATION_ENDPOINT?.trim()
 const PRIVACY_POLICY_URL = import.meta.env.VITE_PRIVACY_POLICY_URL?.trim()
@@ -128,41 +129,66 @@ function FormArea() {
       return
     }
 
-    if (!APPLICATION_ENDPOINT) {
+    if (APPLICATION_ENDPOINT) {
+      try {
+        const response = await fetch(APPLICATION_ENDPOINT, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            fullName: data.get("fullName"),
+            email: data.get("email"),
+            petType: data.get("petType"),
+            petName: data.get("petName"),
+            reason: data.get("reason"),
+            privacyAccepted: data.get("privacyCheck") === "on",
+            serviceScopeAccepted: data.get("disclaimerCheck") === "on",
+            source: "resonapet-website",
+          }),
+        })
+
+        if (!response.ok) throw new Error(`Request failed: ${response.status}`)
+
+        form.reset()
+        setErrors({})
+        setStatus("success")
+        setStatusMessage("Richiesta inviata. Riceverai una risposta dopo la valutazione del caso.")
+        track("application_submit_success")
+      } catch {
+        setStatus("error")
+        setStatusMessage("Non è stato possibile inviare la richiesta. Riprova tra qualche minuto.")
+        track("application_submit_error", { reason: "request_failed" })
+      }
+      return
+    }
+
+    // Finché il flusso non è automatizzato (nessun VITE_APPLICATION_ENDPOINT
+    // impostato), la richiesta viene aperta come messaggio WhatsApp
+    // precompilato: l'invio finale resta un tap manuale dell'utente, per
+    // via delle policy della piattaforma WhatsApp (nessun sito può inviare
+    // messaggi per conto dell'utente senza la WhatsApp Business API).
+    if (!WHATSAPP_NUMBER) {
       setStatus("error")
       setStatusMessage("Il modulo non è ancora attivo. Riprova più tardi.")
       track("application_submit_error", { reason: "endpoint_unavailable" })
       return
     }
 
-    try {
-      const response = await fetch(APPLICATION_ENDPOINT, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          fullName: data.get("fullName"),
-          email: data.get("email"),
-          petType: data.get("petType"),
-          petName: data.get("petName"),
-          reason: data.get("reason"),
-          privacyAccepted: data.get("privacyCheck") === "on",
-          serviceScopeAccepted: data.get("disclaimerCheck") === "on",
-          source: "resonapet-website",
-        }),
-      })
+    const petTypeLabel = data.get("petType") === "cane" ? "Cane" : data.get("petType") === "gatto" ? "Gatto" : String(data.get("petType") ?? "")
+    const message = [
+      "Ciao Giorgia, vorrei richiedere informazioni su ResonaPet.",
+      `Nome e cognome: ${data.get("fullName")}`,
+      `Email: ${data.get("email")}`,
+      `Animale: ${petTypeLabel} - ${data.get("petName")}`,
+      `Cosa vorrei risolvere: ${data.get("reason")}`,
+    ].join("\n")
 
-      if (!response.ok) throw new Error(`Request failed: ${response.status}`)
+    window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`, "_blank", "noopener")
 
-      form.reset()
-      setErrors({})
-      setStatus("success")
-      setStatusMessage("Richiesta inviata. Riceverai una risposta dopo la valutazione del caso.")
-      track("application_submit_success")
-    } catch {
-      setStatus("error")
-      setStatusMessage("Non è stato possibile inviare la richiesta. Riprova tra qualche minuto.")
-      track("application_submit_error", { reason: "request_failed" })
-    }
+    form.reset()
+    setErrors({})
+    setStatus("success")
+    setStatusMessage("Si è aperto WhatsApp con il messaggio già pronto: invialo per completare la richiesta a Giorgia.")
+    track("application_submit_success")
   }
 
   return (
@@ -340,7 +366,7 @@ function FormArea() {
               disabled={status === "loading"}
               className="mt-2 flex w-full"
             >
-              {status === "loading" ? "Invio in corso…" : "Invia la richiesta"}
+              {status === "loading" ? "Apertura di WhatsApp…" : "Continua su WhatsApp"}
             </InteractiveHoverButton>
             <p
               role="status"
@@ -391,8 +417,8 @@ export default function RichiediAccesso() {
           </h1>
           <p className="mt-4 max-w-2xl text-[length:var(--text-body)] leading-relaxed text-brown/90">
             Raccontaci chi è il tuo pet, che cosa osservi nella quotidianità e che cosa ti ha
-            portato a ResonaPet. Ogni richiesta viene esaminata prima di proporre il percorso e
-            procedere con contratto, pagamento e appuntamenti.
+            portato a ResonaPet. Il modulo apre WhatsApp con un messaggio già pronto per Giorgia,
+            che lo legge e ti richiama per valutare insieme il percorso.
           </p>
 
           <FormArea />

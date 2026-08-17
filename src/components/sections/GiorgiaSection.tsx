@@ -2,7 +2,7 @@ import { RevealImageMask } from "@/components/ui/reveal-image-mask"
 
 const FACTS = [
   "35 anni di esperienza infermieristica",
-  "Kinesiologa e posturologa",
+  "Oltre 25 anni come kinesiologa e personal trainer",
   "Formazione nell'utilizzo del CIEM System",
   "Oltre 30 anni nella conduzione di un centro olistico",
 ]
@@ -29,8 +29,8 @@ export function GiorgiaSection() {
             Giorgia Bisognin
           </p>
           <p className="mt-4 max-w-2xl text-[0.98rem] leading-relaxed text-ivory/85">
-            Giorgia Bisognin riunisce 35 anni di esperienza infermieristica, il lavoro in
-            kinesiologia e posturologia e oltre trent'anni nella conduzione di un centro olistico.
+            Giorgia Bisognin riunisce 35 anni di esperienza infermieristica, oltre 25 anni come
+            kinesiologa e personal trainer e oltre trent'anni nella conduzione di un centro olistico.
             <span className="mt-3 block">
               ResonaPet nasce da questa esperienza: osservare l'animale senza separarlo dalla
               persona e dall'ambiente in cui vive.

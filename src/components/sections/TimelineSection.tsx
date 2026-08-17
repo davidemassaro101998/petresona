@@ -4,20 +4,16 @@ import { useReducedMotion } from "@/lib/use-reduced-motion"
 
 const STEPS = [
   {
-    title: "Raccolta iniziale",
-    body: "Compili il questionario, invii le fotografie richieste e incontri Giorgia online per raccontare il tuo pet e il suo contesto quotidiano.",
+    title: "Stabilità",
+    body: "Lavoriamo su di te e sul contesto in cui vive il tuo pet, per creare calma in casa e una routine prevedibile. Ricevi un audio ambientale personalizzato e il Codice di Coerenza, da posizionare in cuccia, ciotole o trasportino.",
   },
   {
-    title: "Lettura integrata",
-    body: "Giorgia esamina le informazioni raccolte considerando insieme animale, persona e ambiente, e svolge l'elaborazione prevista con il CIEM System.",
+    title: "Emozione",
+    body: "Ci occupiamo dei trigger e dell'ambiente quotidiano per ridurne il carico e aumentare la prevedibilità, con un ribilanciamento dell'audio frequenziale costruito sul caso specifico.",
   },
   {
-    title: "Restituzione personale",
-    body: "Nel secondo incontro Giorgia condivide ciò che è emerso e fornisce indicazioni chiare, costruite sul caso specifico.",
-  },
-  {
-    title: "Verifica finale",
-    body: "Dopo il periodo di osservazione, il terzo incontro raccoglie ciò che hai notato e conclude il percorso con le indicazioni finali.",
+    title: "Vitalità",
+    body: "Consolidiamo le abitudini e la qualità della relazione, con attenzione al movimento e alla routine, fino alla restituzione finale e alle indicazioni di mantenimento.",
   },
 ]
 
@@ -64,7 +60,7 @@ export function TimelineSection() {
   return (
     <section id="come-si-svolge" className="py-14 md:py-16">
       <div className="mx-auto max-w-4xl px-5 md:px-10 md:max-w-5xl">
-        <h2 className="font-serif text-[length:var(--text-section)] text-ink">Tre incontri. Quattro fasi.</h2>
+        <h2 className="font-serif text-[length:var(--text-section)] text-ink">Tre sedute. Un percorso su misura.</h2>
 
         <div ref={trackRef} className="relative mt-8 max-w-2xl md:mt-10 md:max-w-3xl">
           <div className="absolute left-5 top-1.5 bottom-1.5 z-0 w-[2px] bg-line" aria-hidden="true" />

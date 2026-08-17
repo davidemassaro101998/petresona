@@ -32,7 +32,7 @@ const FAQS = [
     ? [
         {
           q: `Che cosa comprende il prezzo di €${PRICE_EUR}?`,
-          a: "Il prezzo comprende il questionario iniziale, tre incontri online con Giorgia, la lettura integrata di animale, persona e ambiente, l'elaborazione con CIEM System, la restituzione personale e la verifica finale.",
+          a: "Il prezzo comprende il questionario iniziale, tre incontri online con Giorgia, la lettura integrata di animale, persona e ambiente, l'elaborazione con CIEM System, l'audio frequenziale personalizzato e il Codice di Coerenza, fino alla restituzione personale e alla verifica finale.",
         },
       ]
     : []),
