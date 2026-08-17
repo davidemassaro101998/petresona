@@ -53,10 +53,10 @@ export function MobileCta() {
 
   return (
     <div
-      className={`fixed inset-x-0 bottom-0 z-30 px-4 pb-[calc(12px+env(safe-area-inset-bottom))] pt-3 backdrop-blur-md transition-transform duration-300 md:hidden ${
+      className={`fixed inset-x-0 bottom-0 z-30 px-4 pb-[calc(12px+env(safe-area-inset-bottom))] pt-3 transition-transform duration-300 md:hidden ${
         show ? "translate-y-0" : "translate-y-full"
       }`}
-      style={{ background: "color-mix(in oklab, var(--color-ivory) 92%, transparent)", borderTop: "1px solid var(--color-line)" }}
+      style={{ background: "color-mix(in oklab, var(--color-ivory) 97%, transparent)", borderTop: "1px solid var(--color-line)" }}
     >
       <InteractiveHoverButton
         href="/richiedi-accesso.html"
