@@ -3,6 +3,7 @@ import { LiquidMorphFloatingMenu } from "@/components/ui/liquid-morph-floating-m
 const LINKS = [
   { label: "Come funziona", href: "#come-si-svolge" },
   { label: "Giorgia", href: "#giorgia" },
+  { label: "Offerta", href: "#offerta" },
   { label: "FAQ", href: "#faq" },
 ]
 

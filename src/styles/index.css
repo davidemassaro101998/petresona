@@ -73,17 +73,16 @@
 html {
   scroll-behavior: smooth;
   /* Keeps any scroll-into-view target (anchor links, keyboard focus, etc.)
-     clear of the fixed header, not just elements that carry an id. */
+     clear of the fixed header. This alone covers both cases, including
+     targets without an id (e.g. a focused button) — a separate
+     [id] { scroll-margin-top } rule would stack on top of this and double
+     the gap for anchor links specifically, so it is intentionally not used. */
   scroll-padding-top: 96px;
 }
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
   }
-}
-
-[id] {
-  scroll-margin-top: 96px;
 }
 
 body {

@@ -34,6 +34,9 @@ export function SiteFooter() {
           <a href="#giorgia" className="transition-colors hover:text-copper">
             Giorgia
           </a>
+          <a href="#offerta" className="transition-colors hover:text-copper">
+            Offerta
+          </a>
           <a href="#faq" className="transition-colors hover:text-copper">
             FAQ
           </a>
