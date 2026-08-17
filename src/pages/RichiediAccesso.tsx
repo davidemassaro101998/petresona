@@ -15,14 +15,14 @@ const COMPANY_DETAILS = import.meta.env.VITE_COMPANY_DETAILS?.trim()
 
 const MESSAGES = {
   required: "Questo campo è obbligatorio.",
-  email: "Inserisci un indirizzo email valido.",
+  phone: "Inserisci un numero di cellulare valido.",
   privacyCheck: "Devi accettare l'informativa privacy.",
   disclaimerCheck: "Devi confermare di aver compreso il perimetro del servizio.",
 }
 
 type FieldName =
   | "fullName"
-  | "email"
+  | "phone"
   | "petType"
   | "petName"
   | "reason"
@@ -31,7 +31,7 @@ type FieldName =
 
 const REQUIRED: FieldName[] = [
   "fullName",
-  "email",
+  "phone",
   "petType",
   "petName",
   "reason",
@@ -81,9 +81,9 @@ function FormArea() {
           ? MESSAGES.privacyCheck
           : MESSAGES.disclaimerCheck
         : MESSAGES.required
-    } else if (name === "email" && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value as string)) {
+    } else if (name === "phone" && !/^[+\d][\d\s()-]{6,}$/.test(value as string)) {
       invalid = true
-      message = MESSAGES.email
+      message = MESSAGES.phone
     }
     setErrors((prev) => ({ ...prev, [name]: invalid ? message : undefined }))
     return !invalid
@@ -136,7 +136,7 @@ function FormArea() {
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
             fullName: data.get("fullName"),
-            email: data.get("email"),
+            phone: data.get("phone"),
             petType: data.get("petType"),
             petName: data.get("petName"),
             reason: data.get("reason"),
@@ -177,7 +177,7 @@ function FormArea() {
     const message = [
       "Ciao Giorgia, vorrei richiedere informazioni su ResonaPet.",
       `Nome e cognome: ${data.get("fullName")}`,
-      `Email: ${data.get("email")}`,
+      `Cellulare: ${data.get("phone")}`,
       `Animale: ${petTypeLabel} - ${data.get("petName")}`,
       `Cosa vorrei risolvere: ${data.get("reason")}`,
     ].join("\n")
@@ -218,29 +218,30 @@ function FormArea() {
                     aria-invalid={Boolean(errors.fullName)}
                     aria-describedby="fullName-err"
                     onBlur={() => validateField("fullName")}
-                    className="mt-1.5 min-h-[44px] w-full rounded-[10px] border border-line bg-paper px-3.5 py-3 text-sm text-ink aria-[invalid=true]:border-red-500"
+                    className="mt-1.5 min-h-[44px] w-full rounded-[10px] border border-line bg-paper px-3.5 py-3 text-base text-ink aria-[invalid=true]:border-red-500 md:text-sm"
                   />
                   <p id="fullName-err" className="mt-1 min-h-[1em] text-xs text-red-600">
                     {errors.fullName}
                   </p>
                 </FormGroup>
                 <FormGroup delay={0.05}>
-                  <label htmlFor="email" className="text-sm font-semibold text-ink">
-                    Email
+                  <label htmlFor="phone" className="text-sm font-semibold text-ink">
+                    Cellulare
                   </label>
                   <input
-                    id="email"
-                    name="email"
-                    type="email"
+                    id="phone"
+                    name="phone"
+                    type="tel"
+                    inputMode="tel"
                     required
-                    autoComplete="email"
-                    aria-invalid={Boolean(errors.email)}
-                    aria-describedby="email-err"
-                    onBlur={() => validateField("email")}
-                    className="mt-1.5 min-h-[44px] w-full rounded-[10px] border border-line bg-paper px-3.5 py-3 text-sm text-ink aria-[invalid=true]:border-red-500"
+                    autoComplete="tel"
+                    aria-invalid={Boolean(errors.phone)}
+                    aria-describedby="phone-err"
+                    onBlur={() => validateField("phone")}
+                    className="mt-1.5 min-h-[44px] w-full rounded-[10px] border border-line bg-paper px-3.5 py-3 text-base text-ink aria-[invalid=true]:border-red-500 md:text-sm"
                   />
-                  <p id="email-err" className="mt-1 min-h-[1em] text-xs text-red-600">
-                    {errors.email}
+                  <p id="phone-err" className="mt-1 min-h-[1em] text-xs text-red-600">
+                    {errors.phone}
                   </p>
                 </FormGroup>
               </div>
@@ -257,7 +258,7 @@ function FormArea() {
                     aria-invalid={Boolean(errors.petType)}
                     aria-describedby="petType-err"
                     onBlur={() => validateField("petType")}
-                    className="mt-1.5 min-h-[44px] w-full rounded-[10px] border border-line bg-paper px-3.5 py-3 text-sm text-ink"
+                    className="mt-1.5 min-h-[44px] w-full rounded-[10px] border border-line bg-paper px-3.5 py-3 text-base text-ink md:text-sm"
                   >
                     <option value="">Seleziona…</option>
                     <option value="cane">Cane</option>
@@ -279,7 +280,7 @@ function FormArea() {
                     aria-invalid={Boolean(errors.petName)}
                     aria-describedby="petName-err"
                     onBlur={() => validateField("petName")}
-                    className="mt-1.5 min-h-[44px] w-full rounded-[10px] border border-line bg-paper px-3.5 py-3 text-sm text-ink aria-[invalid=true]:border-red-500"
+                    className="mt-1.5 min-h-[44px] w-full rounded-[10px] border border-line bg-paper px-3.5 py-3 text-base text-ink aria-[invalid=true]:border-red-500 md:text-sm"
                   />
                   <p id="petName-err" className="mt-1 min-h-[1em] text-xs text-red-600">
                     {errors.petName}
@@ -303,7 +304,7 @@ function FormArea() {
                   aria-invalid={Boolean(errors.reason)}
                   aria-describedby="reason-err"
                   onBlur={() => validateField("reason")}
-                  className="mt-1.5 min-h-[100px] w-full rounded-[10px] border border-line bg-paper px-3.5 py-3 text-sm text-ink aria-[invalid=true]:border-red-500"
+                  className="mt-1.5 min-h-[100px] w-full rounded-[10px] border border-line bg-paper px-3.5 py-3 text-base text-ink aria-[invalid=true]:border-red-500 md:text-sm"
                 />
                 <p id="reason-err" className="mt-1 min-h-[1em] text-xs text-red-600">
                   {errors.reason}
