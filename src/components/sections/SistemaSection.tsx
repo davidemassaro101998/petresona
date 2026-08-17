@@ -34,7 +34,7 @@ function TriadNodes() {
         return (
           <div
             key={item.key}
-            className="group border-t border-line py-5 first:border-t-0 md:border-t-2 md:border-t-transparent md:border-l md:border-l-line md:px-8 md:py-8 md:first:border-l-0 md:hover:border-t-copper md:focus-within:border-t-copper"
+            className="group border-t border-line py-5 first:border-t-0 md:border-t-2 md:border-t-transparent md:first:border-t-2 md:border-l md:border-l-line md:px-8 md:py-8 md:first:border-l-0 md:hover:border-t-copper md:focus-within:border-t-copper"
             onMouseEnter={() => !prefersReducedMotion && setOpenKey(item.key)}
             onMouseLeave={() => !prefersReducedMotion && setOpenKey(null)}
             onFocus={() => setOpenKey(item.key)}
