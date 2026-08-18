@@ -31,10 +31,6 @@ export function GiorgiaSection() {
           <p className="mt-4 max-w-2xl text-[0.98rem] leading-relaxed text-ivory/85">
             Giorgia Bisognin riunisce 35 anni di esperienza infermieristica, oltre 25 anni come
             kinesiologa e personal trainer e oltre trent'anni nella conduzione di un centro olistico.
-            <span className="mt-3 block">
-              ResonaPet nasce da questa esperienza: osservare l'animale senza separarlo dalla
-              persona e dall'ambiente in cui vive.
-            </span>
           </p>
           <div className="mt-6 grid grid-cols-1 gap-x-6 sm:grid-cols-2">
             {FACTS.map((fact) => (
@@ -42,6 +38,17 @@ export function GiorgiaSection() {
                 {fact}
               </span>
             ))}
+          </div>
+          <div className="mt-8 max-w-2xl border-t border-ivory/15 pt-7">
+            <h3 className="font-serif text-xl text-ivory md:text-2xl">Ascoltarlo nella sua lingua.</h3>
+            <p className="mt-3 text-[0.95rem] leading-relaxed text-ivory/85">
+              Trent'anni a leggere ciò che il corpo umano non sa dire a parole. Quello stesso
+              ascolto, oggi, si rivolge a chi non ha mai avuto le parole per raccontarsi.
+            </p>
+            <p className="mt-3 text-[0.95rem] leading-relaxed text-ivory/85">
+              ResonaPet nasce da questo passaggio: la relazione con il tuo animale cresce ogni
+              volta che trova lo spazio per essere pienamente se stesso.
+            </p>
           </div>
         </div>
       </div>

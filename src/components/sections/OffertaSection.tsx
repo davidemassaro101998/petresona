@@ -8,16 +8,12 @@ import { track } from "@/lib/analytics"
 import { PRICE_EUR, CONTINUITY_PRICE_EUR, SHOW_PRICE } from "@/config/offer"
 import { WHATSAPP_NUMBER, SHOW_WHATSAPP_CTA, WHATSAPP_LINK_CORE, WHATSAPP_LINK_CONTINUITY } from "@/config/contact"
 
-const INCLUDES = [
-  "Questionario iniziale",
-  "Fotografie e informazioni richieste",
-  "Tre incontri online con Giorgia",
-  "Lettura integrata di animale, persona e ambiente",
-  "Elaborazione con la tecnologia di biorisonanza integrata ResonaPet",
-  "Audio frequenziale personalizzato",
-  "Codice di Coerenza da posizionare in casa",
-  "Restituzione personale e verifica finale",
-  "Durata complessiva di 14 giorni",
+const TANGIBLE_SIGNS = [
+  "Tre sessioni da 30 minuti, a distanza.",
+  "Un audio frequenziale dedicato per ogni fase del percorso.",
+  "Il Codice di Coerenza, il punto fermo della routine.",
+  "Un bilancio finale, con le indicazioni per il tempo successivo.",
+  "In più, una frequenza che resta sintonizzata anche nei giorni tra un incontro e l'altro.",
 ]
 
 const CONTINUITY_SIGNALS = ["Coerenza", "Sintonia", "Stabilità emotiva", "Radicamento"]
@@ -39,8 +35,7 @@ export function OffertaSection() {
             <ul className="mt-3.5 grid gap-2.5 text-[length:var(--text-small)] leading-relaxed text-brown/90">
               <li>— Desideri un lavoro personale dedicato al tuo cane o gatto.</li>
               <li>— Vuoi considerare insieme animale, relazione e ambiente quotidiano.</li>
-              <li>— Puoi fornire informazioni e fotografie del tuo pet.</li>
-              <li>— Cerchi un percorso complementare, non una prestazione veterinaria.</li>
+              <li>— Cerchi un supporto che si affianca al percorso già seguito con il tuo veterinario.</li>
             </ul>
           </div>
           <div className="border-t border-line pt-4">
@@ -68,9 +63,10 @@ export function OffertaSection() {
         >
           <div className="mx-auto max-w-4xl text-center">
             <p className="text-[length:var(--text-small)] leading-relaxed text-ivory/85">
-              Il lavoro principale avviene tra gli incontri: Giorgia esamina le informazioni
-              raccolte e svolge l'elaborazione prevista con la tecnologia di biorisonanza
-              integrata ResonaPet.
+              Ogni sessione accende qualcosa che non si spegne. Da quei trenta minuti in cui
+              lavoriamo insieme, il sistema resta attivo — giorno e notte — mantenendo una
+              comunicazione costante di coerenza tra il Codice, la casa e il tuo pet, fino al
+              prossimo incontro.
             </p>
 
             <p className="mt-6 text-xs font-semibold uppercase tracking-[0.24em] text-copper-light">
@@ -94,13 +90,16 @@ export function OffertaSection() {
                   )}
                 </h3>
                 <p className="mt-2 text-sm text-ivory/80">
-                  3 sedute in 14 giorni · Stabilità, Emozione, Vitalità · Pagamento unico
+                  3 sedute in circa 21 giorni · Stabilità, Quiete, Presenza · Pagamento unico
                 </p>
               </>
             )}
 
-            <ul className="mx-auto mt-8 grid max-w-md gap-2 text-left text-[0.88rem] text-ivory/80">
-              {INCLUDES.map((item) => (
+            <p className="mt-8 text-xs font-semibold uppercase tracking-[0.24em] text-copper-light">
+              Il segno tangibile
+            </p>
+            <ul className="mx-auto mt-4 grid max-w-md gap-2 text-left text-[0.88rem] text-ivory/80">
+              {TANGIBLE_SIGNS.map((item) => (
                 <li key={item} className="flex gap-2.5">
                   <span className="text-copper-light">—</span>
                   {item}

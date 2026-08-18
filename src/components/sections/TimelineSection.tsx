@@ -5,19 +5,22 @@ import { useReducedMotion } from "@/lib/use-reduced-motion"
 const STEPS = [
   {
     title: "Stabilità",
-    body: "Lavoriamo su di te e sul campo energetico in cui vive il tuo pet, per creare calma in casa e una routine che lui possa riconoscere. Ricevi un audio ambientale personalizzato e il Codice di Coerenza, da posizionare in cuccia, ciotole o trasportino.",
+    lead: "Si abbassa il rumore.",
+    body: "Lavoriamo sul campo energetico in cui vive il tuo pet, finché la routine torna a essere qualcosa che lui riconosce. Restano con voi un audio frequenziale su misura e il Codice di Coerenza, come punto fermo dei suoi giorni.",
   },
   {
-    title: "Emozione",
-    body: "Ci occupiamo dei punti di tensione e dell'ambiente quotidiano per alleggerirne il peso energetico e aumentare l'armonia, con un ribilanciamento dell'audio frequenziale costruito sul caso specifico.",
+    title: "Quiete",
+    lead: "Si allenta la tensione.",
+    body: "Lavoriamo sui punti critici e sull'ambiente quotidiano, finché quella tensione lascia spazio alla quiete. L'audio frequenziale si ricalibra sessione dopo sessione, sul caso specifico.",
   },
   {
-    title: "Vitalità",
-    body: "Consolidiamo le abitudini e la qualità della relazione, con attenzione all'energia vitale e alla routine, fino al bilancio conclusivo del percorso e alle indicazioni di mantenimento.",
+    title: "Presenza",
+    lead: "Si torna a esserci.",
+    body: "Consolidiamo le abitudini e la qualità della relazione, con attenzione all'energia vitale — fino al bilancio del percorso e a ciò che serve per mantenerlo nel tempo.",
   },
 ]
 
-function Step({ index, title, body }: { index: number; title: string; body: string }) {
+function Step({ index, title, lead, body }: { index: number; title: string; lead: string; body: string }) {
   const ref = useRef<HTMLLIElement>(null)
   const prefersReducedMotion = useReducedMotion()
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start 85%", "start 45%"] })
@@ -45,7 +48,9 @@ function Step({ index, title, body }: { index: number; title: string; body: stri
         className="pt-1.5"
       >
         <h3 className="font-serif text-lg text-ink md:text-2xl">{title}</h3>
-        <p className="mt-2 max-w-xl text-[length:var(--text-small)] leading-relaxed text-brown/90">{body}</p>
+        <p className="mt-2 max-w-xl text-[length:var(--text-small)] leading-relaxed text-brown/90">
+          <strong className="font-semibold text-ink">{lead}</strong> {body}
+        </p>
       </motion.div>
     </li>
   )
@@ -61,6 +66,10 @@ export function TimelineSection() {
     <section id="come-si-svolge" className="py-14 md:py-16">
       <div className="mx-auto max-w-4xl px-5 md:px-10 md:max-w-5xl">
         <h2 className="font-serif text-[length:var(--text-section)] text-ink">Tre sedute. Un percorso su misura.</h2>
+        <p className="mt-3 max-w-xl text-[length:var(--text-small)] italic leading-relaxed text-brown/90">
+          Distribuite in un ciclo naturale di circa 21 giorni — il tempo in cui una nuova
+          abitudine comincia a diventare propria.
+        </p>
 
         <div ref={trackRef} className="relative mt-8 max-w-2xl md:mt-10 md:max-w-3xl">
           <div className="absolute left-5 top-1.5 bottom-1.5 z-0 w-[2px] bg-line" aria-hidden="true" />
@@ -71,7 +80,7 @@ export function TimelineSection() {
           />
           <ol className="relative z-10">
             {STEPS.map((step, i) => (
-              <Step key={step.title} index={i} title={step.title} body={step.body} />
+              <Step key={step.title} index={i} title={step.title} lead={step.lead} body={step.body} />
             ))}
           </ol>
         </div>

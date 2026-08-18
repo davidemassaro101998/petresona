@@ -155,19 +155,47 @@ export function SistemaSection() {
 
         <TriadNodes />
 
+        <div className="mt-12 border-t border-line pt-8 md:mt-16 md:pt-10">
+          <h3 className="max-w-xl font-serif text-2xl leading-tight text-ink md:text-3xl">
+            Lo riconosci?
+          </h3>
+          <div className="mt-5 grid max-w-2xl gap-3 text-[length:var(--text-body)] italic leading-relaxed text-brown/90">
+            <p>
+              Il tremore che comincia ai primi tuoni, e non si ferma nemmeno quando il
+              temporale è già lontano.
+            </p>
+            <p>I segni lasciati sulla porta, nei minuti in cui provi solo ad allontanarti.</p>
+            <p>Un cambiamento improvviso, senza una spiegazione — nemmeno dal veterinario.</p>
+            <p>
+              Gli occhi che evitano i tuoi, proprio nei momenti in cui vorresti sentirlo
+              vicino.
+            </p>
+          </div>
+          <p className="mt-5 max-w-2xl text-[length:var(--text-body)] leading-relaxed text-brown/90">
+            Non è colpa di nessuno. È la profondità del legame che segnala qualcosa da
+            ascoltare.
+          </p>
+        </div>
+
         <div className="mt-12 grid gap-4 border-t border-copper/35 pt-8 md:mt-16 md:grid-cols-[0.75fr_1.25fr] md:gap-12 md:pt-10">
           <div>
             <p className="text-xs font-semibold uppercase tracking-[0.24em] text-copper-text">
               Il ruolo della biorisonanza
             </p>
             <h3 className="mt-3 font-serif text-2xl leading-tight text-ink md:text-3xl">
-              Un'elaborazione riservata, costruita sul caso specifico.
+              Non tocca. Si sintonizza.
             </h3>
           </div>
           <div className="max-w-2xl text-[length:var(--text-body)] leading-relaxed text-brown/90">
             <p>
-              Giorgia utilizza la tecnologia di biorisonanza integrata ResonaPet nella fase di elaborazione personale, integrando le
-              informazioni raccolte attraverso il questionario, le fotografie e gli incontri.
+              L'energia non ha bisogno di contatto per essere letta. Ogni animale ha una sua
+              firma energetica — un'antenna su cui il sistema di biorisonanza integrato
+              ResonaPet si sintonizza, ovunque voi siate.
+            </p>
+            <p className="mt-4">
+              Da lì legge tra un vastissimo campo di frequenze, portando alla luce ciò che
+              ancora non si vede — spesso proprio quello che chi gli è vicino sentiva, senza
+              saperlo spiegare.
             </p>
             <p className="mt-4 text-[length:var(--text-small)]">
               Il lavoro di biorisonanza non produce diagnosi, referti o prescrizioni
