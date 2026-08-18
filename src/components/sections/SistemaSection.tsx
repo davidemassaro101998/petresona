@@ -23,6 +23,33 @@ const TRIAD = [
   },
 ]
 
+/** Ripples outward from a center point, on loop — "si sintonizza" shown,
+ * not only described. Falls back to a couple of still rings when motion
+ * is reduced, so the idea still reads without relying on animation. */
+function ResonanceMark() {
+  const prefersReducedMotion = useReducedMotion()
+
+  return (
+    <div className="relative mt-7 h-24 w-24 md:h-28 md:w-28" aria-hidden="true">
+      <span className="absolute inset-0 m-auto h-[7px] w-[7px] rounded-full bg-copper" />
+      {prefersReducedMotion ? (
+        <>
+          <span className="absolute inset-0 m-auto h-[45%] w-[45%] rounded-full border-[1.5px] border-copper/35" />
+          <span className="absolute inset-0 m-auto h-[85%] w-[85%] rounded-full border border-copper/18" />
+        </>
+      ) : (
+        [0, 1, 2].map((i) => (
+          <span
+            key={i}
+            className="animate-resonance-ping absolute inset-0 m-auto rounded-full border border-copper"
+            style={{ animationDelay: `${i * 1.2}s` }}
+          />
+        ))
+      )}
+    </div>
+  )
+}
+
 function TriadNodes() {
   const [openKey, setOpenKey] = useState<string | null>(null)
   const prefersReducedMotion = useReducedMotion()
@@ -185,6 +212,7 @@ export function SistemaSection() {
             <h3 className="mt-3 font-serif text-2xl leading-tight text-ink md:text-3xl">
               Non tocca. Si sintonizza.
             </h3>
+            <ResonanceMark />
           </div>
           <div className="max-w-2xl text-[length:var(--text-body)] leading-relaxed text-brown/90">
             <p>
