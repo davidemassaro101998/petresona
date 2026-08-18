@@ -2,6 +2,7 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 import { InteractiveHoverButton } from "@/components/ui/interactive-hover-button"
 import { track } from "@/lib/analytics"
 import { SHOW_PRICE, PRICE_EUR } from "@/config/offer"
+import { WHATSAPP_LINK_GENERAL } from "@/config/contact"
 
 const FAQS = [
   {
@@ -76,7 +77,9 @@ export function FaqSection() {
           </p>
           <div className="mt-7 flex justify-center">
             <InteractiveHoverButton
-              href="/richiedi-accesso.html"
+              href={WHATSAPP_LINK_GENERAL}
+              target="_blank"
+              rel="noreferrer"
               id="faq-closing-cta"
               onClick={() => track("access_cta_click")}
             >

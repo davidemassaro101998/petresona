@@ -5,6 +5,7 @@ import { InteractiveHoverButton } from "@/components/ui/interactive-hover-button
 import { motionTokens } from "@/styles/motion"
 import { useReducedMotion } from "@/lib/use-reduced-motion"
 import { track } from "@/lib/analytics"
+import { WHATSAPP_LINK_GENERAL } from "@/config/contact"
 
 export interface HeroSectionProps {
   /** Cinematic zoom owned entirely by HeroTransition. */
@@ -129,7 +130,9 @@ export const HeroSection = forwardRef<HTMLElement, HeroSectionProps>(function He
               Scopri come funziona
             </InteractiveHoverButton>
             <a
-              href="/richiedi-accesso.html"
+              href={WHATSAPP_LINK_GENERAL}
+              target="_blank"
+              rel="noreferrer"
               onClick={() => track("hero_cta_click")}
               className="text-sm font-semibold text-ivory underline decoration-copper-light/60 underline-offset-4 hover:decoration-ivory"
             >

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import { InteractiveHoverButton } from "@/components/ui/interactive-hover-button"
 import { track } from "@/lib/analytics"
+import { WHATSAPP_LINK_GENERAL } from "@/config/contact"
 
 export function MobileCta() {
   const [show, setShow] = useState(false)
@@ -59,7 +60,9 @@ export function MobileCta() {
       style={{ background: "color-mix(in oklab, var(--color-ivory) 97%, transparent)", borderTop: "1px solid var(--color-line)" }}
     >
       <InteractiveHoverButton
-        href="/richiedi-accesso.html"
+        href={WHATSAPP_LINK_GENERAL}
+        target="_blank"
+        rel="noreferrer"
         onClick={() => track("access_cta_click")}
         className="flex w-full"
       >

@@ -55,16 +55,6 @@
     </script>
     <link rel="preload" href="/assets/fonts/newsreader.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="preload" href="/assets/fonts/manrope.woff2" as="font" type="font/woff2" crossorigin />
-    <script>
-      // Added at runtime (not as a static <link>) so Vite's build doesn't
-      // rewrite it into a duplicated/hashed copy of the other page.
-      (function () {
-        var l = document.createElement("link");
-        l.rel = "prefetch";
-        l.href = "/richiedi-accesso.html";
-        document.head.appendChild(l);
-      })();
-    </script>
     <link
       rel="preload"
       as="image"

@@ -6,7 +6,7 @@ import { motionTokens } from "@/styles/motion"
 import { useReducedMotion } from "@/lib/use-reduced-motion"
 import { track } from "@/lib/analytics"
 import { PRICE_EUR, CONTINUITY_PRICE_EUR, SHOW_PRICE } from "@/config/offer"
-import { WHATSAPP_NUMBER, SHOW_WHATSAPP_CTA } from "@/config/contact"
+import { WHATSAPP_NUMBER, SHOW_WHATSAPP_CTA, WHATSAPP_LINK_CORE, WHATSAPP_LINK_CONTINUITY } from "@/config/contact"
 
 const INCLUDES = [
   "Questionario iniziale",
@@ -110,7 +110,9 @@ export function OffertaSection() {
 
             <div className="mt-9 flex flex-col items-center gap-3">
               <InteractiveHoverButton
-                href="/richiedi-accesso.html"
+                href={WHATSAPP_LINK_CORE}
+                target="_blank"
+                rel="noreferrer"
                 onClick={() => track("access_cta_click")}
                 className="border-copper-light/40 bg-transparent text-ivory"
               >
@@ -156,6 +158,15 @@ export function OffertaSection() {
               <p className="mt-4 text-[length:var(--text-micro)] leading-relaxed text-ivory/70">
                 Attivabile al termine del percorso ResonaPet CORE.
               </p>
+              <a
+                href={WHATSAPP_LINK_CONTINUITY}
+                target="_blank"
+                rel="noreferrer"
+                onClick={() => track("continuity_cta_click")}
+                className="mt-5 inline-block text-sm font-semibold text-copper-light underline-offset-4 hover:underline"
+              >
+                Chiedi informazioni su Continuity
+              </a>
             </div>
           </div>
         </motion.div>

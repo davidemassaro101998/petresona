@@ -1,4 +1,5 @@
 import { LiquidMorphFloatingMenu } from "@/components/ui/liquid-morph-floating-menu"
+import { WHATSAPP_LINK_GENERAL } from "@/config/contact"
 
 const LINKS = [
   { label: "Come funziona", href: "#come-si-svolge" },
@@ -12,7 +13,7 @@ export function SiteHeader() {
     <LiquidMorphFloatingMenu
       links={LINKS}
       ctaLabel="Richiedi l'accesso"
-      ctaHref="/richiedi-accesso.html"
+      ctaHref={WHATSAPP_LINK_GENERAL}
       logo={
         <>
           Resona<b className="text-copper">Pet</b>

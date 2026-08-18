@@ -1,9 +1,4 @@
 User-agent: *
 Allow: /
 
-# richiedi-accesso.html is kept out of search results via its own
-# <meta name="robots" content="noindex"> tag, not blocked here — Google
-# needs to crawl a page to see its noindex tag; blocking it in robots.txt
-# would prevent that and can leave a bare URL in results instead.
-
 Sitemap: https://www.resonapet.com/sitemap.xml

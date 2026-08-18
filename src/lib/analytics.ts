@@ -8,11 +8,8 @@ export type AnalyticsEvent =
   | "receive_item_open"
   | "offer_view"
   | "access_cta_click"
+  | "continuity_cta_click"
   | "whatsapp_cta_click"
-  | "application_view"
-  | "application_start"
-  | "application_submit_success"
-  | "application_submit_error"
   | "system_node_open"
   | "faq_item_open"
 

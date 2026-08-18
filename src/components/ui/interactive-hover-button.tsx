@@ -5,8 +5,8 @@
  * Imported from the real MagicUI component source, unmodified except:
  *   - added `href`/`onClick`/`asChild`-style dual rendering (as an <a> when
  *     `href` is passed, a <button> otherwise) since ResonaPet's CTAs need to
- *     both navigate (to richiedi-accesso) and submit a form — the original
- *     is a bare <button>.
+ *     both open a WhatsApp link and, elsewhere, act as a plain submit button
+ *     — the original is a bare <button>.
  *   - ResonaPet copper dot / ivory text colors are supplied via the
  *     existing `className` prop at call sites, using the same
  *     group-hover mechanics as the original (dot scale, text slide/fade).

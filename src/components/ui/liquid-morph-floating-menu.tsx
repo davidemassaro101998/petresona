@@ -223,6 +223,8 @@ export function LiquidMorphFloatingMenu({
           </nav>
           <a
             href={ctaHref}
+            target="_blank"
+            rel="noreferrer"
             className="hidden shrink-0 items-center justify-center rounded-full bg-copper px-5 py-2.5 text-sm font-semibold text-ivory transition-colors hover:bg-brown md:inline-flex"
           >
             {ctaLabel}
@@ -277,6 +279,8 @@ export function LiquidMorphFloatingMenu({
             </ul>
             <motion.a
               href={ctaHref}
+              target="_blank"
+              rel="noreferrer"
               onClick={() => setOpen(false)}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}

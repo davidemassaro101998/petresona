@@ -1,6 +1,7 @@
 import { motion, useInView } from "framer-motion"
 import { useRef } from "react"
 import { useReducedMotion } from "@/lib/use-reduced-motion"
+import { WHATSAPP_LINK_GENERAL } from "@/config/contact"
 
 const LEGAL_LINKS = [
   { label: "Informativa privacy", href: import.meta.env.VITE_PRIVACY_POLICY_URL?.trim() },
@@ -40,7 +41,7 @@ export function SiteFooter() {
           <a href="#faq" className="transition-colors hover:text-copper">
             FAQ
           </a>
-          <a href="/richiedi-accesso.html" className="transition-colors hover:text-copper">
+          <a href={WHATSAPP_LINK_GENERAL} target="_blank" rel="noreferrer" className="transition-colors hover:text-copper">
             Richiedi l'accesso
           </a>
         </nav>
