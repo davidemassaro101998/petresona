@@ -11,9 +11,8 @@ export function GiorgiaSection() {
   return (
     <section id="giorgia" className="bg-forest py-16 md:py-20">
       <div className="mx-auto grid max-w-6xl gap-10 px-5 md:grid-cols-[0.85fr_1.15fr] md:items-center md:gap-14 md:px-10">
-        {/* TODO: sostituire con fotografia ufficiale approvata prima del go-live. */}
         <RevealImageMask
-          src="/assets/images/giorgia-resonapet-portrait-v2.webp"
+          src="/assets/images/giorgia-resonapet-portrait-v3.webp"
           alt="Ritratto di Giorgia Bisognin."
           className="aspect-[4/5] overflow-hidden rounded-[24px] shadow-[0_24px_50px_-20px_rgba(59,42,34,0.28)]"
           imgClassName="h-full w-full object-cover object-center"
