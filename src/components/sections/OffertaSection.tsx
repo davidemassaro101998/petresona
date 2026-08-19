@@ -6,7 +6,7 @@ import { motionTokens } from "@/styles/motion"
 import { useReducedMotion } from "@/lib/use-reduced-motion"
 import { track } from "@/lib/analytics"
 import { PRICE_EUR, CONTINUITY_PRICE_EUR, SHOW_PRICE } from "@/config/offer"
-import { WHATSAPP_NUMBER, SHOW_WHATSAPP_CTA, WHATSAPP_LINK_CORE, WHATSAPP_LINK_CONTINUITY } from "@/config/contact"
+import { WHATSAPP_LINK_CORE, WHATSAPP_LINK_CONTINUITY } from "@/config/contact"
 
 const TANGIBLE_SIGNS = [
   "Tre sessioni da 30 minuti, a distanza.",
@@ -117,17 +117,6 @@ export function OffertaSection() {
               >
                   Richiedi l'accesso
               </InteractiveHoverButton>
-              {SHOW_WHATSAPP_CTA && (
-                <a
-                  href={`https://wa.me/${WHATSAPP_NUMBER}`}
-                  target="_blank"
-                  rel="noreferrer"
-                  onClick={() => track("whatsapp_cta_click")}
-                  className="text-sm font-semibold text-copper-light underline-offset-4 hover:underline"
-                >
-                  Scrivi su WhatsApp per una call gratuita di 10 minuti
-                </a>
-              )}
             </div>
             <p className="mx-auto mt-5 max-w-md text-[length:var(--text-micro)] leading-relaxed text-ivory/80">
               La richiesta non comporta un acquisto automatico. Dopo la verifica riceverai
@@ -157,15 +146,15 @@ export function OffertaSection() {
               <p className="mt-4 text-[length:var(--text-micro)] leading-relaxed text-ivory/70">
                 Attivabile al termine del percorso ResonaPet CORE.
               </p>
-              <a
+              <InteractiveHoverButton
                 href={WHATSAPP_LINK_CONTINUITY}
                 target="_blank"
                 rel="noreferrer"
                 onClick={() => track("continuity_cta_click")}
-                className="mt-5 inline-block text-sm font-semibold text-copper-light underline-offset-4 hover:underline"
+                className="mt-5 border-copper-light/40 bg-transparent text-ivory"
               >
-                Chiedi informazioni su Continuity
-              </a>
+                Richiedi l'accesso
+              </InteractiveHoverButton>
             </div>
           </div>
         </motion.div>
