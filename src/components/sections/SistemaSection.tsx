@@ -79,7 +79,7 @@ export function SistemaSection() {
 
   return (
     <section id="sistema" className="relative py-16 md:py-20">
-      <div ref={ref} className="mx-auto max-w-6xl px-5 md:px-10">
+      <div ref={ref} className="freq-card mx-auto max-w-6xl px-5 py-10 md:px-10 md:py-14">
         <div>
           <p className="text-xs font-semibold uppercase tracking-[0.24em] text-copper-text">
             Una lettura più ampia
@@ -161,7 +161,7 @@ export function SistemaSection() {
       </div>
 
       <div className="mx-auto max-w-6xl px-5 md:px-10">
-        <div className="mt-12 grid gap-4 border-t border-copper/35 pt-8 md:mt-16 md:grid-cols-[0.75fr_1.25fr] md:gap-12 md:pt-10">
+        <div className="freq-card mt-12 grid gap-4 px-6 py-8 md:mt-16 md:grid-cols-[0.75fr_1.25fr] md:gap-12 md:px-10 md:py-10">
           <div>
             <p className="text-xs font-semibold uppercase tracking-[0.24em] text-copper-text">
               Il ruolo della biorisonanza

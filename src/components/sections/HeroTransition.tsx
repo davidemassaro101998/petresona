@@ -66,8 +66,16 @@ export function HeroTransition() {
       </div>
 
       <motion.div
-        className="relative z-20 -mt-[30svh] origin-top rounded-t-[32px] bg-paper will-change-transform md:-mt-[40svh]"
-        style={{ y: surfaceY, scale: surfaceScale }}
+        className="relative z-20 -mt-[30svh] origin-top rounded-t-[32px] will-change-transform md:-mt-[40svh]"
+        style={{
+          y: surfaceY,
+          scale: surfaceScale,
+          // Fades from solid paper (where the surface overlaps the hero's
+          // tail end, hiding the seam) into transparency, so the frequency
+          // background emerges gradually instead of appearing behind a
+          // hard-edged card — the smooth, non-abrupt exit requested.
+          background: "linear-gradient(to bottom, var(--color-paper) 0%, var(--color-paper) 30%, transparent 65%)",
+        }}
       >
         <SistemaSection />
       </motion.div>

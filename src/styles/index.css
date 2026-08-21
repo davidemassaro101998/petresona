@@ -140,3 +140,13 @@ img {
 .skip-link:focus {
   top: 12px;
 }
+
+/* Translucent surface used on sections that sit over the scroll-driven
+   frequency background (see FrequencyBackground.tsx) so copy stays legible
+   while the visual keeps flowing behind it. */
+.freq-card {
+  background: rgba(251, 248, 242, 0.86);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  border-radius: 22px;
+}

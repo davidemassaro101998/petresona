@@ -64,7 +64,7 @@ export function TimelineSection() {
 
   return (
     <section id="come-si-svolge" className="py-14 md:py-16">
-      <div className="mx-auto max-w-4xl px-5 md:px-10 md:max-w-5xl">
+      <div className="freq-card mx-auto max-w-4xl px-5 py-10 md:px-10 md:py-14 md:max-w-5xl">
         <h2 className="font-serif text-[length:var(--text-section)] text-ink">Tre sedute. Un percorso su misura.</h2>
         <p className="mt-3 max-w-xl text-[length:var(--text-small)] italic leading-relaxed text-brown/90">
           Distribuite in un ciclo naturale di circa 21 giorni — il tempo in cui una nuova
