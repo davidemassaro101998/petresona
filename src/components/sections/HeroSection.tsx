@@ -36,7 +36,7 @@ export const HeroSection = forwardRef<HTMLElement, HeroSectionProps>(function He
     <section
       ref={ref}
       id="hero"
-      className="relative flex h-[100svh] min-h-0 max-h-none items-end overflow-hidden bg-brown pb-16 pt-28 md:items-center"
+      className="relative flex h-[100svh] min-h-0 max-h-none items-end overflow-hidden bg-brown pb-16 pt-28 md:pb-20"
     >
       <motion.div
         className="absolute inset-0 z-0 overflow-hidden"
@@ -50,7 +50,7 @@ export const HeroSection = forwardRef<HTMLElement, HeroSectionProps>(function He
             className="absolute inset-0 h-full w-full object-cover object-center"
           />
         </picture>
-        <div className="absolute inset-0 bg-gradient-to-t from-brown/95 via-brown/35 to-brown/10 md:bg-gradient-to-r md:from-brown md:via-brown/70 md:to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-brown/90 via-brown/25 to-transparent md:bg-gradient-to-r md:from-brown/78 md:via-brown/32 md:to-transparent" />
         {!prefersReducedMotion && exitOverlayOpacity && (
           <motion.div className="absolute inset-0 bg-brown" style={{ opacity: exitOverlayOpacity }} />
         )}
@@ -65,12 +65,12 @@ export const HeroSection = forwardRef<HTMLElement, HeroSectionProps>(function He
             initial={prefersReducedMotion ? false : { opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.25 }}
-            className="hero-eyebrow hidden text-xs font-semibold uppercase tracking-[0.26em] text-copper-light md:block"
+            className="hero-eyebrow hidden text-xs font-semibold uppercase tracking-[0.26em] text-copper-light drop-shadow-[0_1px_6px_rgba(35,20,15,0.5)] md:block"
           >
             ResonaPet · Biorisonanza relazionale · Cani e gatti
           </motion.p>
 
-          <h1 className="font-serif text-[length:var(--text-hero)] leading-[1.05] text-ivory md:mt-4">
+          <h1 className="font-serif text-[length:var(--text-hero)] leading-[1.05] text-ivory drop-shadow-[0_2px_14px_rgba(35,20,15,0.45)] md:mt-4">
             {prefersReducedMotion ? (
               <>
                 Il tuo animale non vive isolato.
@@ -95,25 +95,9 @@ export const HeroSection = forwardRef<HTMLElement, HeroSectionProps>(function He
             initial={prefersReducedMotion ? false : { opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: prefersReducedMotion ? 0 : 0.85, duration: motionTokens.text }}
-            className="hidden font-serif text-xl italic text-copper-light md:mt-5 md:block md:text-2xl"
+            className="mt-3 font-serif text-lg italic text-copper-light drop-shadow-[0_2px_10px_rgba(35,20,15,0.45)] md:mt-5 md:text-2xl"
           >
             La relazione ha una frequenza.
-          </motion.p>
-
-          <motion.p
-            initial={prefersReducedMotion ? false : { opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: prefersReducedMotion ? 0 : 1, duration: motionTokens.text }}
-            className="mt-3 max-w-lg text-[length:var(--text-body)] leading-relaxed text-ivory/90 md:mt-5"
-          >
-            <span className="md:hidden">
-              Un percorso personale che considera insieme animale, persona e ambiente.
-            </span>
-            <span className="hidden md:inline">
-              Un percorso personale che considera insieme l'animale, la relazione con la sua persona
-              e l'ambiente quotidiano. La biorisonanza entra nella fase di elaborazione dedicata,
-              svolta tra i tre incontri online.
-            </span>
           </motion.p>
 
           <motion.div
@@ -134,16 +118,11 @@ export const HeroSection = forwardRef<HTMLElement, HeroSectionProps>(function He
               target="_blank"
               rel="noreferrer"
               onClick={() => track("hero_cta_click")}
-              className="text-sm font-semibold text-ivory underline decoration-copper-light/60 underline-offset-4 hover:decoration-ivory"
+              className="text-sm font-semibold text-ivory underline decoration-copper-light/60 underline-offset-4 drop-shadow-[0_1px_6px_rgba(35,20,15,0.5)] hover:decoration-ivory"
             >
               Richiedi l'accesso →
             </a>
           </motion.div>
-
-          <p className="mt-6 hidden text-[length:var(--text-micro)] text-ivory/80 md:block">
-            Tre incontri online · Nessun compito quotidiano · Il pet non deve essere presente in
-            video
-          </p>
         </div>
       </motion.div>
 

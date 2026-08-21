@@ -139,8 +139,8 @@ export function SistemaSection() {
 
         <div className="mt-12 grid gap-6 border-t border-line pt-8 md:mt-16 md:grid-cols-[0.9fr_1.1fr] md:items-center md:gap-12 md:pt-10">
           <RevealImageMask
-            src="/assets/images/resonapet-riconosci-v1.webp"
-            alt="Un cane e un gatto condividono lo stesso ambiente domestico, ognuno nel proprio spazio."
+            src="/assets/images/resonapet-dog-riconosci-v1.webp"
+            alt="Cane disteso su un cuscino in un soggiorno luminoso, con un vaso in terracotta sullo sfondo."
             className="aspect-[4/5] overflow-hidden rounded-[20px] shadow-[0_24px_50px_-20px_rgba(59,42,34,0.28)] md:aspect-[4/3] md:rounded-[24px]"
             imgClassName="h-full w-full object-cover"
           />
@@ -169,16 +169,10 @@ export function SistemaSection() {
 
         <div className="relative mt-12 grid gap-4 overflow-hidden border-t border-copper/35 pt-8 md:mt-16 md:grid-cols-[0.75fr_1.25fr] md:gap-12 md:pt-10">
           <img
-            src="/assets/images/resonapet-frequenza-texture-v1.webp"
+            src="/assets/images/resonapet-frequenza-texture-v2.webp"
             alt=""
             aria-hidden="true"
-            className="pointer-events-none absolute left-1/2 top-[62%] -z-10 h-[170%] w-[130%] max-w-none -translate-x-1/2 -translate-y-1/2 object-cover opacity-80 md:left-[40%] md:top-[68%] md:h-[320%] md:w-[95%]"
-            style={{
-              maskImage:
-                "radial-gradient(75% 62% at 50% 70%, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.4) 55%, transparent 100%)",
-              WebkitMaskImage:
-                "radial-gradient(75% 62% at 50% 70%, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.4) 55%, transparent 100%)",
-            }}
+            className="pointer-events-none absolute -left-10 -top-6 -z-10 w-[145%] max-w-none md:left-0 md:-top-10 md:w-[68%]"
           />
           <div>
             <p className="text-xs font-semibold uppercase tracking-[0.24em] text-copper-text">
