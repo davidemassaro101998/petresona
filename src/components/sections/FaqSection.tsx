@@ -1,6 +1,7 @@
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
 import { InteractiveHoverButton } from "@/components/ui/interactive-hover-button"
 import { track } from "@/lib/analytics"
+import { cn } from "@/lib/utils"
 import { SHOW_PRICE, PRICE_EUR } from "@/config/offer"
 import { WHATSAPP_LINK_GENERAL } from "@/config/contact"
 
@@ -39,23 +40,56 @@ const FAQS = [
     : []),
 ]
 
+/** Rendered twice (mobile plain, desktop overlaid on the photo) since the
+ * color treatment differs enough that sharing via className alone would
+ * be messier than just parameterizing it. Only one copy is ever visible
+ * at a given breakpoint (the other is display:none, so no duplicate
+ * interaction/tracking risk). */
+function FaqAccordion({ dark }: { dark: boolean }) {
+  return (
+    <Accordion
+      type="single"
+      collapsible
+      defaultValue="item-0"
+      className={cn("mt-6", dark && "[&_svg]:text-ivory/70")}
+      onValueChange={(v) => v && track("faq_item_open", { item: v })}
+    >
+      {FAQS.map((item, i) => (
+        <AccordionItem
+          key={item.q}
+          value={`item-${i}`}
+          className={dark ? "border-ivory/25 data-[state=open]:border-b-copper-light" : "border-line data-[state=open]:border-b-copper"}
+        >
+          <AccordionTrigger
+            className={cn(
+              "font-serif text-[1.02rem] hover:no-underline",
+              dark ? "text-ivory drop-shadow-[0_2px_8px_rgba(35,20,15,0.55)]" : "text-ink",
+            )}
+          >
+            {item.q}
+          </AccordionTrigger>
+          <AccordionContent
+            className={cn(
+              "max-w-[62ch] text-[length:var(--text-small)] leading-relaxed",
+              dark ? "text-ivory/90 drop-shadow-[0_1px_6px_rgba(35,20,15,0.5)]" : "text-brown/90",
+            )}
+          >
+            {item.a}
+          </AccordionContent>
+        </AccordionItem>
+      ))}
+    </Accordion>
+  )
+}
+
 export function FaqSection() {
   return (
     <section id="faq" className="py-16 md:py-20">
-      {/* Mobile: the cat photo runs edge-to-edge instead of a small boxed
-          image, so it reads as a real photo instead of a cramped thumbnail
-          next to the accordion. */}
-      <div className="relative left-1/2 right-1/2 -mx-[50vw] mb-10 aspect-[4/5] w-screen md:hidden">
-        <img
-          src="/assets/images/resonapet-cat-faq-v1.webp"
-          alt="Gatto tigrato seduto su una mensola in legno, accanto a un vaso in terracotta."
-          className="absolute inset-0 h-full w-full object-cover"
-          loading="lazy"
-        />
-      </div>
-
-      <div className="md:grid md:grid-cols-[42%_1fr]">
-        <div className="relative hidden md:block">
+      {/* Mobile: kept simple — the cat photo runs edge-to-edge above a
+          plain-background accordion, instead of trying to fit an
+          interactive overlay on a photo on a small screen. */}
+      <div className="md:hidden">
+        <div className="relative left-1/2 right-1/2 -mx-[50vw] mb-10 aspect-[4/5] w-screen">
           <img
             src="/assets/images/resonapet-cat-faq-v1.webp"
             alt="Gatto tigrato seduto su una mensola in legno, accanto a un vaso in terracotta."
@@ -63,32 +97,31 @@ export function FaqSection() {
             loading="lazy"
           />
         </div>
-
-        <div className="px-5 md:px-12 md:py-4 lg:px-16">
+        <div className="px-5">
           <h2 className="font-serif text-[length:var(--text-section)] text-ink">Le domande più importanti.</h2>
+          <FaqAccordion dark={false} />
+        </div>
+      </div>
 
-          <Accordion
-            type="single"
-            collapsible
-            defaultValue="item-0"
-            className="mt-6"
-            onValueChange={(v) => v && track("faq_item_open", { item: v })}
-          >
-            {FAQS.map((item, i) => (
-              <AccordionItem
-                key={item.q}
-                value={`item-${i}`}
-                className="border-line data-[state=open]:border-b-copper"
-              >
-                <AccordionTrigger className="font-serif text-[1.02rem] text-ink hover:no-underline">
-                  {item.q}
-                </AccordionTrigger>
-                <AccordionContent className="max-w-[62ch] text-[length:var(--text-small)] leading-relaxed text-brown/90">
-                  {item.a}
-                </AccordionContent>
-              </AccordionItem>
-            ))}
-          </Accordion>
+      {/* Desktop: full-bleed edge-to-edge, same principle as "Lo riconosci?" —
+          the FAQ sits directly on the photo with a strong scrim for contrast. */}
+      <div className="relative left-1/2 right-1/2 -mx-[50vw] hidden w-screen md:block">
+        <div className="relative min-h-[720px]">
+          <img
+            src="/assets/images/resonapet-cat-faq-wide-v1.webp"
+            alt="Gatto tigrato seduto su una mensola in legno, accanto a un vaso in terracotta."
+            className="absolute inset-0 h-full w-full object-cover"
+            loading="lazy"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-brown-deep via-brown-deep/78 to-brown-deep/15" />
+          <div className="relative mx-auto max-w-6xl px-5 py-16 md:px-10">
+            <div className="max-w-xl">
+              <h2 className="font-serif text-[length:var(--text-section)] text-ivory drop-shadow-[0_2px_10px_rgba(35,20,15,0.5)]">
+                Le domande più importanti.
+              </h2>
+              <FaqAccordion dark />
+            </div>
+          </div>
         </div>
       </div>
 

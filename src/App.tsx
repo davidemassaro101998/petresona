@@ -7,7 +7,6 @@ import { GiorgiaSection } from "@/components/sections/GiorgiaSection"
 import { VeterinariaSection } from "@/components/sections/VeterinariaSection"
 import { OffertaSection } from "@/components/sections/OffertaSection"
 import { FaqSection } from "@/components/sections/FaqSection"
-import { FrequenzaClosingSection } from "@/components/sections/FrequenzaClosingSection"
 
 function App() {
   return (
@@ -24,7 +23,6 @@ function App() {
         <VeterinariaSection />
         <OffertaSection />
         <FaqSection />
-        <FrequenzaClosingSection />
       </main>
       <SiteFooter />
       <MobileCta />
