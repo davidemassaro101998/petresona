@@ -42,6 +42,18 @@ export const HeroSection = forwardRef<HTMLElement, HeroSectionProps>(function He
         className="absolute inset-0 z-0 overflow-hidden"
         style={prefersReducedMotion || !exitImageScale ? undefined : { scale: exitImageScale }}
       >
+        {/* Mobile-only blurred backdrop: the mobile crop is a horizontal
+            photo shown with object-contain (so the dog and cat are never
+            cropped out), which otherwise leaves flat-color letterbox bars
+            with a hard seam against the photo. A softly blurred, scaled-up
+            copy of the same image fills those bars instead, so they read
+            as a soft edge, not a rendering gap. */}
+        <img
+          src="/assets/images/hero-dogcat-mobile-v1.webp"
+          alt=""
+          aria-hidden="true"
+          className="absolute inset-0 h-full w-full scale-125 object-cover object-center opacity-80 blur-3xl md:hidden"
+        />
         <picture className="absolute inset-0 block h-full w-full">
           <source media="(max-width: 767px)" srcSet="/assets/images/hero-dogcat-mobile-v1.webp" />
           <img
