@@ -128,6 +128,12 @@ export function SistemaSection() {
             loading="lazy"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-brown-deep via-brown-deep/70 to-brown-deep/15" />
+          <div
+            className="absolute inset-0"
+            style={{
+              background: "radial-gradient(60% 65% at 28% 55%, rgba(35,20,15,0.5) 0%, rgba(35,20,15,0.15) 55%, transparent 80%)",
+            }}
+          />
           <div className="absolute inset-0 flex items-center">
             <div className="mx-auto w-full max-w-6xl px-5 py-10 md:px-10">
               <h3 className="max-w-xl font-serif text-2xl leading-tight text-ivory drop-shadow-[0_2px_10px_rgba(35,20,15,0.5)] md:text-3xl">

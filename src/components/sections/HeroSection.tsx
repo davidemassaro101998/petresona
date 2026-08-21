@@ -51,6 +51,15 @@ export const HeroSection = forwardRef<HTMLElement, HeroSectionProps>(function He
           />
         </picture>
         <div className="absolute inset-0 bg-gradient-to-t from-brown/85 via-brown/20 to-transparent" />
+        {/* Focus veil: a soft radial darkening centered behind the text
+            block (not a flat wash across the whole photo), so the copy
+            reads clearly while the rest of the image stays bright. */}
+        <div
+          className="absolute inset-0 md:hidden"
+          style={{
+            background: "radial-gradient(65% 55% at 32% 88%, rgba(35,20,15,0.55) 0%, rgba(35,20,15,0.18) 55%, transparent 80%)",
+          }}
+        />
         <div
           className="absolute inset-0 hidden md:block"
           style={{
