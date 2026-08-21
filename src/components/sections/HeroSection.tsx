@@ -50,17 +50,23 @@ export const HeroSection = forwardRef<HTMLElement, HeroSectionProps>(function He
             className="absolute inset-0 h-full w-full object-cover object-center"
           />
         </picture>
-        <div className="absolute inset-0 bg-gradient-to-t from-brown/90 via-brown/25 to-transparent md:bg-gradient-to-r md:from-brown/78 md:via-brown/32 md:to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-brown/85 via-brown/20 to-transparent" />
+        <div
+          className="absolute inset-0 hidden md:block"
+          style={{
+            background: "radial-gradient(50% 60% at 80% 90%, rgba(59,42,34,0.6) 0%, rgba(59,42,34,0.15) 55%, transparent 80%)",
+          }}
+        />
         {!prefersReducedMotion && exitOverlayOpacity && (
           <motion.div className="absolute inset-0 bg-brown" style={{ opacity: exitOverlayOpacity }} />
         )}
       </motion.div>
 
       <motion.div
-        className="relative z-10 mx-auto w-full max-w-6xl px-5 md:px-10"
+        className="relative z-10 mx-auto flex w-full max-w-6xl px-5 md:px-10 md:justify-end"
         style={Object.keys(panelStyle).length ? panelStyle : undefined}
       >
-        <div className="max-w-xl">
+        <div className="max-w-xl md:max-w-lg">
           <motion.p
             initial={prefersReducedMotion ? false : { opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -70,7 +76,7 @@ export const HeroSection = forwardRef<HTMLElement, HeroSectionProps>(function He
             ResonaPet · Biorisonanza relazionale · Cani e gatti
           </motion.p>
 
-          <h1 className="font-serif text-[length:var(--text-hero)] leading-[1.05] text-ivory drop-shadow-[0_2px_14px_rgba(35,20,15,0.45)] md:mt-4">
+          <h1 className="font-serif text-[2.1rem] leading-[1.1] text-ivory drop-shadow-[0_2px_14px_rgba(35,20,15,0.45)] md:mt-3 md:text-[2.65rem]">
             {prefersReducedMotion ? (
               <>
                 Il tuo animale non vive isolato.
@@ -95,7 +101,7 @@ export const HeroSection = forwardRef<HTMLElement, HeroSectionProps>(function He
             initial={prefersReducedMotion ? false : { opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: prefersReducedMotion ? 0 : 0.85, duration: motionTokens.text }}
-            className="mt-3 font-serif text-lg italic text-copper-light drop-shadow-[0_2px_10px_rgba(35,20,15,0.45)] md:mt-5 md:text-2xl"
+            className="mt-2 font-serif text-base italic text-copper-light drop-shadow-[0_2px_10px_rgba(35,20,15,0.45)] md:mt-3 md:text-xl"
           >
             La relazione ha una frequenza.
           </motion.p>
@@ -104,7 +110,7 @@ export const HeroSection = forwardRef<HTMLElement, HeroSectionProps>(function He
             initial={prefersReducedMotion ? false : { opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: prefersReducedMotion ? 0 : 1.15, duration: motionTokens.text }}
-            className="mt-6 flex flex-wrap items-center gap-6 md:mt-8"
+            className="mt-5 flex flex-wrap items-center gap-4 md:mt-6"
           >
             <InteractiveHoverButton
               href="#come-si-svolge"
@@ -118,7 +124,7 @@ export const HeroSection = forwardRef<HTMLElement, HeroSectionProps>(function He
               target="_blank"
               rel="noreferrer"
               onClick={() => track("hero_cta_click")}
-              className="text-sm font-semibold text-ivory underline decoration-copper-light/60 underline-offset-4 drop-shadow-[0_1px_6px_rgba(35,20,15,0.5)] hover:decoration-ivory"
+              className="inline-flex items-center justify-center rounded-full bg-copper px-6 py-3 text-sm font-semibold text-ivory shadow-[0_10px_30px_-12px_rgba(35,20,15,0.6)] transition-colors hover:bg-copper-text"
             >
               Richiedi l'accesso →
             </a>

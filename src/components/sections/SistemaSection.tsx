@@ -82,22 +82,12 @@ export function SistemaSection() {
     <section id="sistema" className="relative py-16 md:py-20">
       <div ref={ref} className="mx-auto max-w-6xl px-5 md:px-10">
         <div className="grid gap-8 md:grid-cols-[0.9fr_1.1fr] md:items-center md:gap-12">
-          <motion.div
-            initial={prefersReducedMotion ? false : { opacity: 0.65, scale: 1.04 }}
-            animate={inView ? { opacity: 1, scale: 1 } : {}}
-            transition={{ delay: prefersReducedMotion ? 0 : 0.4, duration: motionTokens.image, ease: motionTokens.easeOut as unknown as [number, number, number, number] }}
-            className="aspect-[4/5] overflow-hidden rounded-[20px] md:aspect-[4/3] md:rounded-[24px]"
-          >
-            <picture className="block h-full w-full">
-              <source media="(max-width: 767px)" srcSet="/assets/images/resonapet-cat-mobile-v2.webp" />
-              <img
-                src="/assets/images/resonapet-cat-desktop-v2.webp"
-                alt="Gatto seduto su un divano, osservando lo spazio domestico intorno a sé."
-                className="h-full w-full object-cover"
-                loading="lazy"
-              />
-            </picture>
-          </motion.div>
+          <RevealImageMask
+            src="/assets/images/resonapet-cat-desktop-v2.webp"
+            alt="Gatto seduto su un divano, osservando lo spazio domestico intorno a sé."
+            className="aspect-[4/5] overflow-hidden rounded-[20px] shadow-[0_24px_50px_-20px_rgba(59,42,34,0.28)] md:aspect-[4/3] md:rounded-[24px]"
+            imgClassName="h-full w-full object-cover"
+          />
 
           <div>
             <p className="text-xs font-semibold uppercase tracking-[0.24em] text-copper-text">
@@ -137,14 +127,8 @@ export function SistemaSection() {
 
         <TriadNodes />
 
-        <div className="mt-12 grid gap-6 border-t border-line pt-8 md:mt-16 md:grid-cols-[0.9fr_1.1fr] md:items-center md:gap-12 md:pt-10">
-          <RevealImageMask
-            src="/assets/images/resonapet-dog-riconosci-v1.webp"
-            alt="Cane disteso su un cuscino in un soggiorno luminoso, con un vaso in terracotta sullo sfondo."
-            className="aspect-[4/5] overflow-hidden rounded-[20px] shadow-[0_24px_50px_-20px_rgba(59,42,34,0.28)] md:aspect-[4/3] md:rounded-[24px]"
-            imgClassName="h-full w-full object-cover"
-          />
-          <div>
+        <div className="mt-12 grid gap-6 border-t border-line pt-8 md:mt-16 md:grid-cols-[1.1fr_0.9fr] md:items-center md:gap-12 md:pt-10">
+          <div className="md:order-first">
             <h3 className="max-w-xl font-serif text-2xl leading-tight text-ink md:text-3xl">
               Lo riconosci?
             </h3>
@@ -165,39 +149,12 @@ export function SistemaSection() {
               ascoltare.
             </p>
           </div>
-        </div>
-
-        <div className="relative mt-12 grid gap-4 overflow-hidden border-t border-copper/35 pt-8 md:mt-16 md:grid-cols-[0.75fr_1.25fr] md:gap-12 md:pt-10">
-          <img
-            src="/assets/images/resonapet-frequenza-texture-v2.webp"
-            alt=""
-            aria-hidden="true"
-            className="pointer-events-none absolute -left-10 -top-6 -z-10 w-[145%] max-w-none md:left-0 md:-top-10 md:w-[68%]"
+          <RevealImageMask
+            src="/assets/images/resonapet-dog-riconosci-v1.webp"
+            alt="Cane disteso su un cuscino in un soggiorno luminoso, con un vaso in terracotta sullo sfondo."
+            className="order-first aspect-[4/5] overflow-hidden rounded-[20px] shadow-[0_24px_50px_-20px_rgba(59,42,34,0.28)] md:order-last md:aspect-[4/3] md:rounded-[24px]"
+            imgClassName="h-full w-full object-cover"
           />
-          <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.24em] text-copper-text">
-              Il ruolo della biorisonanza
-            </p>
-            <h3 className="mt-3 font-serif text-2xl leading-tight text-ink md:text-3xl">
-              Non tocca. Si sintonizza.
-            </h3>
-          </div>
-          <div className="max-w-2xl text-[length:var(--text-body)] leading-relaxed text-brown/90">
-            <p>
-              L'energia non ha bisogno di contatto per essere letta. Ogni animale ha una sua
-              firma energetica — un'antenna su cui il sistema di biorisonanza integrato
-              ResonaPet si sintonizza, ovunque voi siate.
-            </p>
-            <p className="mt-4">
-              Da lì legge tra un vastissimo campo di frequenze, portando alla luce ciò che
-              ancora non si vede — spesso proprio quello che chi gli è vicino sentiva, senza
-              saperlo spiegare.
-            </p>
-            <p className="mt-4 text-[length:var(--text-small)]">
-              Il lavoro di biorisonanza non produce diagnosi, referti o prescrizioni
-              medico-veterinarie e non sostituisce il medico veterinario.
-            </p>
-          </div>
         </div>
       </div>
     </section>
