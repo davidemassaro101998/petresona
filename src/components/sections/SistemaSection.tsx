@@ -182,29 +182,48 @@ export function SistemaSection() {
 
         <TriadNodes />
 
-        <div className="mt-12 border-t border-line pt-8 md:mt-16 md:pt-10">
-          <h3 className="max-w-xl font-serif text-2xl leading-tight text-ink md:text-3xl">
-            Lo riconosci?
-          </h3>
-          <div className="mt-5 grid max-w-2xl gap-3 text-[length:var(--text-body)] italic leading-relaxed text-brown/90">
-            <p>
-              Il tremore che comincia ai primi tuoni, e non si ferma nemmeno quando il
-              temporale è già lontano.
-            </p>
-            <p>I segni lasciati sulla porta, nei minuti in cui provi solo ad allontanarti.</p>
-            <p>Un cambiamento improvviso, senza una spiegazione — nemmeno dal veterinario.</p>
-            <p>
-              Gli occhi che evitano i tuoi, proprio nei momenti in cui vorresti sentirlo
-              vicino.
-            </p>
+        <div className="relative left-1/2 right-1/2 -mx-[50vw] mt-12 w-screen md:mt-16">
+          <div className="relative aspect-[4/5] min-h-[460px] sm:aspect-[16/10] md:aspect-[21/9] md:min-h-[560px]">
+            <img
+              src="/assets/images/resonapet-riconosci-v1.webp"
+              alt="Un cane e un gatto condividono lo stesso ambiente domestico, ognuno nel proprio spazio."
+              className="absolute inset-0 h-full w-full object-cover"
+              loading="lazy"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-brown-deep via-brown-deep/70 to-brown-deep/15" />
+            <div className="absolute inset-0 flex items-end">
+              <div className="mx-auto w-full max-w-6xl px-5 pb-10 md:px-10 md:pb-14">
+                <h3 className="max-w-xl font-serif text-2xl leading-tight text-ivory md:text-3xl">
+                  Lo riconosci?
+                </h3>
+                <div className="mt-5 grid max-w-2xl gap-3 text-[length:var(--text-body)] italic leading-relaxed text-ivory/90">
+                  <p>
+                    Il tremore che comincia ai primi tuoni, e non si ferma nemmeno quando il
+                    temporale è già lontano.
+                  </p>
+                  <p>I segni lasciati sulla porta, nei minuti in cui provi solo ad allontanarti.</p>
+                  <p>Un cambiamento improvviso, senza una spiegazione — nemmeno dal veterinario.</p>
+                  <p>
+                    Gli occhi che evitano i tuoi, proprio nei momenti in cui vorresti sentirlo
+                    vicino.
+                  </p>
+                </div>
+                <p className="mt-5 max-w-2xl text-[length:var(--text-body)] leading-relaxed text-ivory/90">
+                  Non è colpa di nessuno. È la profondità del legame che segnala qualcosa da
+                  ascoltare.
+                </p>
+              </div>
+            </div>
           </div>
-          <p className="mt-5 max-w-2xl text-[length:var(--text-body)] leading-relaxed text-brown/90">
-            Non è colpa di nessuno. È la profondità del legame che segnala qualcosa da
-            ascoltare.
-          </p>
         </div>
 
-        <div className="mt-12 grid gap-4 border-t border-copper/35 pt-8 md:mt-16 md:grid-cols-[0.75fr_1.25fr] md:gap-12 md:pt-10">
+        <div className="relative mt-12 grid gap-4 overflow-hidden border-t border-copper/35 pt-8 md:mt-16 md:grid-cols-[0.75fr_1.25fr] md:gap-12 md:pt-10">
+          <img
+            src="/assets/images/resonapet-frequenza-texture-v1.webp"
+            alt=""
+            aria-hidden="true"
+            className="pointer-events-none absolute inset-0 -z-10 h-full w-full object-cover opacity-[0.12] mix-blend-multiply"
+          />
           <div>
             <p className="text-xs font-semibold uppercase tracking-[0.24em] text-copper-text">
               Il ruolo della biorisonanza
