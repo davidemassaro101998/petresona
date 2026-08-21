@@ -23,33 +23,6 @@ const TRIAD = [
   },
 ]
 
-/** Ripples outward from a center point, on loop — "si sintonizza" shown,
- * not only described. Falls back to a couple of still rings when motion
- * is reduced, so the idea still reads without relying on animation. */
-function ResonanceMark() {
-  const prefersReducedMotion = useReducedMotion()
-
-  return (
-    <div className="relative mt-7 h-24 w-24 md:h-28 md:w-28" aria-hidden="true">
-      <span className="absolute inset-0 m-auto h-[7px] w-[7px] rounded-full bg-copper" />
-      {prefersReducedMotion ? (
-        <>
-          <span className="absolute inset-0 m-auto h-[45%] w-[45%] rounded-full border-[1.5px] border-copper/35" />
-          <span className="absolute inset-0 m-auto h-[85%] w-[85%] rounded-full border border-copper/18" />
-        </>
-      ) : (
-        [0, 1, 2].map((i) => (
-          <span
-            key={i}
-            className="animate-resonance-ping absolute inset-0 m-auto rounded-full border border-copper"
-            style={{ animationDelay: `${i * 1.2}s` }}
-          />
-        ))
-      )}
-    </div>
-  )
-}
-
 function TriadNodes() {
   const [openKey, setOpenKey] = useState<string | null>(null)
   const prefersReducedMotion = useReducedMotion()
@@ -190,13 +163,20 @@ export function SistemaSection() {
               className="absolute inset-0 h-full w-full object-cover"
               loading="lazy"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-brown-deep via-brown-deep/70 to-brown-deep/15" />
-            <div className="absolute inset-0 flex items-end">
-              <div className="mx-auto w-full max-w-6xl px-5 pb-10 md:px-10 md:pb-14">
-                <h3 className="max-w-xl font-serif text-2xl leading-tight text-ivory md:text-3xl">
+            <div className="absolute inset-0 bg-gradient-to-t from-brown-deep/85 via-brown-deep/78 to-brown-deep/40" />
+            <div
+              className="absolute inset-0"
+              style={{
+                background:
+                  "radial-gradient(60% 55% at 50% 50%, rgba(35,20,15,0.55) 0%, rgba(35,20,15,0.1) 70%, transparent 100%)",
+              }}
+            />
+            <div className="absolute inset-0 flex items-center">
+              <div className="mx-auto w-full max-w-6xl px-5 py-10 md:px-10">
+                <h3 className="max-w-xl font-serif text-2xl leading-tight text-ivory drop-shadow-[0_2px_10px_rgba(35,20,15,0.5)] md:text-3xl">
                   Lo riconosci?
                 </h3>
-                <div className="mt-5 grid max-w-2xl gap-3 text-[length:var(--text-body)] italic leading-relaxed text-ivory/90">
+                <div className="mt-5 grid max-w-2xl gap-3 text-[length:var(--text-body)] font-medium italic leading-relaxed text-ivory drop-shadow-[0_2px_10px_rgba(35,20,15,0.5)]">
                   <p>
                     Il tremore che comincia ai primi tuoni, e non si ferma nemmeno quando il
                     temporale è già lontano.
@@ -208,7 +188,7 @@ export function SistemaSection() {
                     vicino.
                   </p>
                 </div>
-                <p className="mt-5 max-w-2xl text-[length:var(--text-body)] leading-relaxed text-ivory/90">
+                <p className="mt-5 max-w-2xl text-[length:var(--text-body)] font-medium leading-relaxed text-ivory drop-shadow-[0_2px_10px_rgba(35,20,15,0.5)]">
                   Non è colpa di nessuno. È la profondità del legame che segnala qualcosa da
                   ascoltare.
                 </p>
@@ -222,7 +202,11 @@ export function SistemaSection() {
             src="/assets/images/resonapet-frequenza-texture-v1.webp"
             alt=""
             aria-hidden="true"
-            className="pointer-events-none absolute inset-0 -z-10 h-full w-full object-cover opacity-[0.12] mix-blend-multiply"
+            className="pointer-events-none absolute left-1/2 top-1/2 -z-10 h-[130%] w-[95%] max-w-none -translate-x-1/2 -translate-y-1/2 object-cover opacity-70 md:left-[38%] md:h-[230%] md:w-[65%]"
+            style={{
+              maskImage: "radial-gradient(closest-side, black 40%, transparent 100%)",
+              WebkitMaskImage: "radial-gradient(closest-side, black 40%, transparent 100%)",
+            }}
           />
           <div>
             <p className="text-xs font-semibold uppercase tracking-[0.24em] text-copper-text">
@@ -231,7 +215,6 @@ export function SistemaSection() {
             <h3 className="mt-3 font-serif text-2xl leading-tight text-ink md:text-3xl">
               Non tocca. Si sintonizza.
             </h3>
-            <ResonanceMark />
           </div>
           <div className="max-w-2xl text-[length:var(--text-body)] leading-relaxed text-brown/90">
             <p>
