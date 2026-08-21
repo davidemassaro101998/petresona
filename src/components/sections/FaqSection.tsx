@@ -45,10 +45,10 @@ export function FaqSection() {
       {/* Mobile: the cat photo runs edge-to-edge instead of a small boxed
           image, so it reads as a real photo instead of a cramped thumbnail
           next to the accordion. */}
-      <div className="relative left-1/2 right-1/2 -mx-[50vw] mb-10 aspect-[4/3] w-screen md:hidden">
+      <div className="relative left-1/2 right-1/2 -mx-[50vw] mb-10 aspect-[4/5] w-screen md:hidden">
         <img
-          src="/assets/images/resonapet-cat-desktop-v2.webp"
-          alt="Gatto seduto su un divano, osservando lo spazio domestico intorno a sé."
+          src="/assets/images/resonapet-cat-faq-v1.webp"
+          alt="Gatto tigrato seduto su una mensola in legno, accanto a un vaso in terracotta."
           className="absolute inset-0 h-full w-full object-cover"
           loading="lazy"
         />
@@ -57,8 +57,8 @@ export function FaqSection() {
       <div className="md:grid md:grid-cols-[42%_1fr]">
         <div className="relative hidden md:block">
           <img
-            src="/assets/images/resonapet-cat-desktop-v2.webp"
-            alt="Gatto seduto su un divano, osservando lo spazio domestico intorno a sé."
+            src="/assets/images/resonapet-cat-faq-v1.webp"
+            alt="Gatto tigrato seduto su una mensola in legno, accanto a un vaso in terracotta."
             className="absolute inset-0 h-full w-full object-cover"
             loading="lazy"
           />
