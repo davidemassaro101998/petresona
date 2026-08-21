@@ -97,7 +97,7 @@ export function FaqSection() {
             loading="lazy"
           />
         </div>
-        <div className="freq-card mx-5 px-5 py-8">
+        <div className="px-5">
           <h2 className="font-serif text-[length:var(--text-section)] text-ink">Le domande più importanti.</h2>
           <FaqAccordion dark={false} />
         </div>
@@ -126,7 +126,7 @@ export function FaqSection() {
       </div>
 
       <div className="mx-auto max-w-6xl px-5 md:px-10">
-        <div className="freq-card mx-auto mt-14 max-w-3xl px-6 py-10 text-center md:mt-16 md:px-10 md:py-12">
+        <div className="mx-auto mt-14 max-w-3xl border-t border-line pt-10 text-center md:mt-16 md:pt-12">
           <h2 className="mx-auto max-w-lg font-serif text-2xl text-ink md:text-3xl">
             Iniziamo da ciò che vivi ogni giorno con il tuo pet.
           </h2>

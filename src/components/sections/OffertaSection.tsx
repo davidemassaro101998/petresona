@@ -25,7 +25,7 @@ export function OffertaSection() {
 
   return (
     <section id="offerta" className="py-16 md:py-20">
-      <div className="freq-card mx-auto max-w-6xl px-5 py-10 md:px-10 md:py-14">
+      <div className="mx-auto max-w-6xl px-5 md:px-10">
         <h2 className="max-w-2xl font-serif text-[length:var(--text-section)] leading-[1.15] text-ink">
           Quando questo percorso può essere adatto.
         </h2>
