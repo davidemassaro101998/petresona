@@ -47,7 +47,7 @@ export const HeroSection = forwardRef<HTMLElement, HeroSectionProps>(function He
           <img
             src="/assets/images/hero-dogcat-desktop-v1.webp"
             alt="Un cane e un gatto condividono lo stesso soggiorno luminoso, ognuno nel proprio spazio."
-            className="absolute inset-0 h-full w-full object-cover object-center"
+            className="absolute inset-0 h-full w-full object-contain object-center md:object-cover"
           />
         </picture>
         <div className="absolute inset-0 bg-gradient-to-t from-brown/85 via-brown/20 to-transparent" />

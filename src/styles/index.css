@@ -64,7 +64,6 @@
 :root {
   --text-hero: clamp(1.9rem, 4.4vw, 4rem);
   --text-section: clamp(2rem, 3.2vw, 3rem);
-  --text-subtitle: clamp(1.25rem, 1.8vw, 1.625rem);
   --text-body: clamp(1rem, 0.3vw + 0.94rem, 1.125rem);
   --text-small: 0.9375rem;
   --text-micro: 0.8125rem;
