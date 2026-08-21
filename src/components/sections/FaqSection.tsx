@@ -1,6 +1,5 @@
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
 import { InteractiveHoverButton } from "@/components/ui/interactive-hover-button"
-import { RevealImageMask } from "@/components/ui/reveal-image-mask"
 import { track } from "@/lib/analytics"
 import { SHOW_PRICE, PRICE_EUR } from "@/config/offer"
 import { WHATSAPP_LINK_GENERAL } from "@/config/contact"
@@ -55,43 +54,45 @@ export function FaqSection() {
         />
       </div>
 
-      <div className="mx-auto max-w-6xl px-5 md:px-10">
-        <div className="md:grid md:grid-cols-[0.8fr_1.2fr] md:items-start md:gap-12">
-          <RevealImageMask
+      <div className="md:grid md:grid-cols-[42%_1fr]">
+        <div className="relative hidden md:block">
+          <img
             src="/assets/images/resonapet-cat-desktop-v2.webp"
             alt="Gatto seduto su un divano, osservando lo spazio domestico intorno a sé."
-            className="sticky top-28 hidden aspect-[4/5] overflow-hidden rounded-[24px] shadow-[0_24px_50px_-20px_rgba(59,42,34,0.28)] md:block"
-            imgClassName="h-full w-full object-cover"
+            className="absolute inset-0 h-full w-full object-cover"
+            loading="lazy"
           />
-
-          <div>
-            <h2 className="font-serif text-[length:var(--text-section)] text-ink">Le domande più importanti.</h2>
-
-            <Accordion
-              type="single"
-              collapsible
-              defaultValue="item-0"
-              className="mt-6"
-              onValueChange={(v) => v && track("faq_item_open", { item: v })}
-            >
-              {FAQS.map((item, i) => (
-                <AccordionItem
-                  key={item.q}
-                  value={`item-${i}`}
-                  className="border-line data-[state=open]:border-b-copper"
-                >
-                  <AccordionTrigger className="font-serif text-[1.02rem] text-ink hover:no-underline">
-                    {item.q}
-                  </AccordionTrigger>
-                  <AccordionContent className="max-w-[62ch] text-[length:var(--text-small)] leading-relaxed text-brown/90">
-                    {item.a}
-                  </AccordionContent>
-                </AccordionItem>
-              ))}
-            </Accordion>
-          </div>
         </div>
 
+        <div className="px-5 md:px-12 md:py-4 lg:px-16">
+          <h2 className="font-serif text-[length:var(--text-section)] text-ink">Le domande più importanti.</h2>
+
+          <Accordion
+            type="single"
+            collapsible
+            defaultValue="item-0"
+            className="mt-6"
+            onValueChange={(v) => v && track("faq_item_open", { item: v })}
+          >
+            {FAQS.map((item, i) => (
+              <AccordionItem
+                key={item.q}
+                value={`item-${i}`}
+                className="border-line data-[state=open]:border-b-copper"
+              >
+                <AccordionTrigger className="font-serif text-[1.02rem] text-ink hover:no-underline">
+                  {item.q}
+                </AccordionTrigger>
+                <AccordionContent className="max-w-[62ch] text-[length:var(--text-small)] leading-relaxed text-brown/90">
+                  {item.a}
+                </AccordionContent>
+              </AccordionItem>
+            ))}
+          </Accordion>
+        </div>
+      </div>
+
+      <div className="mx-auto max-w-6xl px-5 md:px-10">
         <div className="mx-auto mt-14 max-w-3xl border-t border-line pt-10 text-center md:mt-16 md:pt-12">
           <h2 className="mx-auto max-w-lg font-serif text-2xl text-ink md:text-3xl">
             Iniziamo da ciò che vivi ogni giorno con il tuo pet.

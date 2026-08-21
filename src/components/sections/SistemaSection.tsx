@@ -153,6 +153,35 @@ export function SistemaSection() {
           </div>
         </div>
       </div>
+
+      <div className="mx-auto max-w-6xl px-5 md:px-10">
+        <div className="mt-12 grid gap-4 border-t border-copper/35 pt-8 md:mt-16 md:grid-cols-[0.75fr_1.25fr] md:gap-12 md:pt-10">
+          <div>
+            <p className="text-xs font-semibold uppercase tracking-[0.24em] text-copper-text">
+              Il ruolo della biorisonanza
+            </p>
+            <h3 className="mt-3 font-serif text-2xl leading-tight text-ink md:text-3xl">
+              Non tocca. Si sintonizza.
+            </h3>
+          </div>
+          <div className="max-w-2xl text-[length:var(--text-body)] leading-relaxed text-brown/90">
+            <p>
+              L'energia non ha bisogno di contatto per essere letta. Ogni animale ha una sua
+              firma energetica — un'antenna su cui il sistema di biorisonanza integrato
+              ResonaPet si sintonizza, ovunque voi siate.
+            </p>
+            <p className="mt-4">
+              Da lì legge tra un vastissimo campo di frequenze, portando alla luce ciò che
+              ancora non si vede — spesso proprio quello che chi gli è vicino sentiva, senza
+              saperlo spiegare.
+            </p>
+            <p className="mt-4 text-[length:var(--text-small)]">
+              Il lavoro di biorisonanza non produce diagnosi, referti o prescrizioni
+              medico-veterinarie e non sostituisce il medico veterinario.
+            </p>
+          </div>
+        </div>
+      </div>
     </section>
   )
 }
