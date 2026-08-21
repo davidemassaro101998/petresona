@@ -43,10 +43,10 @@ export const HeroSection = forwardRef<HTMLElement, HeroSectionProps>(function He
         style={prefersReducedMotion || !exitImageScale ? undefined : { scale: exitImageScale }}
       >
         <picture className="absolute inset-0 block h-full w-full">
-          <source media="(max-width: 767px)" srcSet="/assets/images/hero-dog-mobile-v2.webp" />
+          <source media="(max-width: 767px)" srcSet="/assets/images/hero-dogcat-mobile-v1.webp" />
           <img
-            src="/assets/images/hero-dog-desktop-v2.webp"
-            alt="Cane appoggiato su un tappeto in un soggiorno luminoso, con la casa e i suoi spazi quotidiani sullo sfondo."
+            src="/assets/images/hero-dogcat-desktop-v1.webp"
+            alt="Un cane e un gatto condividono lo stesso soggiorno luminoso, ognuno nel proprio spazio."
             className="absolute inset-0 h-full w-full object-cover object-center"
           />
         </picture>

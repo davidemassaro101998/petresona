@@ -1,5 +1,6 @@
 import { motion, useInView } from "framer-motion"
 import { useRef, useState } from "react"
+import { RevealImageMask } from "@/components/ui/reveal-image-mask"
 import { VerticalCutReveal } from "@/components/ui/vertical-cut-reveal"
 import { motionTokens } from "@/styles/motion"
 import { useReducedMotion } from "@/lib/use-reduced-motion"
@@ -80,7 +81,24 @@ export function SistemaSection() {
   return (
     <section id="sistema" className="relative py-16 md:py-20">
       <div ref={ref} className="mx-auto max-w-6xl px-5 md:px-10">
-        <div className="grid gap-8 md:grid-cols-[1.1fr_0.9fr] md:items-center md:gap-12">
+        <div className="grid gap-8 md:grid-cols-[0.9fr_1.1fr] md:items-center md:gap-12">
+          <motion.div
+            initial={prefersReducedMotion ? false : { opacity: 0.65, scale: 1.04 }}
+            animate={inView ? { opacity: 1, scale: 1 } : {}}
+            transition={{ delay: prefersReducedMotion ? 0 : 0.4, duration: motionTokens.image, ease: motionTokens.easeOut as unknown as [number, number, number, number] }}
+            className="aspect-[4/5] overflow-hidden rounded-[20px] md:aspect-[4/3] md:rounded-[24px]"
+          >
+            <picture className="block h-full w-full">
+              <source media="(max-width: 767px)" srcSet="/assets/images/resonapet-cat-mobile-v2.webp" />
+              <img
+                src="/assets/images/resonapet-cat-desktop-v2.webp"
+                alt="Gatto seduto su un divano, osservando lo spazio domestico intorno a sé."
+                className="h-full w-full object-cover"
+                loading="lazy"
+              />
+            </picture>
+          </motion.div>
+
           <div>
             <p className="text-xs font-semibold uppercase tracking-[0.24em] text-copper-text">
               Una lettura più ampia
@@ -114,86 +132,38 @@ export function SistemaSection() {
                 ambiente.
               </span>
             </motion.p>
-
-            <motion.div
-              initial={prefersReducedMotion ? false : { opacity: 0.65, scale: 1.04 }}
-              animate={inView ? { opacity: 1, scale: 1 } : {}}
-              transition={{ delay: prefersReducedMotion ? 0 : 0.7, duration: motionTokens.image, ease: motionTokens.easeOut as unknown as [number, number, number, number] }}
-              className="mt-8 overflow-hidden rounded-[20px] md:hidden"
-              style={{ maxHeight: 420, aspectRatio: "4 / 5" }}
-            >
-              <picture className="block h-full w-full">
-                <source media="(max-width: 767px)" srcSet="/assets/images/resonapet-cat-mobile-v2.webp" />
-                <img
-                  src="/assets/images/resonapet-cat-desktop-v2.webp"
-                  alt="Gatto seduto su un divano, osservando lo spazio domestico intorno a sé."
-                  className="h-full w-full object-cover"
-                  loading="lazy"
-                />
-              </picture>
-            </motion.div>
           </div>
-
-          <motion.div
-            initial={prefersReducedMotion ? false : { opacity: 0.65, scale: 1.04 }}
-            animate={inView ? { opacity: 1, scale: 1 } : {}}
-            transition={{ delay: prefersReducedMotion ? 0 : 0.4, duration: motionTokens.image, ease: motionTokens.easeOut as unknown as [number, number, number, number] }}
-            className="hidden overflow-hidden rounded-[24px] md:block"
-            style={{ aspectRatio: "4 / 3" }}
-          >
-            <picture className="block h-full w-full">
-              <source media="(max-width: 767px)" srcSet="/assets/images/resonapet-cat-mobile-v2.webp" />
-              <img
-                src="/assets/images/resonapet-cat-desktop-v2.webp"
-                alt="Gatto seduto su un divano, osservando lo spazio domestico intorno a sé."
-                className="h-full w-full object-cover"
-                loading="lazy"
-              />
-            </picture>
-          </motion.div>
         </div>
 
         <TriadNodes />
 
-        <div className="relative left-1/2 right-1/2 -mx-[50vw] mt-12 w-screen md:mt-16">
-          <div className="relative aspect-[4/5] min-h-[460px] sm:aspect-[16/10] md:aspect-[21/9] md:min-h-[560px]">
-            <img
-              src="/assets/images/resonapet-riconosci-v1.webp"
-              alt="Un cane e un gatto condividono lo stesso ambiente domestico, ognuno nel proprio spazio."
-              className="absolute inset-0 h-full w-full object-cover"
-              loading="lazy"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-brown-deep/85 via-brown-deep/78 to-brown-deep/40" />
-            <div
-              className="absolute inset-0"
-              style={{
-                background:
-                  "radial-gradient(60% 55% at 50% 50%, rgba(35,20,15,0.55) 0%, rgba(35,20,15,0.1) 70%, transparent 100%)",
-              }}
-            />
-            <div className="absolute inset-0 flex items-center">
-              <div className="mx-auto w-full max-w-6xl px-5 py-10 md:px-10">
-                <h3 className="max-w-xl font-serif text-2xl leading-tight text-ivory drop-shadow-[0_2px_10px_rgba(35,20,15,0.5)] md:text-3xl">
-                  Lo riconosci?
-                </h3>
-                <div className="mt-5 grid max-w-2xl gap-3 text-[length:var(--text-body)] font-medium italic leading-relaxed text-ivory drop-shadow-[0_2px_10px_rgba(35,20,15,0.5)]">
-                  <p>
-                    Il tremore che comincia ai primi tuoni, e non si ferma nemmeno quando il
-                    temporale è già lontano.
-                  </p>
-                  <p>I segni lasciati sulla porta, nei minuti in cui provi solo ad allontanarti.</p>
-                  <p>Un cambiamento improvviso, senza una spiegazione — nemmeno dal veterinario.</p>
-                  <p>
-                    Gli occhi che evitano i tuoi, proprio nei momenti in cui vorresti sentirlo
-                    vicino.
-                  </p>
-                </div>
-                <p className="mt-5 max-w-2xl text-[length:var(--text-body)] font-medium leading-relaxed text-ivory drop-shadow-[0_2px_10px_rgba(35,20,15,0.5)]">
-                  Non è colpa di nessuno. È la profondità del legame che segnala qualcosa da
-                  ascoltare.
-                </p>
-              </div>
+        <div className="mt-12 grid gap-6 border-t border-line pt-8 md:mt-16 md:grid-cols-[0.9fr_1.1fr] md:items-center md:gap-12 md:pt-10">
+          <RevealImageMask
+            src="/assets/images/resonapet-riconosci-v1.webp"
+            alt="Un cane e un gatto condividono lo stesso ambiente domestico, ognuno nel proprio spazio."
+            className="aspect-[4/5] overflow-hidden rounded-[20px] shadow-[0_24px_50px_-20px_rgba(59,42,34,0.28)] md:aspect-[4/3] md:rounded-[24px]"
+            imgClassName="h-full w-full object-cover"
+          />
+          <div>
+            <h3 className="max-w-xl font-serif text-2xl leading-tight text-ink md:text-3xl">
+              Lo riconosci?
+            </h3>
+            <div className="mt-5 grid max-w-2xl gap-3 text-[length:var(--text-body)] italic leading-relaxed text-brown/90">
+              <p>
+                Il tremore che comincia ai primi tuoni, e non si ferma nemmeno quando il
+                temporale è già lontano.
+              </p>
+              <p>I segni lasciati sulla porta, nei minuti in cui provi solo ad allontanarti.</p>
+              <p>Un cambiamento improvviso, senza una spiegazione — nemmeno dal veterinario.</p>
+              <p>
+                Gli occhi che evitano i tuoi, proprio nei momenti in cui vorresti sentirlo
+                vicino.
+              </p>
             </div>
+            <p className="mt-5 max-w-2xl text-[length:var(--text-body)] leading-relaxed text-brown/90">
+              Non è colpa di nessuno. È la profondità del legame che segnala qualcosa da
+              ascoltare.
+            </p>
           </div>
         </div>
 
@@ -202,10 +172,12 @@ export function SistemaSection() {
             src="/assets/images/resonapet-frequenza-texture-v1.webp"
             alt=""
             aria-hidden="true"
-            className="pointer-events-none absolute left-1/2 top-1/2 -z-10 h-[130%] w-[95%] max-w-none -translate-x-1/2 -translate-y-1/2 object-cover opacity-70 md:left-[38%] md:h-[230%] md:w-[65%]"
+            className="pointer-events-none absolute left-1/2 top-[62%] -z-10 h-[170%] w-[130%] max-w-none -translate-x-1/2 -translate-y-1/2 object-cover opacity-80 md:left-[40%] md:top-[68%] md:h-[320%] md:w-[95%]"
             style={{
-              maskImage: "radial-gradient(closest-side, black 40%, transparent 100%)",
-              WebkitMaskImage: "radial-gradient(closest-side, black 40%, transparent 100%)",
+              maskImage:
+                "radial-gradient(75% 62% at 50% 70%, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.4) 55%, transparent 100%)",
+              WebkitMaskImage:
+                "radial-gradient(75% 62% at 50% 70%, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.4) 55%, transparent 100%)",
             }}
           />
           <div>
