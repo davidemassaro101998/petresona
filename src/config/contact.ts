@@ -10,11 +10,11 @@ function whatsappLink(message: string): string {
 }
 
 export const WHATSAPP_LINK_GENERAL = whatsappLink(
-  "🐾 Ciao Giorgia, vorrei ricevere informazioni su ResonaPet."
+  "🐾 Ciao Giorgia, vorrei ricevere informazioni su ResonaPet.\nNome e cognome: "
 )
 export const WHATSAPP_LINK_CORE = whatsappLink(
-  "🐾 Ciao Giorgia, vorrei ricevere informazioni su ResonaPet CORE."
+  "🐾 Ciao Giorgia, vorrei ricevere informazioni su ResonaPet CORE.\nNome e cognome: "
 )
 export const WHATSAPP_LINK_CONTINUITY = whatsappLink(
-  "🐾 Ciao Giorgia, vorrei ricevere informazioni su ResonaPet Continuity."
+  "🐾 Ciao Giorgia, vorrei ricevere informazioni su ResonaPet Continuity.\nNome e cognome: "
 )
