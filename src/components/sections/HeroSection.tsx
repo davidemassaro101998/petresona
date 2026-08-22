@@ -1,5 +1,5 @@
-import { motion, useMotionValue, animate } from "framer-motion"
-import { forwardRef, useEffect, useState } from "react"
+import { motion, useMotionValue, useInView, animate } from "framer-motion"
+import { useEffect, useRef, useState } from "react"
 import { VerticalCutReveal } from "@/components/ui/vertical-cut-reveal"
 import { InteractiveHoverButton } from "@/components/ui/interactive-hover-button"
 import { ScrollScrubImage } from "@/components/ui/scroll-scrub-image"
@@ -13,24 +13,29 @@ const heroVideoFrameSrc = (i: number) => `/assets/hero-scroll/h_${String(i).padS
 const HERO_VIDEO_FRAME_COUNT_DESKTOP = 49
 const heroVideoFrameSrcDesktop = (i: number) => `/assets/hero-scroll-desktop/hd_${String(i).padStart(3, "0")}.webp`
 
-export const HeroSection = forwardRef<HTMLElement, object>(function HeroSection(_props, ref) {
+export function HeroSection() {
   const prefersReducedMotion = useReducedMotion()
   const [videoReady, setVideoReady] = useState(false)
   const [videoReadyDesktop, setVideoReadyDesktop] = useState(false)
 
-  // Plays once, in slow motion, the moment the hero mounts — the dog and
-  // cat settle into the resting frame and stay there. No scroll involved:
-  // scroll behaves like a normal page from here down.
+  // Plays once, in slow motion, each time the hero scrolls into view — and
+  // silently rewinds to frame 0 (no animation, it's off-screen) as soon as
+  // it scrolls back out, so it's ready to replay from the start next time.
+  const sectionRef = useRef<HTMLElement>(null)
+  const inView = useInView(sectionRef, { amount: 0.6 })
   const progress = useMotionValue(0)
   useEffect(() => {
     if (prefersReducedMotion) return
-    const controls = animate(progress, 1, { duration: 3.4, ease: "easeOut", delay: 0.3 })
-    return () => controls.stop()
-  }, [prefersReducedMotion, progress])
+    if (inView) {
+      const controls = animate(progress, 1, { duration: 3.4, ease: "easeOut", delay: 0.3 })
+      return () => controls.stop()
+    }
+    progress.set(0)
+  }, [inView, prefersReducedMotion, progress])
 
   return (
     <section
-      ref={ref}
+      ref={sectionRef}
       id="hero"
       className="relative flex h-[100svh] min-h-0 max-h-none flex-col justify-between overflow-hidden bg-brown pb-16 pt-32 md:pb-20 md:pt-32"
     >
@@ -174,4 +179,4 @@ export const HeroSection = forwardRef<HTMLElement, object>(function HeroSection(
       </motion.a>
     </section>
   )
-})
+}
