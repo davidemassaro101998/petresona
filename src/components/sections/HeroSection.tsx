@@ -61,6 +61,11 @@ export const HeroSection = forwardRef<HTMLElement, HeroSectionProps>(function He
   const fallbackProgress = useMotionValue(0)
   const ctaOpacity = useTransform(heroStageProgress ?? fallbackProgress, HERO_VIDEO_RANGE, [0, 1])
   const useScrollLinkedCta = !prefersReducedMotion && !!heroStageProgress
+  // Momento 1 -> Momento 3: the headline crossfades over the same range as
+  // the video/CTA reveal, so the copy lands exactly as the dog and cat
+  // settle and the CTA finishes appearing.
+  const momento1Opacity = useTransform(heroStageProgress ?? fallbackProgress, HERO_VIDEO_RANGE, [1, 0])
+  const momento3Opacity = useTransform(heroStageProgress ?? fallbackProgress, HERO_VIDEO_RANGE, [0, 1])
 
   return (
     <section
@@ -148,34 +153,44 @@ export const HeroSection = forwardRef<HTMLElement, HeroSectionProps>(function He
             ResonaPet · Biorisonanza relazionale
           </motion.p>
 
-          <h1 className="mt-2 font-serif text-[2.1rem] leading-[1.1] text-ivory drop-shadow-[0_2px_14px_rgba(35,20,15,0.45)] md:mt-3 md:text-[2.65rem]">
-            {prefersReducedMotion ? (
-              <>
-                Sente tutto.
-                <br />
-                Anche quel che non dici.
-              </>
-            ) : (
-              <VerticalCutReveal
-                splitBy="lines"
-                staggerDuration={0.075}
-                staggerFrom="first"
-                transition={{ type: "spring", stiffness: 160, damping: 24 }}
-                autoStart
+          <div className="relative mt-2 md:mt-3">
+            <motion.h1
+              style={prefersReducedMotion ? undefined : { opacity: momento1Opacity }}
+              className="font-serif text-[2.1rem] leading-[1.15] text-ivory drop-shadow-[0_2px_14px_rgba(35,20,15,0.45)] md:text-[2.65rem]"
+            >
+              {prefersReducedMotion ? (
+                <>
+                  Il tuo animale vive nella tua casa,
+                  <br />
+                  dentro le vostre dinamiche.
+                  <br />
+                  ResonaPet lo riequilibra a distanza.
+                </>
+              ) : (
+                <VerticalCutReveal
+                  splitBy="lines"
+                  staggerDuration={0.075}
+                  staggerFrom="first"
+                  transition={{ type: "spring", stiffness: 160, damping: 24 }}
+                  autoStart
+                >
+                  {"Il tuo animale vive nella tua casa,\ndentro le vostre dinamiche.\nResonaPet lo riequilibra a distanza."}
+                </VerticalCutReveal>
+              )}
+            </motion.h1>
+            {/* Momento 3 — crossfades in over the same block as the dog and
+                cat finish settling; skipped entirely under reduced motion,
+                which shows only the Momento 1 copy above (paired with the
+                static resting-pets poster it also shows in that mode). */}
+            {!prefersReducedMotion && (
+              <motion.h1
+                style={{ opacity: momento3Opacity }}
+                className="absolute inset-0 font-serif text-[2.1rem] leading-[1.15] text-ivory drop-shadow-[0_2px_14px_rgba(35,20,15,0.45)] md:text-[2.65rem]"
               >
-                {"Sente tutto.\nAnche quel che non dici."}
-              </VerticalCutReveal>
+                Si riequilibra insieme — lui, tu, la casa che condividete.
+              </motion.h1>
             )}
-          </h1>
-
-          <motion.p
-            initial={prefersReducedMotion ? false : { opacity: 0, y: 8 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: prefersReducedMotion ? 0 : 0.85, duration: motionTokens.text }}
-            className="mt-2 font-serif text-base italic text-copper-light drop-shadow-[0_2px_10px_rgba(35,20,15,0.45)] md:mt-3 md:text-xl"
-          >
-            La relazione ha una frequenza.
-          </motion.p>
+          </div>
         </div>
       </motion.div>
 
