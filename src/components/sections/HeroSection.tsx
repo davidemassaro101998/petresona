@@ -115,9 +115,7 @@ export function HeroSection() {
           <h1 className="mt-2 font-serif text-[2.1rem] leading-[1.15] text-ivory drop-shadow-[0_2px_14px_rgba(35,20,15,0.45)] md:mt-3 md:text-[2.65rem]">
             {prefersReducedMotion ? (
               <>
-                Il tuo animale vive nella tua casa,
-                <br />
-                dentro le vostre dinamiche.
+                Il tuo animale vive le vostre dinamiche.
                 <br />
                 ResonaPet lo riequilibra a distanza.
               </>
@@ -129,7 +127,7 @@ export function HeroSection() {
                 transition={{ type: "spring", stiffness: 160, damping: 24 }}
                 autoStart
               >
-                {"Il tuo animale vive nella tua casa,\ndentro le vostre dinamiche.\nResonaPet lo riequilibra a distanza."}
+                {"Il tuo animale vive le vostre dinamiche.\nResonaPet lo riequilibra a distanza."}
               </VerticalCutReveal>
             )}
           </h1>
