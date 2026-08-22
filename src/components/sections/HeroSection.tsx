@@ -22,7 +22,10 @@ export function HeroSection() {
   // silently rewinds to frame 0 (no animation, it's off-screen) as soon as
   // it scrolls back out, so it's ready to replay from the start next time.
   const sectionRef = useRef<HTMLElement>(null)
-  const inView = useInView(sectionRef, { amount: 0.6 })
+  // amount: 0 — stays "in view" until the hero has fully scrolled off
+  // screen, so the reset to frame 0 always happens off-screen, never
+  // visibly mid-scroll the way a higher threshold would.
+  const inView = useInView(sectionRef, { amount: 0 })
   const progress = useMotionValue(0)
   useEffect(() => {
     if (prefersReducedMotion) return
