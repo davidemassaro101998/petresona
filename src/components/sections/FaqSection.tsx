@@ -110,7 +110,7 @@ export function FaqSection() {
           <img
             src="/assets/images/resonapet-cat-faq-wide-v1.webp"
             alt="Gatto tigrato seduto su una mensola in legno, accanto a un vaso in terracotta."
-            className="absolute inset-0 h-full w-full object-cover"
+            className="absolute inset-0 h-full w-full object-cover object-[82%_18%]"
             loading="lazy"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-brown-deep via-brown-deep/78 to-brown-deep/15" />

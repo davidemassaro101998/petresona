@@ -15,7 +15,7 @@ const heroVideoFrameSrcDesktop = (i: number) => `/assets/hero-scroll-desktop/hd_
 /** Portion of the pinned hero stage's scroll progress spent on the
  * story-scroll moment (dog & cat lifting their heads, CTA revealing)
  * before the rest of the existing exit choreography takes over. */
-const HERO_VIDEO_RANGE: [number, number] = [0, 0.35]
+const HERO_VIDEO_RANGE: [number, number] = [0, 0.5]
 
 export interface HeroSectionProps {
   /** Upward parallax drift owned by HeroTransition — applied to the photo
