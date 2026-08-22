@@ -152,6 +152,13 @@ export const HeroSection = forwardRef<HTMLElement, HeroSectionProps>(function He
         style={Object.keys(panelStyle).length ? panelStyle : undefined}
       >
         <div className="max-w-xl md:max-w-lg">
+          <p className="mb-3 inline-flex items-center gap-1.5 rounded-full bg-brown-deep/55 px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.14em] text-copper-light backdrop-blur-sm">
+            <span className="relative flex h-1.5 w-1.5" aria-hidden="true">
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-copper-light opacity-75" />
+              <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-copper-light" />
+            </span>
+            Posti limitati questa settimana
+          </p>
           <motion.p
             initial={prefersReducedMotion ? false : { opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -202,17 +209,9 @@ export const HeroSection = forwardRef<HTMLElement, HeroSectionProps>(function He
         </div>
       </motion.div>
 
-      {/* Bottom: urgency badge (always visible, not gated behind scroll)
-          + CTA (revealed by the first scroll gesture, in sync with the
+      {/* Bottom: CTA (revealed by the first scroll gesture, in sync with the
           dog & cat lifting their heads in the video above). */}
       <div className="relative z-10 mx-auto w-full max-w-6xl px-5 md:px-10">
-        <p className="mb-3 inline-flex items-center gap-1.5 rounded-full bg-brown-deep/55 px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.14em] text-copper-light backdrop-blur-sm">
-          <span className="relative flex h-1.5 w-1.5" aria-hidden="true">
-            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-copper-light opacity-75" />
-            <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-copper-light" />
-          </span>
-          Posti limitati questa settimana
-        </p>
         <motion.div
           initial={useScrollLinkedCta || skipCtaAnimation ? false : { opacity: 0, y: 10 }}
           animate={useScrollLinkedCta ? undefined : { opacity: 1, y: 0 }}
