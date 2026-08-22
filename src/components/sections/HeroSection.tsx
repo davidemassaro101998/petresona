@@ -194,16 +194,20 @@ export const HeroSection = forwardRef<HTMLElement, HeroSectionProps>(function He
         </div>
       </motion.div>
 
-      {/* Bottom: CTA — revealed by the first scroll gesture, in sync with
-          the dog & cat lifting their heads in the video above. */}
-      <motion.div
-        className="relative z-10 mx-auto w-full max-w-6xl px-5 md:px-10"
-        initial={useScrollLinkedCta || prefersReducedMotion ? false : { opacity: 0, y: 10 }}
-        animate={useScrollLinkedCta ? undefined : { opacity: 1, y: 0 }}
-        transition={{ delay: prefersReducedMotion ? 0 : 1.15, duration: motionTokens.text }}
-        style={useScrollLinkedCta ? { opacity: ctaOpacity } : undefined}
-      >
-        <div className="flex max-w-xl flex-wrap items-center gap-4 md:max-w-lg">
+      {/* Bottom: urgency badge (always visible, not gated behind scroll)
+          + CTA (revealed by the first scroll gesture, in sync with the
+          dog & cat lifting their heads in the video above). */}
+      <div className="relative z-10 mx-auto w-full max-w-6xl px-5 md:px-10">
+        <p className="mb-3 inline-flex items-center gap-1.5 rounded-full bg-brown-deep/55 px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.14em] text-copper-light backdrop-blur-sm">
+          <span aria-hidden="true" className="h-1.5 w-1.5 rounded-full bg-copper-light" />
+          Posti limitati questa settimana
+        </p>
+        <motion.div
+          initial={useScrollLinkedCta || prefersReducedMotion ? false : { opacity: 0, y: 10 }}
+          animate={useScrollLinkedCta ? undefined : { opacity: 1, y: 0 }}
+          transition={{ delay: prefersReducedMotion ? 0 : 1.15, duration: motionTokens.text }}
+          style={useScrollLinkedCta ? { opacity: ctaOpacity } : undefined}
+          className="flex max-w-xl flex-wrap items-center gap-4 md:max-w-lg">
           <InteractiveHoverButton
             href="#come-si-svolge"
             onClick={() => track("hero_cta_click")}
@@ -220,8 +224,8 @@ export const HeroSection = forwardRef<HTMLElement, HeroSectionProps>(function He
           >
             Richiedi l'accesso →
           </a>
-        </div>
-      </motion.div>
+        </motion.div>
+      </div>
 
       <motion.a
         href="#sistema"

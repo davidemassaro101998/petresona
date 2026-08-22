@@ -92,6 +92,10 @@ export function OffertaSection() {
                 <p className="mt-2 text-sm text-ivory/80">
                   3 sedute in circa 21 giorni · Stabilità, Quiete, Presenza · Pagamento unico
                 </p>
+                <p className="mt-4 inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-[0.14em] text-copper-light">
+                  <span aria-hidden="true" className="h-1.5 w-1.5 rounded-full bg-copper-light" />
+                  Posti limitati questa settimana
+                </p>
               </>
             )}
 
