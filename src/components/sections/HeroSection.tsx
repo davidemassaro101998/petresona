@@ -91,7 +91,7 @@ export const HeroSection = forwardRef<HTMLElement, HeroSectionProps>(function He
           <img
             src={heroVideoFrameSrc(0)}
             alt="Un cane e un gatto distesi vicini in un soggiorno luminoso."
-            className="absolute inset-0 h-full w-full scale-105 object-cover object-center blur-[3px]"
+            className="absolute inset-0 h-full w-full scale-105 object-cover object-center blur-[1.5px]"
           />
         </picture>
         <picture className="absolute inset-0 hidden h-full w-full md:block">
@@ -108,7 +108,7 @@ export const HeroSection = forwardRef<HTMLElement, HeroSectionProps>(function He
             progress={heroStageProgress ?? fallbackProgress}
             range={HERO_VIDEO_RANGE}
             onReady={() => setVideoReady(true)}
-            className={`absolute inset-0 h-full w-full scale-105 object-cover object-center blur-[3px] transition-opacity duration-500 ease-out md:hidden ${
+            className={`absolute inset-0 h-full w-full scale-105 object-cover object-center blur-[1.5px] transition-opacity duration-500 ease-out md:hidden ${
               videoReady ? "opacity-100" : "opacity-0"
             }`}
           />
