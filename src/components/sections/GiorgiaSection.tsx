@@ -9,7 +9,7 @@ const FACTS = [
 
 export function GiorgiaSection() {
   return (
-    <section id="giorgia" className="bg-forest py-16 md:py-20">
+    <section id="giorgia" className="bg-charcoal py-16 md:py-20">
       <div className="mx-auto grid max-w-6xl gap-10 px-5 md:grid-cols-[0.85fr_1.15fr] md:items-center md:gap-14 md:px-10">
         <RevealImageMask
           src="/assets/images/giorgia-resonapet-portrait-v3.webp"

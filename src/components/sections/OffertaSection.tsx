@@ -59,7 +59,7 @@ export function OffertaSection() {
           initial={prefersReducedMotion ? false : { clipPath: "inset(100% 0% 0% 0%)" }}
           animate={inView ? { clipPath: "inset(0% 0% 0% 0%)" } : {}}
           transition={{ duration: motionTokens.scene, ease: motionTokens.easeOut as unknown as [number, number, number, number] }}
-          className="bg-ink px-5 py-16 text-ivory md:px-10 md:py-24"
+          className="bg-charcoal px-5 py-16 text-ivory md:px-10 md:py-24"
         >
           <div className="mx-auto max-w-4xl text-center">
             <p className="text-[length:var(--text-small)] leading-relaxed text-ivory/85">

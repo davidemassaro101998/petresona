@@ -21,11 +21,12 @@
   --color-ink: #211c18;
   --color-brown: #5c5049;
   --color-brown-deep: #3b2a22;
-  --color-copper: #a65f3d;
-  --color-copper-text: #8f4b31;
-  --color-copper-light: #d8a285;
-  --color-forest: #30453b;
-  --color-forest-deep: #23352d;
+  /* Copper warmed toward brass/collar-tag metal rather than terracotta —
+     terracotta+sage-green is the generic human-spa vocabulary; brass reads
+     as a pet-world material (tags, buckles, leather hardware) instead. */
+  --color-copper: #b8863f;
+  --color-copper-text: #96692a;
+  --color-copper-light: #e3bd7f;
   --color-line: rgba(59, 42, 34, 0.16);
 
   /* "Signal" accent — the frequency/resonance mark. Deliberately cool
@@ -36,6 +37,13 @@
      background wash, so it stays a signature mark, not a second theme. */
   --color-signal: #3f8f86;
   --color-signal-light: #8fcfc5;
+
+  /* Charcoal — replaces both the neutral --color-ink dark sections AND the
+     old sage-forest-green (the other half of the generic spa vocabulary).
+     A near-black tinted toward the signal teal, so it reads as this
+     brand's own dark, not a borrowed luxury-black or wellness-green. */
+  --color-charcoal: #0f2422;
+  --color-charcoal-raised: #16302d;
 
   /* shadcn-style tokens the imported real components (Interactive Hover
      Button, Accordion) reference via bg-primary/bg-background/etc. Mapped
