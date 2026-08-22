@@ -53,15 +53,15 @@ export function HeroTransition() {
     <div className="relative">
       <div ref={stageRef} className="relative h-[130svh] md:h-[140svh]">
         <div className="sticky top-0 h-[100svh] overflow-hidden">
-          <motion.div className="relative h-full" style={{ y: heroY }}>
-            <HeroSection
-              exitImageScale={exitImageScale}
-              exitPanelOpacity={exitPanelOpacity}
-              exitPanelY={exitPanelY}
-              exitOverlayOpacity={exitOverlayOpacity}
-              indicatorOpacity={indicatorOpacity}
-            />
-          </motion.div>
+          <HeroSection
+            photoParallaxY={heroY}
+            exitImageScale={exitImageScale}
+            exitPanelOpacity={exitPanelOpacity}
+            exitPanelY={exitPanelY}
+            exitOverlayOpacity={exitOverlayOpacity}
+            indicatorOpacity={indicatorOpacity}
+            heroStageProgress={progress}
+          />
         </div>
       </div>
 

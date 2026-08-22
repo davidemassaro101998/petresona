@@ -55,11 +55,13 @@
     </script>
     <link rel="preload" href="/assets/fonts/newsreader.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="preload" href="/assets/fonts/manrope.woff2" as="font" type="font/woff2" crossorigin />
+    <!-- Preloads the hero's own poster frame (the story-scroll sequence's
+         first frame), matching what HeroSection actually renders now. -->
     <link
       rel="preload"
       as="image"
-      href="/assets/images/hero-dogcat-desktop-v1.webp"
-      imagesrcset="/assets/images/hero-dogcat-mobile-v2.webp 900w, /assets/images/hero-dogcat-desktop-v1.webp 1672w"
+      href="/assets/hero-scroll-desktop/hd_000.webp"
+      imagesrcset="/assets/hero-scroll/h_000.webp 720w, /assets/hero-scroll-desktop/hd_000.webp 1280w"
       imagesizes="100vw"
       fetchpriority="high"
     />

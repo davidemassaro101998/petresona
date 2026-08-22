@@ -1,13 +1,28 @@
-import { motion, type MotionValue } from "framer-motion"
-import { forwardRef } from "react"
+import { motion, useMotionValue, useTransform, type MotionValue } from "framer-motion"
+import { forwardRef, useState } from "react"
 import { VerticalCutReveal } from "@/components/ui/vertical-cut-reveal"
 import { InteractiveHoverButton } from "@/components/ui/interactive-hover-button"
+import { ScrollScrubImage } from "@/components/ui/scroll-scrub-image"
 import { motionTokens } from "@/styles/motion"
 import { useReducedMotion } from "@/lib/use-reduced-motion"
 import { track } from "@/lib/analytics"
 import { WHATSAPP_LINK_GENERAL } from "@/config/contact"
 
+const HERO_VIDEO_FRAME_COUNT = 49
+const heroVideoFrameSrc = (i: number) => `/assets/hero-scroll/h_${String(i).padStart(3, "0")}.webp`
+const HERO_VIDEO_FRAME_COUNT_DESKTOP = 49
+const heroVideoFrameSrcDesktop = (i: number) => `/assets/hero-scroll-desktop/hd_${String(i).padStart(3, "0")}.webp`
+/** Portion of the pinned hero stage's scroll progress spent on the
+ * story-scroll moment (dog & cat lifting their heads, CTA revealing)
+ * before the rest of the existing exit choreography takes over. */
+const HERO_VIDEO_RANGE: [number, number] = [0, 0.35]
+
 export interface HeroSectionProps {
+  /** Upward parallax drift owned by HeroTransition — applied to the photo
+   * layer only, never to the text (which sits close to the fixed header
+   * now that it lives at the top of the section; drifting it too would
+   * carry it up underneath the header on exit). */
+  photoParallaxY?: MotionValue<number>
   /** Cinematic zoom owned entirely by HeroTransition. */
   exitImageScale?: MotionValue<number>
   /** Text/panel opacity during the hero's exit (not the photo). */
@@ -18,13 +33,18 @@ export interface HeroSectionProps {
   exitOverlayOpacity?: MotionValue<number>
   /** Fades out the "Continua" indicator as the hero starts to exit. */
   indicatorOpacity?: MotionValue<number>
+  /** 0..1 progress across the whole pinned hero stage — used to drive the
+   * dog/cat story-scroll frames and sync the CTA reveal to it. */
+  heroStageProgress?: MotionValue<number>
 }
 
 export const HeroSection = forwardRef<HTMLElement, HeroSectionProps>(function HeroSection(
-  { exitImageScale, exitPanelOpacity, exitPanelY, exitOverlayOpacity, indicatorOpacity },
+  { photoParallaxY, exitImageScale, exitPanelOpacity, exitPanelY, exitOverlayOpacity, indicatorOpacity, heroStageProgress },
   ref,
 ) {
   const prefersReducedMotion = useReducedMotion()
+  const [videoReady, setVideoReady] = useState(false)
+  const [videoReadyDesktop, setVideoReadyDesktop] = useState(false)
 
   const panelStyle: Record<string, MotionValue<number>> = {}
   if (!prefersReducedMotion) {
@@ -32,38 +52,80 @@ export const HeroSection = forwardRef<HTMLElement, HeroSectionProps>(function He
     if (exitPanelY) panelStyle.y = exitPanelY
   }
 
+  const photoStyle: Record<string, MotionValue<number>> = {}
+  if (!prefersReducedMotion) {
+    if (exitImageScale) photoStyle.scale = exitImageScale
+    if (photoParallaxY) photoStyle.y = photoParallaxY
+  }
+
+  const fallbackProgress = useMotionValue(0)
+  const ctaOpacity = useTransform(heroStageProgress ?? fallbackProgress, HERO_VIDEO_RANGE, [0, 1])
+  const useScrollLinkedCta = !prefersReducedMotion && !!heroStageProgress
+
   return (
     <section
       ref={ref}
       id="hero"
-      className="relative flex h-[100svh] min-h-0 max-h-none items-end overflow-hidden bg-brown pb-16 pt-28 md:pb-20"
+      className="relative flex h-[100svh] min-h-0 max-h-none flex-col justify-between overflow-hidden bg-brown pb-16 pt-32 md:pb-20 md:pt-32"
     >
       <motion.div
         className="absolute inset-0 z-0 overflow-hidden"
-        style={prefersReducedMotion || !exitImageScale ? undefined : { scale: exitImageScale }}
+        style={Object.keys(photoStyle).length ? photoStyle : undefined}
       >
-        <picture className="absolute inset-0 block h-full w-full">
-          <source media="(max-width: 767px)" srcSet="/assets/images/hero-dogcat-mobile-v2.webp" />
+        <picture className="absolute inset-0 block h-full w-full md:hidden">
+          {/* Poster is the video's own first frame, so there is no pop
+              when the scroll-scrubbed canvas takes over on top of it. */}
           <img
-            src="/assets/images/hero-dogcat-desktop-v1.webp"
-            alt="Un cane e un gatto condividono lo stesso soggiorno luminoso, ognuno nel proprio spazio."
+            src={heroVideoFrameSrc(0)}
+            alt="Un cane e un gatto distesi vicini in un soggiorno luminoso."
             className="absolute inset-0 h-full w-full object-cover object-center"
           />
         </picture>
-        <div className="absolute inset-0 bg-gradient-to-t from-brown/85 via-brown/20 to-transparent" />
-        {/* Focus veil: a soft radial darkening centered behind the text
-            block (not a flat wash across the whole photo), so the copy
-            reads clearly while the rest of the image stays bright. */}
+        <picture className="absolute inset-0 hidden h-full w-full md:block">
+          <img
+            src={heroVideoFrameSrcDesktop(0)}
+            alt="Un cane e un gatto distesi vicini in un soggiorno luminoso."
+            className="absolute inset-0 h-full w-full object-cover object-center"
+          />
+        </picture>
+        {!prefersReducedMotion && (
+          <ScrollScrubImage
+            frameSrc={heroVideoFrameSrc}
+            frameCount={HERO_VIDEO_FRAME_COUNT}
+            progress={heroStageProgress ?? fallbackProgress}
+            range={HERO_VIDEO_RANGE}
+            onReady={() => setVideoReady(true)}
+            className={`absolute inset-0 h-full w-full object-cover object-center transition-opacity duration-500 ease-out md:hidden ${
+              videoReady ? "opacity-100" : "opacity-0"
+            }`}
+          />
+        )}
+        {!prefersReducedMotion && (
+          <ScrollScrubImage
+            frameSrc={heroVideoFrameSrcDesktop}
+            frameCount={HERO_VIDEO_FRAME_COUNT_DESKTOP}
+            progress={heroStageProgress ?? fallbackProgress}
+            range={HERO_VIDEO_RANGE}
+            onReady={() => setVideoReadyDesktop(true)}
+            className={`absolute inset-0 hidden h-full w-full object-cover object-center transition-opacity duration-500 ease-out md:block ${
+              videoReadyDesktop ? "opacity-100" : "opacity-0"
+            }`}
+          />
+        )}
+        {/* Text now sits at the top and the CTA at the bottom (both
+            breakpoints), so the photo needs darkening at both ends —
+            the middle, where the two pets read clearly, stays bright. */}
         <div
-          className="absolute inset-0 md:hidden"
+          className="absolute inset-0"
           style={{
-            background: "radial-gradient(65% 55% at 32% 88%, rgba(35,20,15,0.55) 0%, rgba(35,20,15,0.18) 55%, transparent 80%)",
+            background:
+              "linear-gradient(to bottom, rgba(59,42,34,0.8) 0%, rgba(59,42,34,0.12) 26%, transparent 42%, transparent 62%, rgba(59,42,34,0.15) 78%, rgba(59,42,34,0.75) 100%)",
           }}
         />
         <div
-          className="absolute inset-0 hidden md:block"
+          className="absolute inset-0"
           style={{
-            background: "radial-gradient(50% 60% at 80% 90%, rgba(59,42,34,0.6) 0%, rgba(59,42,34,0.15) 55%, transparent 80%)",
+            background: "radial-gradient(70% 42% at 38% 14%, rgba(35,20,15,0.5) 0%, rgba(35,20,15,0.16) 55%, transparent 80%)",
           }}
         />
         {!prefersReducedMotion && exitOverlayOpacity && (
@@ -71,8 +133,9 @@ export const HeroSection = forwardRef<HTMLElement, HeroSectionProps>(function He
         )}
       </motion.div>
 
+      {/* Top: eyebrow, headline, tagline. */}
       <motion.div
-        className="relative z-10 mx-auto flex w-full max-w-6xl px-5 md:px-10 md:justify-end"
+        className="relative z-10 mx-auto w-full max-w-6xl px-5 md:px-10"
         style={Object.keys(panelStyle).length ? panelStyle : undefined}
       >
         <div className="max-w-xl md:max-w-lg">
@@ -80,18 +143,17 @@ export const HeroSection = forwardRef<HTMLElement, HeroSectionProps>(function He
             initial={prefersReducedMotion ? false : { opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.25 }}
-            className="hero-eyebrow hidden text-xs font-semibold uppercase tracking-[0.26em] text-copper-light drop-shadow-[0_1px_6px_rgba(35,20,15,0.5)] md:block"
+            className="hero-eyebrow text-xs font-semibold uppercase tracking-[0.26em] text-copper-light drop-shadow-[0_1px_6px_rgba(35,20,15,0.5)]"
           >
-            ResonaPet · Biorisonanza relazionale · Cani e gatti
+            ResonaPet · Biorisonanza relazionale
           </motion.p>
 
-          <h1 className="font-serif text-[2.1rem] leading-[1.1] text-ivory drop-shadow-[0_2px_14px_rgba(35,20,15,0.45)] md:mt-3 md:text-[2.65rem]">
+          <h1 className="mt-2 font-serif text-[2.1rem] leading-[1.1] text-ivory drop-shadow-[0_2px_14px_rgba(35,20,15,0.45)] md:mt-3 md:text-[2.65rem]">
             {prefersReducedMotion ? (
               <>
-                Il tuo animale non vive isolato.
+                Sente tutto.
                 <br />
-                Vive dentro una relazione
-                <br />e un ambiente.
+                Anche quel che non dici.
               </>
             ) : (
               <VerticalCutReveal
@@ -101,7 +163,7 @@ export const HeroSection = forwardRef<HTMLElement, HeroSectionProps>(function He
                 transition={{ type: "spring", stiffness: 160, damping: 24 }}
                 autoStart
               >
-                {"Il tuo animale non vive isolato.\nVive dentro una relazione\ne un ambiente."}
+                {"Sente tutto.\nAnche quel che non dici."}
               </VerticalCutReveal>
             )}
           </h1>
@@ -114,30 +176,35 @@ export const HeroSection = forwardRef<HTMLElement, HeroSectionProps>(function He
           >
             La relazione ha una frequenza.
           </motion.p>
+        </div>
+      </motion.div>
 
-          <motion.div
-            initial={prefersReducedMotion ? false : { opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: prefersReducedMotion ? 0 : 1.15, duration: motionTokens.text }}
-            className="mt-5 flex flex-wrap items-center gap-4 md:mt-6"
+      {/* Bottom: CTA — revealed by the first scroll gesture, in sync with
+          the dog & cat lifting their heads in the video above. */}
+      <motion.div
+        className="relative z-10 mx-auto w-full max-w-6xl px-5 md:px-10"
+        initial={useScrollLinkedCta || prefersReducedMotion ? false : { opacity: 0, y: 10 }}
+        animate={useScrollLinkedCta ? undefined : { opacity: 1, y: 0 }}
+        transition={{ delay: prefersReducedMotion ? 0 : 1.15, duration: motionTokens.text }}
+        style={useScrollLinkedCta ? { opacity: ctaOpacity } : undefined}
+      >
+        <div className="flex max-w-xl flex-wrap items-center gap-4 md:max-w-lg">
+          <InteractiveHoverButton
+            href="#come-si-svolge"
+            onClick={() => track("hero_cta_click")}
+            className="border-copper-light/40 bg-transparent text-ivory"
           >
-            <InteractiveHoverButton
-              href="#come-si-svolge"
-              onClick={() => track("hero_cta_click")}
-              className="border-copper-light/40 bg-transparent text-ivory"
-            >
-              Scopri come funziona
-            </InteractiveHoverButton>
-            <a
-              href={WHATSAPP_LINK_GENERAL}
-              target="_blank"
-              rel="noreferrer"
-              onClick={() => track("hero_cta_click")}
-              className="inline-flex items-center justify-center rounded-full bg-copper px-6 py-3 text-sm font-semibold text-ivory shadow-[0_10px_30px_-12px_rgba(35,20,15,0.6)] transition-colors hover:bg-copper-text"
-            >
-              Richiedi l'accesso →
-            </a>
-          </motion.div>
+            Scopri come funziona
+          </InteractiveHoverButton>
+          <a
+            href={WHATSAPP_LINK_GENERAL}
+            target="_blank"
+            rel="noreferrer"
+            onClick={() => track("hero_cta_click")}
+            className="inline-flex items-center justify-center rounded-full bg-copper px-6 py-3 text-sm font-semibold text-ivory shadow-[0_10px_30px_-12px_rgba(35,20,15,0.6)] transition-colors hover:bg-copper-text"
+          >
+            Richiedi l'accesso →
+          </a>
         </div>
       </motion.div>
 
