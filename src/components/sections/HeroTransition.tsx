@@ -51,7 +51,13 @@ export function HeroTransition() {
 
   return (
     <div className="relative">
-      <div ref={stageRef} className="relative h-[130svh] md:h-[140svh]">
+      {/* Tall enough that the video/CTA reveal (the first 35% of progress
+          below) takes a deliberate amount of scrolling — mouse wheel or
+          touch — instead of finishing inside a single reflexive gesture.
+          Every other beat in this file is a progress *fraction*, so this
+          one change paces the whole hero-to-sistema journey uniformly
+          without needing to re-tune the choreography itself. */}
+      <div ref={stageRef} className="relative h-[210svh] md:h-[220svh]">
         <div className="sticky top-0 h-[100svh] overflow-hidden">
           <HeroSection
             photoParallaxY={heroY}
