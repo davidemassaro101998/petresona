@@ -91,7 +91,7 @@ export const HeroSection = forwardRef<HTMLElement, HeroSectionProps>(function He
           <img
             src={heroVideoFrameSrc(0)}
             alt="Un cane e un gatto distesi vicini in un soggiorno luminoso."
-            className="absolute inset-0 h-full w-full scale-105 object-cover object-center blur-[1.5px]"
+            className="absolute inset-0 h-full w-full scale-105 object-cover object-center"
           />
         </picture>
         <picture className="absolute inset-0 hidden h-full w-full md:block">
@@ -108,7 +108,7 @@ export const HeroSection = forwardRef<HTMLElement, HeroSectionProps>(function He
             progress={heroStageProgress ?? fallbackProgress}
             range={HERO_VIDEO_RANGE}
             onReady={() => setVideoReady(true)}
-            className={`absolute inset-0 h-full w-full scale-105 object-cover object-center blur-[1.5px] transition-opacity duration-500 ease-out md:hidden ${
+            className={`absolute inset-0 h-full w-full scale-105 object-cover object-center transition-opacity duration-500 ease-out md:hidden ${
               videoReady ? "opacity-100" : "opacity-0"
             }`}
           />
@@ -207,7 +207,10 @@ export const HeroSection = forwardRef<HTMLElement, HeroSectionProps>(function He
           dog & cat lifting their heads in the video above). */}
       <div className="relative z-10 mx-auto w-full max-w-6xl px-5 md:px-10">
         <p className="mb-3 inline-flex items-center gap-1.5 rounded-full bg-brown-deep/55 px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.14em] text-copper-light backdrop-blur-sm">
-          <span aria-hidden="true" className="h-1.5 w-1.5 rounded-full bg-copper-light" />
+          <span className="relative flex h-1.5 w-1.5" aria-hidden="true">
+            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-copper-light opacity-75" />
+            <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-copper-light" />
+          </span>
           Posti limitati questa settimana
         </p>
         <motion.div
