@@ -124,7 +124,7 @@ export function SistemaSection() {
           <img
             src="/assets/images/resonapet-dog-riconosci-v1.webp"
             alt="Cane disteso su un cuscino in un soggiorno luminoso, con un vaso in terracotta sullo sfondo."
-            className="absolute inset-0 h-full w-full object-cover"
+            className="absolute inset-0 h-full w-full scale-105 object-cover blur-[3px]"
             loading="lazy"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-brown-deep via-brown-deep/70 to-brown-deep/15" />

@@ -5,6 +5,7 @@ import { InteractiveHoverButton } from "@/components/ui/interactive-hover-button
 import { ScrollScrubImage } from "@/components/ui/scroll-scrub-image"
 import { motionTokens } from "@/styles/motion"
 import { useReducedMotion } from "@/lib/use-reduced-motion"
+import { useIsMobile } from "@/lib/use-is-mobile"
 import { track } from "@/lib/analytics"
 import { WHATSAPP_LINK_GENERAL } from "@/config/contact"
 
@@ -43,6 +44,7 @@ export const HeroSection = forwardRef<HTMLElement, HeroSectionProps>(function He
   ref,
 ) {
   const prefersReducedMotion = useReducedMotion()
+  const isMobile = useIsMobile()
   const [videoReady, setVideoReady] = useState(false)
   const [videoReadyDesktop, setVideoReadyDesktop] = useState(false)
 
@@ -60,7 +62,11 @@ export const HeroSection = forwardRef<HTMLElement, HeroSectionProps>(function He
 
   const fallbackProgress = useMotionValue(0)
   const ctaOpacity = useTransform(heroStageProgress ?? fallbackProgress, HERO_VIDEO_RANGE, [0, 1])
-  const useScrollLinkedCta = !prefersReducedMotion && !!heroStageProgress
+  // On mobile the CTA is always visible (no scroll gate) — every visitor
+  // this week can request access the instant the hero loads, no gesture
+  // required. Desktop keeps the scroll-synced reveal.
+  const useScrollLinkedCta = !prefersReducedMotion && !isMobile && !!heroStageProgress
+  const skipCtaAnimation = prefersReducedMotion || isMobile
   // Momento 1 -> Momento 3: the headline crossfades over the same range as
   // the video/CTA reveal, so the copy lands exactly as the dog and cat
   // settle and the CTA finishes appearing.
@@ -79,11 +85,13 @@ export const HeroSection = forwardRef<HTMLElement, HeroSectionProps>(function He
       >
         <picture className="absolute inset-0 block h-full w-full md:hidden">
           {/* Poster is the video's own first frame, so there is no pop
-              when the scroll-scrubbed canvas takes over on top of it. */}
+              when the scroll-scrubbed canvas takes over on top of it.
+              Slightly blurred on mobile only, so the (now always-visible)
+              text and CTA read as the clear focal point. */}
           <img
             src={heroVideoFrameSrc(0)}
             alt="Un cane e un gatto distesi vicini in un soggiorno luminoso."
-            className="absolute inset-0 h-full w-full object-cover object-center"
+            className="absolute inset-0 h-full w-full scale-105 object-cover object-center blur-[3px]"
           />
         </picture>
         <picture className="absolute inset-0 hidden h-full w-full md:block">
@@ -100,7 +108,7 @@ export const HeroSection = forwardRef<HTMLElement, HeroSectionProps>(function He
             progress={heroStageProgress ?? fallbackProgress}
             range={HERO_VIDEO_RANGE}
             onReady={() => setVideoReady(true)}
-            className={`absolute inset-0 h-full w-full object-cover object-center transition-opacity duration-500 ease-out md:hidden ${
+            className={`absolute inset-0 h-full w-full scale-105 object-cover object-center blur-[3px] transition-opacity duration-500 ease-out md:hidden ${
               videoReady ? "opacity-100" : "opacity-0"
             }`}
           />
@@ -203,9 +211,9 @@ export const HeroSection = forwardRef<HTMLElement, HeroSectionProps>(function He
           Posti limitati questa settimana
         </p>
         <motion.div
-          initial={useScrollLinkedCta || prefersReducedMotion ? false : { opacity: 0, y: 10 }}
+          initial={useScrollLinkedCta || skipCtaAnimation ? false : { opacity: 0, y: 10 }}
           animate={useScrollLinkedCta ? undefined : { opacity: 1, y: 0 }}
-          transition={{ delay: prefersReducedMotion ? 0 : 1.15, duration: motionTokens.text }}
+          transition={{ delay: skipCtaAnimation ? 0 : 1.15, duration: motionTokens.text }}
           style={useScrollLinkedCta ? { opacity: ctaOpacity } : undefined}
           className="flex max-w-xl flex-wrap items-center gap-4 md:max-w-lg">
           <InteractiveHoverButton
