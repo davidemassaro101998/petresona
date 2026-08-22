@@ -28,6 +28,15 @@
   --color-forest-deep: #23352d;
   --color-line: rgba(59, 42, 34, 0.16);
 
+  /* "Signal" accent — the frequency/resonance mark. Deliberately cool
+     against the warm brown/copper base (wellness-brand palettes stay
+     monochrome-warm; this cross-temperature pairing is what keeps
+     ResonaPet from reading as a generic spa) and used ONLY for the wave
+     motif, diagram connectors and small live-indicator dots — never as a
+     background wash, so it stays a signature mark, not a second theme. */
+  --color-signal: #3f8f86;
+  --color-signal-light: #8fcfc5;
+
   /* shadcn-style tokens the imported real components (Interactive Hover
      Button, Accordion) reference via bg-primary/bg-background/etc. Mapped
      onto the ResonaPet palette above so those components work unmodified. */

@@ -1,6 +1,7 @@
 import { motion, useInView } from "framer-motion"
 import { useRef, useState } from "react"
 import { VerticalCutReveal } from "@/components/ui/vertical-cut-reveal"
+import { FrequencyWave } from "@/components/ui/frequency-wave"
 import { motionTokens } from "@/styles/motion"
 import { useReducedMotion } from "@/lib/use-reduced-motion"
 import { track } from "@/lib/analytics"
@@ -28,46 +29,60 @@ function TriadNodes() {
   const prefersReducedMotion = useReducedMotion()
 
   return (
-    <div className="mt-10 grid gap-1 md:mt-14 md:grid-cols-3 md:gap-0">
-      {TRIAD.map((item) => {
-        const open = openKey === item.key
-        return (
-          <div
-            key={item.key}
-            className="group border-t border-line py-5 first:border-t-0 md:border-t-2 md:border-t-transparent md:first:border-t-2 md:border-l md:border-l-line md:px-8 md:py-8 md:first:border-l-0 md:hover:border-t-copper md:focus-within:border-t-copper"
-            onMouseEnter={() => !prefersReducedMotion && setOpenKey(item.key)}
-            onMouseLeave={() => !prefersReducedMotion && setOpenKey(null)}
-            onFocus={() => setOpenKey(item.key)}
-            onBlur={() => setOpenKey(null)}
-          >
-            <button
-              type="button"
-              className="flex w-full min-h-[44px] items-center justify-between text-left md:cursor-default"
-              aria-expanded={open}
-              aria-controls={`triad-panel-${item.key}`}
-              onClick={() => {
-                const next = open ? null : item.key
-                setOpenKey(next)
-                if (next) track("system_node_open", { node: item.key })
-              }}
+    <div className="mt-10 md:mt-14">
+      {/* The signal line, run once above the whole triad — visualizes that
+          animale/persona/ambiente are one connected system being read
+          together, not three separate bullet points. */}
+      <FrequencyWave strokeWidth={2} className="h-5 w-full text-signal/55" />
+      <div className="grid gap-1 md:grid-cols-3 md:gap-0">
+        {TRIAD.map((item) => {
+          const open = openKey === item.key
+          return (
+            <div
+              key={item.key}
+              className="group border-t border-line bg-paper py-5 pl-9 first:border-t-0 md:border-t-0 md:bg-transparent md:px-8 md:py-8 md:pl-8 md:first:pl-0"
+              onMouseEnter={() => !prefersReducedMotion && setOpenKey(item.key)}
+              onMouseLeave={() => !prefersReducedMotion && setOpenKey(null)}
+              onFocus={() => setOpenKey(item.key)}
+              onBlur={() => setOpenKey(null)}
             >
-              <span className="font-serif text-lg text-ink transition-colors md:text-2xl md:group-hover:text-copper">{item.label}</span>
-              <span className="text-copper md:hidden" aria-hidden="true">
-                {open ? "−" : "+"}
-              </span>
-            </button>
-            <motion.div
-              id={`triad-panel-${item.key}`}
-              initial={false}
-              animate={{ height: open ? "auto" : 0, opacity: open ? 1 : 0 }}
-              transition={{ duration: motionTokens.accordion, ease: motionTokens.easeOut as unknown as [number, number, number, number] }}
-              className="overflow-hidden md:!h-auto md:!opacity-100"
-            >
-              <p className="pt-3 text-[length:var(--text-small)] leading-relaxed text-brown/90 md:pt-4">{item.desc}</p>
-            </motion.div>
-          </div>
-        )
-      })}
+              <button
+                type="button"
+                className="flex w-full min-h-[44px] items-center justify-between text-left md:cursor-default"
+                aria-expanded={open}
+                aria-controls={`triad-panel-${item.key}`}
+                onClick={() => {
+                  const next = open ? null : item.key
+                  setOpenKey(next)
+                  if (next) track("system_node_open", { node: item.key })
+                }}
+              >
+                <span className="flex items-center gap-2.5">
+                  <span
+                    aria-hidden="true"
+                    className="h-2 w-2 shrink-0 rounded-full bg-signal transition-transform md:group-hover:scale-125"
+                  />
+                  <span className="font-serif text-lg text-ink transition-colors md:text-2xl md:group-hover:text-copper">
+                    {item.label}
+                  </span>
+                </span>
+                <span className="text-copper md:hidden" aria-hidden="true">
+                  {open ? "−" : "+"}
+                </span>
+              </button>
+              <motion.div
+                id={`triad-panel-${item.key}`}
+                initial={false}
+                animate={{ height: open ? "auto" : 0, opacity: open ? 1 : 0 }}
+                transition={{ duration: motionTokens.accordion, ease: motionTokens.easeOut as unknown as [number, number, number, number] }}
+                className="overflow-hidden md:!h-auto md:!opacity-100"
+              >
+                <p className="pt-3 pl-[18px] text-[length:var(--text-small)] leading-relaxed text-brown/90 md:pt-4 md:pl-0">{item.desc}</p>
+              </motion.div>
+            </div>
+          )
+        })}
+      </div>
     </div>
   )
 }
